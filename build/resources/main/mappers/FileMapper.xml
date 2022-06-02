@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sync.mapper.FileMapper">
+
+    <insert id="insert">
+        insert into tbl_notice_attach (nt_uuid, filename, savePath, img, nt_id)
+        values (#{nt_uuid}, #{fileName}, #{savePath}, #{img}, last_insert_id())
+    </insert>
+
+    <insert id="insertNotice">
+        insert into tbl_notice_attach (nt_uuid, fileName, savePath, img, nt_id)
+        values(#{nt_uuid}, #{fileName}, #{savePath}, #{img}, #{nt_id})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_notice_attach where nt_id = #{nt_id}
+    </delete>
+
+
+
+</mapper>

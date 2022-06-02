@@ -1,0 +1,87 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.CrewMapper">
+
+    <sql id ="search">
+        <where>
+            <if test="keyword != null">
+                <foreach collection="types" item ="item" separator="OR" open="(" close=")">
+                    <if test='item == "t"'>
+                        cr.cr_id like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "c"'>
+                        cr.name like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "w"'>
+                        cr.addr like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+
+    <select id="selectList" resultType="com.sync.domain.CrewVO">
+        select cr.cr_id, tm.m_id,cr.name name, tm.name m_name, cr.addr, cr.mtotal, cr.createDate, cr.content, cr.mainImage
+        from tbl_crew cr
+                 left join tbl_member tm on cr.m_id = tm.m_id
+        <include refid="search"></include>
+        order by cr.cr_id desc
+        limit #{skip},#{size}
+    </select>
+
+    <select id="selectOne" resultType="com.sync.domain.CrewVO">
+        select cr.cr_id, tm.m_id,cr.name name, tm.name m_name, cr.addr, cr.mtotal, cr.createDate, cr.content, cr.mainImage
+        from tbl_crew cr
+                 left join tbl_member tm on cr.m_id = tm.m_id
+        where cr.cr_id = #{cr_id}
+    </select>
+
+    <insert id="insert">
+        <selectKey  resultType="int" keyProperty="cr_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_crew(m_id, name, addr, mtotal, mainImage, content)
+        values (#{m_id}, #{name}, #{addr}, #{mtotal}, #{mainImage}, #{content})
+    </insert>
+
+
+
+    <select id="getTotal" resultType="int">
+
+        select count(cr.cr_id)
+        from tbl_crew cr
+        left join tbl_member tm on cr.m_id = tm.m_id
+        <include refid="search"></include>
+
+    </select>
+
+    <update id="updateCrewMemberCount">
+        update tbl_crew set mtotal = mtotal + #{amount} where cr_id = #{cr_id}
+    </update>
+
+    <select id="selectFiles" resultType="com.sync.domain.CrewAttachFileVO">
+        select *
+        from tbl_crew_attach
+        where cr_id = #{cr_id}
+    </select>
+
+    <select id="crewAddrTotal" resultType="com.sync.domain.CrewVO">
+        select cr.addr, sum(mtotal) mtotal
+        from tbl_crew cr
+                 left join tbl_member tm on cr.m_id = tm.m_id
+        group by cr.addr
+    </select>
+
+    <select id="crewMonth" resultType="map">
+        select MONTH(createDate) dateMonth, sum(mtotal) mtotal
+        from tbl_crew cr
+            left join tbl_member tm on cr.m_id = tm.m_id
+        group by dateMonth
+    </select>
+
+
+</mapper>

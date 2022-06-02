@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.CrewFileMapper">
+
+    <insert id="insert">
+        insert into tbl_crew_attach (uuid, fileName, savePath, img, cr_id)
+        values (#{uuid}, #{fileName}, #{savePath}, #{img}, last_insert_id())
+    </insert>
+
+    <insert id="insertCrew">
+        insert into tbl_crew_attach (uuid, fileName, savePath, img, cr_id)
+        values (#{uuid}, #{fileName}, #{savePath}, #{img}, #{cr_id})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_crew_attach where cr_id = #{cr_id}
+    </delete>
+</mapper>
