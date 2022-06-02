@@ -1,20 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp" %>
-
-<!-- ======= Sidebar ======= -->
+<!-- ======= 사이드바 시작 ======= -->
 <aside id="sidebar" class="sidebar">
 
+    <!--   메뉴 목록 시작    -->
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-item">
+        <li class="nav-item"><!-- 대시보드 시작  -->
             <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li><!-- 대시보드 종료  -->
 
-        <li class="nav-item">
+
+        <li class="nav-item"><!-- 게시판 관리 시작  -->
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>게시판 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -30,47 +31,36 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html" >
+                    <a href="http://106.241.252.54:8086/tables-data.html">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
             </ul>
-        </li><!-- End Components Nav -->
+        </li><!-- 게시판 관리 종료  -->
 
-        <li class="nav-item">
+        <li class="nav-item"><!-- 코스 관리 시작   -->
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>코스 관리</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="ri-treasure-map-fill"></i><span>코스 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/forms-elements.html" >
+                    <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/board/courseStat">
-                        <i class="bi bi-circle"></i><span>코스 통계</span>
-                    </a>
-                </li>
-
             </ul>
-        </li><!-- End Forms Nav -->
+        </li><!--  코스 관리 종료  -->
 
-        <li class="nav-item">
+        <li class="nav-item"><!--  사용자 관리 시작  -->
             <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                 <i class="ri-contacts-fill"></i></i><span>사용자 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/member/list" >
+                    <a href="/member/list" class="active">
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
-                    <ul >
-                        <li>
-                            <a href="/member/read" class="active">
-                                <i class="bi bi-circle"></i><span>회원 정보</span>
-                            </a>
-                        </li>
+                    <ul>
                         <li>
                             <a href="/member/register">
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
@@ -80,14 +70,15 @@
 
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html" >
+                    <a href="http://106.241.252.54:8086/tables-data.html">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
 
             </ul>
-        </li><!-- End Tables Nav -->
+        </li><!-- 사용자 관리 끝  -->
 
+        <%--   기타 페이지 시작     --%>
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
@@ -95,42 +86,41 @@
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
-        </li><!-- End Profile Page Nav -->
+        </li><!-- 관리자 정보 페이지 -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
-        </li><!-- End F.A.Q Page Nav -->
+        </li><!-- F.A.Q 페이지-->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
-        </li><!-- End Contact Page Nav -->
+        </li><!-- 비상연락망 페이지 -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
-        </li><!-- End Register Page Nav -->
+        </li><!-- 관리자 등록 페이지  -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
-        </li><!-- End Login Page Nav -->
-
-
+        </li><!-- 로그아웃 페이지 -->
     </ul>
+    <!--   메뉴 목록 종료    -->
 
-</aside><!-- End Sidebar-->
+</aside>
+<!------ 사이드바 종료 ------>
 
-<%--    header 종료 --%>
 
 <main id="main" class="main">
 
