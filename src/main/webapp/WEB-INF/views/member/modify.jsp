@@ -417,7 +417,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/notice">
+                    <a href="/notice/list/">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
@@ -469,7 +469,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/board/register">
+                            <a href="/member/register">
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
                             </a>
                         </li>
@@ -725,7 +725,7 @@
                         </div>
 
                         <button type="button" class="btn btn-primary btn_register"
-                                onclick="location.href='/board/register'">회원 등록
+                                onclick="location.href='/member/register'">회원 등록
                         </button>
 
 

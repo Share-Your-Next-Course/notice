@@ -46,9 +46,8 @@ public class NoticeServiceImpl implements NoticeService {
     public NoticeDTO getOne(Integer nt_id) {
         NoticeVO noticeVO = noticeMapper.selectOne(nt_id);
         NoticeDTO noticeDTO = modelMapper.map(noticeVO, NoticeDTO.class);
+
         return noticeDTO;
-
-
     }
 
     @Override
@@ -63,8 +62,8 @@ public class NoticeServiceImpl implements NoticeService {
                 .content(noticeDTO.getContent())
                 .build());
 
-        for(UploadResultDTO uploadDTO : noticeDTO.getUploads()){
-            AttachFile attachFile = modelMapper.map(uploadDTO,AttachFile.class);
+        for (UploadResultDTO uploadDTO : noticeDTO.getUploads()) {
+            AttachFile attachFile = modelMapper.map(uploadDTO, AttachFile.class);
             attachFile.setNt_id(noticeDTO.getNt_id());
             fileMapper.insertNotice(attachFile);
         }
@@ -82,7 +81,7 @@ public class NoticeServiceImpl implements NoticeService {
         log.info(noticeVO);
         log.info(files);
         noticeMapper.insert(noticeVO);
-        files.forEach(file-> fileMapper.insert(file));
+        files.forEach(file -> fileMapper.insert(file));
         log.info("============-------------=============");
 
     }

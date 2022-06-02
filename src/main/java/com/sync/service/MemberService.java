@@ -12,8 +12,6 @@ import java.util.List;
 @Transactional
 public interface MemberService {
 
-    void register(MemberDTO memberDTO);
-
     ListResponseDTO<MemberDTO> getList(ListDTO listDTO);
 
     MemberDTO getOne(Integer m_id);
@@ -21,6 +19,10 @@ public interface MemberService {
     void update(MemberDTO memberDTO);
 
     void remove(Integer m_id);
+
+    void register(MemberDTO memberDTO);
+
+
 
     List<MemberUploadResultDTO> getFiles(Integer m_id);
 

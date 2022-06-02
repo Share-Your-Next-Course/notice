@@ -132,7 +132,6 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">공지사항 : ${dto.title}</h1>
 
@@ -142,7 +141,6 @@
         </div>
         <div class="card-body">
             <blockquote class="blockquote mb-0">
-
 
                 <div class="input-group mb-3">
                     <span class="input-group-text"><c:out value="${dto.nt_id}"></c:out></span>
@@ -193,6 +191,9 @@
         </div>
     </div>
 </div>
+</div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>

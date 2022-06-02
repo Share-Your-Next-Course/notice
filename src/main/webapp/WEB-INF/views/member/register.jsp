@@ -155,7 +155,7 @@
                         <%--                        </form>--%>
 
                         <!-- 정보 기입란 시작 -->
-                        <form class="actionForm" action="/board/register" method="post">
+                        <form class="actionForm" action="/member/register" method="post">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">ID</label>
                                 <div class="col-sm-10">
@@ -238,14 +238,14 @@
                                 </style>
 
                             </div>
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">사진 업로드</label>
-                                <div class="col-sm-10 uploadInputDiv">
-                                    <input class="form-control uploadFile" type="file" name="upload" id="formFile">
-                                    <button class="uploadBtn">UPLOAD</button>
-                                </div>
-                                <div class="uploadResult"></div>
-                            </div>
+<%--                            <div class="row mb-3">--%>
+<%--                                <label class="col-sm-2 col-form-label">사진 업로드</label>--%>
+<%--                                <div class="col-sm-10 uploadInputDiv">--%>
+<%--                                    <input class="form-control uploadFile" type="file" name="upload" id="formFile">--%>
+<%--                                    <button class="uploadBtn">UPLOAD</button>--%>
+<%--                                </div>--%>
+<%--                                <div class="uploadResult"></div>--%>
+<%--                            </div>--%>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">활동지역</label>
                                 <div class="col-sm-10">

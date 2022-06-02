@@ -33,7 +33,7 @@ public class MemberServiceImpl implements MemberService {
         List<MemberVO> memberVOList = memberMapper.selectList(listDTO);
 
         List<MemberDTO> dtoList =
-                memberVOList.stream().map(memberVO -> modelMapper.map(memberVO, MemberDTO.class))
+                memberVOList.stream().map(member -> modelMapper.map(member, MemberDTO.class))
                         .collect(Collectors.toList());
         //member객체를 modelmapper를 이용해서 member객체를 MemberDTO 객체로 매핑을 시킨다. 그리고 collect를 이용해 list타입으로 묶어준다.
         //member에서 get으로 가져와서 setter 하는 작업을 자동으로 다 해준다.
@@ -48,7 +48,6 @@ public class MemberServiceImpl implements MemberService {
     public MemberDTO getOne(Integer m_id) {
 
         MemberVO memberVO = memberMapper.selectOne(m_id);
-
         MemberDTO memberDTO = modelMapper.map(memberVO, MemberDTO.class);
 
         return memberDTO;
@@ -69,9 +68,9 @@ public class MemberServiceImpl implements MemberService {
                 .build());
 
         for (MemberUploadResultDTO uploadDTO : memberDTO.getUploads()) {
-            MemberAttachFileVO attachFile = modelMapper.map(uploadDTO, MemberAttachFileVO.class);
-            attachFile.setM_id(memberDTO.getM_id());
-            memberFileMapper.insertMember(attachFile);
+            MemberAttachFileVO memberAttachFileVO = modelMapper.map(uploadDTO, MemberAttachFileVO.class);
+            memberAttachFileVO.setM_id(memberDTO.getM_id());
+            memberFileMapper.insertMember(memberAttachFileVO);
         }
     }
 
@@ -97,9 +96,9 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public List<MemberUploadResultDTO> getFiles(Integer m_id) {
 
-        List<MemberAttachFileVO> attachFiles = memberMapper.selectFiles(m_id);
+        List<MemberAttachFileVO> memberAttachFiles = memberMapper.selectFiles(m_id);
 
-        return attachFiles.stream()
+        return memberAttachFiles.stream()
                 .map(attachFile -> modelMapper.map(attachFile, MemberUploadResultDTO.class))
                 .collect(Collectors.toList());
     }

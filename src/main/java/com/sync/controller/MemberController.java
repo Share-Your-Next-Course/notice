@@ -96,7 +96,7 @@ public class MemberController {
         // 일회용으로 데이터를 전달하기 위해 사용
 
 
-        return "member/list";
+        return "redirect:/member/list";
     }
 
     @GetMapping("/files/{m_id}")
