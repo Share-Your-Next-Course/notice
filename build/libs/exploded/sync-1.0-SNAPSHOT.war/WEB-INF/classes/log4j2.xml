@@ -14,22 +14,13 @@
             <appender-ref ref="console" />
         </logger>
 
-<!--        <logger name="org.springframework.security" level="TRACE" additivity="false">-->
-<!--            <appender-ref ref="console" />-->
-<!--        </logger>-->
-
-        <logger name="org.springframework.web" level="INFO" additivity="false">
+        <logger name="org.zerock" level="INFO" additivity="false">
             <appender-ref ref="console" />
         </logger>
 
-        <logger name="com.sync" level="INFO" additivity="false">
+        <logger name="org.zerock.sp1.mapper" level="TRACE" additivity="false">
             <appender-ref ref="console" />
         </logger>
-
-        <logger name="com.sync.mapper" level="TRACE" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
-
 
         <root level="INFO" additivity="false">
             <AppenderRef ref="console"/>

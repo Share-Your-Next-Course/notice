@@ -24,28 +24,16 @@
             <param-name>throwExceptionIfNoHandlerFound</param-name>
             <param-value>true</param-value>
         </init-param>
-<<<<<<< HEAD
-        <load-on-startup>1</load-on-startup>
-
-        <multipart-config>
-            <location>/Users/choigd/upload/temp</location>
-=======
 
         <load-on-startup>1</load-on-startup>
 
         <multipart-config>
             <location>C:\\upload\\temp</location>
->>>>>>> origin/master
             <max-file-size>20971520</max-file-size> <!--1MB * 20 -->
             <max-request-size>41943040</max-request-size><!-- 40MB -->
             <file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->
         </multipart-config>
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
     </servlet>
 
     <servlet-mapping>
@@ -69,8 +57,4 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 </web-app>

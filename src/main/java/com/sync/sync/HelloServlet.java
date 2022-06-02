@@ -1,4 +1,4 @@
-package com.sync;
+package com.sync.sync;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

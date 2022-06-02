@@ -2,19 +2,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/includes/header.jsp" %>
 
-<!-- ======= Sidebar ======= -->
+<!-- ======= 사이드바 시작 ======= -->
 <aside id="sidebar" class="sidebar">
 
+    <!--   메뉴 목록 시작    -->
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-item">
+        <li class="nav-item"><!-- 대시보드 시작  -->
             <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li><!-- 대시보드 종료  -->
 
-        <li class="nav-item">
+
+        <li class="nav-item"><!-- 게시판 관리 시작  -->
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>게시판 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -35,9 +37,9 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End Components Nav -->
+        </li><!-- 게시판 관리 종료  -->
 
-        <li class="nav-item">
+        <li class="nav-item"><!-- 코스 관리 시작   -->
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                 <i class="ri-treasure-map-fill"></i><span>코스 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -47,16 +49,10 @@
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
-                <%--                <li>--%>
-                <%--                    <a href="/board/courseStat">--%>
-                <%--                        <i class="bi bi-circle"></i><span>코스 통계</span>--%>
-                <%--                    </a>--%>
-                <%--                </li>--%>
-
             </ul>
-        </li><!-- End Forms Nav -->
+        </li><!--  코스 관리 종료  -->
 
-        <li class="nav-item">
+        <li class="nav-item"><!--  사용자 관리 시작  -->
             <a class="nav-link " data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
                 <i class="ri-contacts-fill"></i></i><span>사용자 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -67,7 +63,7 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="/member/register" >
+                            <a href="/member/register">
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
                             </a>
                         </li>
@@ -81,8 +77,9 @@
                 </li>
 
             </ul>
-        </li><!-- End Tables Nav -->
+        </li><!-- 사용자 관리 끝  -->
 
+        <%--   기타 페이지 시작     --%>
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
@@ -90,44 +87,45 @@
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
-        </li><!-- End Profile Page Nav -->
+        </li><!-- 관리자 정보 페이지 -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
-        </li><!-- End F.A.Q Page Nav -->
+        </li><!-- F.A.Q 페이지-->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
-        </li><!-- End Contact Page Nav -->
+        </li><!-- 비상연락망 페이지 -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
-        </li><!-- End Register Page Nav -->
+        </li><!-- 관리자 등록 페이지  -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
-        </li><!-- End Login Page Nav -->
-
-
+        </li><!-- 로그아웃 페이지 -->
     </ul>
+    <!--   메뉴 목록 종료    -->
 
-</aside><!-- 사이드바 종료-->
+</aside>
+<!------ 사이드바 종료 ------>
 
+<%-- 메인 페이지 시작  --%>
 <main id="main" class="main">
 
-    <%-- 페이지 타이틀 시작   --%>
+    <%-- breadcrumbs 시작   --%>
     <div class="pagetitle">
         <h1>회원 관리</h1>
         <nav>
@@ -137,12 +135,13 @@
                 <li class="breadcrumb-item active">회원 관리</li>
             </ol>
         </nav>
-    </div><!-- 페이지 타이틀 종료 -->
+    </div><!-- breadcrumbs 종료 -->
 
     <%-- 통계 그래프 시작--%>
     <section class="section">
         <div class="row">
 
+            <!-- 나이별 분포도 시작 -->
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
@@ -175,15 +174,16 @@
                             });
                         </script>
                         <!-- 실선 차트 끝 -->
-
                     </div>
                 </div>
             </div>
+            <!-- 나이별 분포도 종료 -->
 
+            <%--  회원 분포도 시작      --%>
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title" >회원 분포도</h5>
+                        <h5 class="card-title">회원 분포도</h5>
                         <span class="badge rounded-pill bg-primary">dd</span>
 
                         <!-- 막대차트 시작 -->
@@ -229,10 +229,10 @@
                             });
                         </script>
                         <!-- 막대차트 종료 -->
-
                     </div>
                 </div>
             </div>
+            <!-- 회원 분포도 종료 -->
         </div>
     </section>
     <%-- 통계 그래프 종료--%>
@@ -276,9 +276,11 @@
                                 <td>${member.joinDate}</td>
                                 <td>${member.updateDate}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary readBtn" onclick="location.href='/member/read/${member.m_id}'">
+                                    <button type="button" class="btn btn-primary readBtn"
+                                            onclick="location.href='/member/read/${member.m_id}'">
                                         상세조회
-                                    </button></td>
+                                    </button>
+                                </td>
                             </tr>
                             </c:forEach>
                             </tr>
@@ -298,8 +300,7 @@
                             }
                         </style>
                         <%-- 테이블 style 끝 --%>
-
-
+                        <%--    검색창 시작    --%>
                         <div class="row g-3 justify-content-center">
                             <div class="col-sm-6">
                                 <div class="input-group searchDiv">
@@ -320,9 +321,12 @@
                                 </div>
                             </div>
                         </div>
+                        <%--    검색창 종료    --%>
 
-                        <button type="button" class="btn btn-primary btn_register" onclick="location.href='/member/register'">회원 등록</button>
-
+                        <button type="button" class="btn btn-primary btn_register"
+                                onclick="location.href='/member/register'">회원 등록
+                        </button>
+                        <%--    회원등록 버튼     --%>
 
                         <!-- 페이지네이션 시작 -->
                         <ul class="secondary pagination small justify-content-center">
@@ -351,7 +355,7 @@
                             </c:if>
                         </ul>
                         <!-- 페이지네이션 끝 -->
-
+                        <%--페이지네이션 스타일 시작--%>
                         <style>
                             .page-link {
                                 color: #000;
@@ -374,6 +378,7 @@
                                 border-color: #ccc;
                             }
                         </style>
+                        <%--페이지네이션 스타일 종료--%>
 
                         <div class="container">
                             <div class="row">
@@ -398,10 +403,9 @@
             </div>
         </div>
     </section>
-        <%--  회원 목록 끝 --%>
-
+    <%--  회원 목록 끝 --%>
 </main>
-
+<%-- 메인 페이지 종료 --%>
 
 <script>
     const linkDiv = document.querySelector(".pagination")
