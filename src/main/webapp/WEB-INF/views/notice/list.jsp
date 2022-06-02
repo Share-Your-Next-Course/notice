@@ -15,7 +15,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/index.html">
+            <a class="nav-link collapsed"  href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>
@@ -46,7 +46,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>코스 관리</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="ri-treasure-map-fill"></i><span>코스 관리</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
