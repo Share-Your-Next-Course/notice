@@ -285,7 +285,7 @@
                                 display: flex;
                             }
                         </style>
-                        <%-- 테이블 style 끝 --%>
+                       g <%-- 테이블 style 끝 --%>
 
 
                         <div class="row g-3 justify-content-center">
