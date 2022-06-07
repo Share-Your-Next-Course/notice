@@ -356,7 +356,7 @@
             }
 
 
-            const cr_uuid = fileObj.getAttribute("data-uuid")
+            const uuid = fileObj.getAttribute("data-uuid")
             const img = fileObj.getAttribute("data-img")
             const savePath = fileObj.getAttribute("data-savepath")
             const fileName = fileObj.getAttribute("data-filename")
