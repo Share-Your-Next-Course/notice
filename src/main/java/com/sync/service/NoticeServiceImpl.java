@@ -1,13 +1,13 @@
 package com.sync.service;
 
 
-import com.sync.domain.AttachFile;
+import com.sync.domain.NoticeAttachFileVO;
 import com.sync.domain.NoticeVO;
 import com.sync.dto.ListDTO;
 import com.sync.dto.ListResponseDTO;
 import com.sync.dto.NoticeDTO;
 import com.sync.dto.UploadResultDTO;
-import com.sync.mapper.FileMapper;
+import com.sync.mapper.NoticeFileMapper;
 import com.sync.mapper.NoticeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,7 +24,7 @@ public class NoticeServiceImpl implements NoticeService {
 
     private final NoticeMapper noticeMapper;
     private final ModelMapper modelMapper;
-    private final FileMapper fileMapper;
+    private final NoticeFileMapper noticeFileMapper;
 
     @Override
     public ListResponseDTO<NoticeDTO> getList(ListDTO listDTO) {
@@ -55,7 +55,7 @@ public class NoticeServiceImpl implements NoticeService {
     public void update(NoticeDTO noticeDTO) {
 
         //기존 파일들을 모두 삭제해야 한다
-        fileMapper.delete(noticeDTO.getNt_id());
+        noticeFileMapper.delete(noticeDTO.getNt_id());
 
         noticeMapper.update(NoticeVO.builder()
                 .nt_id(noticeDTO.getNt_id())
@@ -64,9 +64,9 @@ public class NoticeServiceImpl implements NoticeService {
                 .build());
 
         for(UploadResultDTO uploadDTO : noticeDTO.getUploads()){
-            AttachFile attachFile = modelMapper.map(uploadDTO,AttachFile.class);
-            attachFile.setNt_id(noticeDTO.getNt_id());
-            fileMapper.insertNotice(attachFile);
+            NoticeAttachFileVO noticeAttachFileVO = modelMapper.map(uploadDTO, NoticeAttachFileVO.class);
+            noticeAttachFileVO.setNt_id(noticeDTO.getNt_id());
+            noticeFileMapper.insertNotice(noticeAttachFileVO);
         }
 
     }
@@ -75,23 +75,23 @@ public class NoticeServiceImpl implements NoticeService {
     public void register(NoticeDTO noticeDTO) {
 
         NoticeVO noticeVO = modelMapper.map(noticeDTO, NoticeVO.class);
-        List<AttachFile> files =
-                noticeDTO.getUploads().stream().map(uploadResultDTO -> modelMapper.map(uploadResultDTO, AttachFile.class))
+        List<NoticeAttachFileVO> files =
+                noticeDTO.getUploads().stream().map(uploadResultDTO -> modelMapper.map(uploadResultDTO, NoticeAttachFileVO.class))
                         .collect(Collectors.toList());
         log.info("============-------------=============");
         log.info(noticeVO);
         log.info(files);
         noticeMapper.insert(noticeVO);
-        files.forEach(file-> fileMapper.insert(file));
+        files.forEach(file-> noticeFileMapper.insert(file));
         log.info("============-------------=============");
 
     }
 
     @Override
     public List<UploadResultDTO> getFiles(Integer nt_id) {
-        List<AttachFile> attachFiles = noticeMapper.selectFiles(nt_id);
+        List<NoticeAttachFileVO> noticeAttachFileVOS = noticeMapper.selectFiles(nt_id);
 
-        return attachFiles.stream().map(attachFile -> modelMapper.map(attachFile, UploadResultDTO.class))
+        return noticeAttachFileVOS.stream().map(noticeAttachFileVO -> modelMapper.map(noticeAttachFileVO, UploadResultDTO.class))
                 .collect(Collectors.toList());
     }
 

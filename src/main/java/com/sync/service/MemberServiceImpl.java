@@ -1,10 +1,7 @@
 package com.sync.service;
 
-import com.sync.domain.AttachFile;
 import com.sync.domain.MemberAttachFileVO;
-import com.sync.domain.NoticeVO;
 import com.sync.dto.*;
-import com.sync.mapper.FileMapper;
 import com.sync.mapper.MemberFileMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

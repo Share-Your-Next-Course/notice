@@ -20,7 +20,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/components-alerts.html" class="active">
+                    <a href="/notice/list" class="active">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
@@ -43,7 +43,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/forms-elements.html" class="active">
+                    <a href="/course/list" class="active">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
@@ -62,12 +62,12 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/list">
+                    <a href="/member/list">
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/crew/list">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
@@ -231,8 +231,8 @@
             axios.get("/notice/files/${dto.nt_id}").then(
                 res=>{
                     const resultArr = res.data
-                    uploadResult.innerHTML += resultArr.map(({nt_uuid, thumbnail, link, fileName, savePath, img}) =>
-                        `<div class="card uploadCard" style="width: 15vw;" data-nt_uuid='\${nt_uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
+                    uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) =>
+                        `<div class="card uploadCard" style="width: 15vw;" data-uuid='\${uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
             <img src='/view?fileName=\${thumbnail}' class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text" style="height: 4rem">\${fileName} </p>
@@ -278,8 +278,8 @@
 
             uploadToServer(formObj).then(resultArr => {
 
-                uploadResult.innerHTML += resultArr.map(({nt_uuid, thumbnail, link, fileName, savePath, img}) =>
-                    `<div class="card uploadCard" style="width: 15vw;" data-nt_uuid='\${nt_uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
+                uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) =>
+                    `<div class="card uploadCard" style="width: 15vw;" data-uuid='\${uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
             <img src='/view?fileName=\${thumbnail}' class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text" style="height: 4rem">\${fileName} </p>
@@ -335,12 +335,12 @@
                     str += `<input type='hidden' name='mainImage' value='\${mainImageLink}'>`
                 }
 
-                const nt_uuid = fileObj.getAttribute("data-nt_uuid")
+                const uuid = fileObj.getAttribute("data-uuid")
                 const img = fileObj.getAttribute("data-img")
                 const savePath = fileObj.getAttribute("data-savepath")
                 const fileName = fileObj.getAttribute("data-filename")
 
-                str += `<input type='hidden' name='uploads[\${i}].nt_uuid' value='\${nt_uuid}'>`
+                str += `<input type='hidden' name='uploads[\${i}].uuid' value='\${uuid}'>`
                 str += `<input type='hidden' name='uploads[\${i}].img' value='\${img}'>`
                 str += `<input type='hidden' name='uploads[\${i}].savePath' value='\${savePath}'>`
                 str += `<input type='hidden' name='uploads[\${i}].fileName' value='\${fileName}'>`

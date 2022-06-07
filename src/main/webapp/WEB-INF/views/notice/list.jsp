@@ -27,7 +27,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/components-alerts.html" class="active">
+                    <a href="/notice/list" class="active">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/crew/list">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>

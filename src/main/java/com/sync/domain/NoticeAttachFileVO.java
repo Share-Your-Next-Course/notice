@@ -7,8 +7,8 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @ToString
-public class AttachFile {
-    private String nt_uuid;
+public class NoticeAttachFileVO {
+    private String uuid;
     private Integer nt_id;
     private String fileName;
     private String savePath;

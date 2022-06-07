@@ -71,7 +71,7 @@
 
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/crew/list">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
