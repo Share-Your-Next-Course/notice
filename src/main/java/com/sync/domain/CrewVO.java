@@ -23,6 +23,7 @@ public class CrewVO {
 
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
+
     private int delflag;
 
 
