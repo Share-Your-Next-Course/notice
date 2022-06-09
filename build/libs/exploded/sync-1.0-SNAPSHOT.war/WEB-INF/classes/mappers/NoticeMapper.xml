@@ -65,7 +65,7 @@
     </update>
 
 
-    <select id="selectFiles" resultType="com.sync.domain.AttachFile">
+    <select id="selectFiles" resultType="com.sync.domain.NoticeAttachFileVO">
         select *
         from tbl_notice_attach
         where nt_id = #{nt_id}

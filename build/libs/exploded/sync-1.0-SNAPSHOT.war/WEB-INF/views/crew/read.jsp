@@ -19,17 +19,17 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/notice">
+                    <a href="/notice/list">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/components-accordion.html">
+                    <a href="/question/list">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/report/list">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/courseStat">
+                    <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
@@ -61,17 +61,17 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/member" >
+                    <a href="/member/list" >
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
                     <ul>
                         <li>
-                            <a href="/board/read">
+                            <a href="/member/list">
                                 <i class="bi bi-circle"></i><span>회원 정보</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/board/register" >
+                            <a href="/member/register" >
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
                             </a>
                         </li>

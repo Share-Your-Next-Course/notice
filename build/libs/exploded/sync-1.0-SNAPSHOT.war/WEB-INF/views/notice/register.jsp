@@ -8,7 +8,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href=" href="/home">
+            <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>
@@ -20,17 +20,17 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/components-alerts.html" class="active">
+                    <a href="/notice/list" class="active">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/components-accordion.html">
+                    <a href="/question/list">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/report/list">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
@@ -43,12 +43,12 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/forms-elements.html" class="active">
+                    <a href="/course/list" class="active">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/course/list">
+                    <a href="#">
                         <i class="bi bi-circle"></i><span>코스 통계</span>
                     </a>
                 </li>
@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/crew/list">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
@@ -211,12 +211,12 @@
                 str += `<input type="hidden" name="mainImage" value="\${mainImageLink}">`
             }
 
-            const nt_uuid = fileObj.getAttribute("data-nt_uuid")
+            const uuid = fileObj.getAttribute("data-uuid")
             const img = fileObj.getAttribute("data-img")
             const savePath = fileObj.getAttribute("data-savePath")
             const fileName = fileObj.getAttribute("data-fileName")
 
-            str += `<input type="hidden" name="uploads[\${i}].nt_uuid" value="\${nt_uuid}">`
+            str += `<input type="hidden" name="uploads[\${i}].uuid" value="\${uuid}">`
             str += `<input type="hidden" name="uploads[\${i}].img" value="\${img}">`
             str += `<input type="hidden" name="uploads[\${i}].savePath" value="\${savePath}">`
             str += `<input type="hidden" name="uploads[\${i}].fileName" value="\${fileName}">`
@@ -254,8 +254,8 @@
             formObj.append("files", files[i]);
         }
         uploadToServer(formObj).then(resultArr =>{
-            uploadResult.innerHTML += resultArr.map(({nt_uuid, thumbnail, link, fileName, savePath, img}) =>
-                `<div class="card uploadCard" style="width: 15em;" data-nt_uuid='\${nt_uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
+            uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) =>
+                `<div class="card uploadCard" style="width: 15em;" data-uuid='\${uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
             <img src='/view?fileName=\${thumbnail}' class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text" style="height: 4rem">\${fileName}</p>

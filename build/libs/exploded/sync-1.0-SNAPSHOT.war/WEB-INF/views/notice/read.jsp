@@ -20,17 +20,17 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/components-alerts.html" class="active">
+                    <a href="/notice/list" class="active">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/components-accordion.html">
+                    <a href="/question/list">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/report/list">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
@@ -43,12 +43,12 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="http://106.241.252.54:8086/forms-elements.html" class="active">
+                    <a href="/course/list" class="active">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/course/list">
+                    <a href="#">
                         <i class="bi bi-circle"></i><span>코스 통계</span>
                     </a>
                 </li>

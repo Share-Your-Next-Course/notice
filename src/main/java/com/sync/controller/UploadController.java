@@ -47,7 +47,7 @@ public class UploadController {
             log.info(file.getResource());
             String saveFolder = makeFolders();
 
-            File saveFile = new File("http://106.241.252.54:8086/C:\\upload\\"+ saveFolder + "\\" + saveName);
+            File saveFile = new File("C:\\upload\\"+ saveFolder + "\\" + saveName);
 
             try (InputStream in = file.getInputStream();
                  FileOutputStream fos = new FileOutputStream(saveFile);
@@ -60,7 +60,7 @@ public class UploadController {
             if(img){
                 // saveName = UUID + "_" + originalFileName
                 String thumbFileName = saveFolder + "\\s_" + saveName;
-                File thumbFile = new File("http://106.241.252.54:8086/C:\\upload\\" + thumbFileName);
+                File thumbFile = new File("C:\\upload\\" + thumbFileName);
 
                 try {
                     Thumbnails.of(saveFile)
@@ -84,7 +84,7 @@ public class UploadController {
     private String makeFolders() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
         String str = sdf.format(new java.util.Date());
-        File folderPath = new File("http://106.241.252.54:8086/C:\\upload\\" + str);
+        File folderPath = new File("C:\\upload\\" + str);
         if (!folderPath.exists()) {
             folderPath.mkdirs();
         }
@@ -97,7 +97,7 @@ public class UploadController {
         log.info("===================");
         log.info("fileName........." + fileName);
 
-        File targetFile = new File("http://106.241.252.54:8086/C:\\upload\\" + fileName);
+        File targetFile = new File("C:\\upload\\" + fileName);
         log.info(targetFile);
 
         try{
@@ -121,12 +121,12 @@ public class UploadController {
         log.info("path: " + path);
         log.info("name: " + name);
 
-        File targetFile = new File("http://106.241.252.54:8086/C:\\upload\\"+fileName);
+        File targetFile = new File("C:\\upload\\"+fileName);
         boolean result = targetFile.delete();
 
         //thumbnail
         if(result){
-            File thumbFile = new File("http://106.241.252.54:8086/C:\\upload\\" + path+ "\\s_" + name);
+            File thumbFile = new File("C:\\upload\\" + path+ "\\s_" + name);
             thumbFile.delete();
         }
 
