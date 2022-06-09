@@ -1,7 +1,6 @@
 package com.sync.controller;
 
 
-
 import com.sync.dto.CourseDTO;
 import com.sync.dto.ListDTO;
 import com.sync.dto.ListResponseDTO;
@@ -14,8 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
 @Controller
 @Log4j2
 @RequestMapping("/course")
@@ -23,7 +20,6 @@ import java.util.List;
 public class CourseController {
 
     private final CourseService courseService;
-
 
     //list로 redirect하는 메소드
     @GetMapping("/") //매핑
