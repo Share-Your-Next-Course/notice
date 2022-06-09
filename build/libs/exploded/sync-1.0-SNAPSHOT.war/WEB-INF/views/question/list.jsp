@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/question/list">
+                    <a href="/question/list" class="active">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
@@ -75,7 +75,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/crew/list">
+                    <a href="/crew/list" class="active">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>

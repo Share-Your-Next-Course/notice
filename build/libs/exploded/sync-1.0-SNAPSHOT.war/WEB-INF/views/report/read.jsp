@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/report/list">
+                    <a href="/report/list" class="active">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
