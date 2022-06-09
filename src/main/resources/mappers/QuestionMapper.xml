@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.QuestionMapper">
+
+    <sql id ="search">
+        <where>
+            <if test="keyword != null">
+                <foreach collection="types" item="item" separator="OR" open="(" close=")">
+                    <if test='item =="t"'>
+                        title like concat('%' , #{keyword} , '%')
+                    </if>
+                    <if test='item =="c"'>
+                        content like concat('%' , #{keyword} , '%')
+                    </if>
+                    <if test='item =="w"'>
+                        adm_id like concat('%' , #{keyword} , '%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+
+    <insert id="adminsert">
+        <selectKey resultType="int" keyProperty="q_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_question(title, content, adm_id, category, delflag, m_id , mainImage )
+        value (#{title},#{content},#{adm_id},#{category},#{delflag},0,#{mainImage})
+    </insert>
+
+    <insert id="minsert">
+        <selectKey resultType="int" keyProperty="q_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_question(title, content, m_id , category, delflag, adm_id ,mainImage)
+        value (#{title},#{content},#{m_id},#{category},#{delflag},0,#{mainImage})
+    </insert>
+
+    <select id="admquestionList" resultType="com.sync.domain.Question">
+        select tbl_question.q_id, tbl_question.adm_id adm_id, tbl_question.m_id, ta.name, tbl_question.title title, tbl_question.content content, tbl_question.category, tbl_question.regDate, tbl_question.replyCount, tbl_question.mainImage
+        from (select * from tbl_question where category = 'Q') tbl_question left join tbl_admin ta on tbl_question.adm_id = ta.adm_id
+        <include refid="search"></include>
+        order by q_id desc
+        limit #{skip},#{size}
+    </select>
+
+    <select id="mquestionList" resultType="com.sync.domain.Question">
+        select q_id,title,content,m_id,regDate,updateDate,replyCount
+        from tbl_question
+        <include refid="search"></include>
+        order by q_id desc
+        limit #{skip},#{size}
+    </select>
+
+    <delete id="delete">
+        delete
+        from tbl_question
+        where q_id = #{q_id}
+    </delete>
+
+    <select id="selectOne" resultType="com.sync.domain.Question">
+        select *
+        from tbl_question
+        where q_id = #{q_id}
+    </select>
+
+    <update id="update">
+        update tbl_question
+        set title      = #{title},
+            content    = #{content},
+            updateDate = now(),
+            mainImage = #{mainImage}
+        where q_id = #{q_id}
+    </update>
+
+    <select id="getTotal" resultType="int">
+        select count(q_id) from tbl_question
+        <include refid="search"></include>
+    </select>
+
+    <update id="updateReplyCount">
+        update tbl_question set replyCount = replyCount + #{amount} where q_id = #{q_id}
+    </update>
+
+    <select id="selectFiles" resultType="com.sync.domain.QuestionAttachFile">
+        select * from tbl_question_attach where q_id = #{q_id}
+    </select>
+
+</mapper>

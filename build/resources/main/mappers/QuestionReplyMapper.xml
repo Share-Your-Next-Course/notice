@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.QuestionReplyMapper">
+
+
+
+    <select id="selectListOfBoard" resultType="com.sync.domain.QuestionReply">
+        select * from  tbl_question_reply
+        where q_id = #{q_id} and qr_id > 0 order by qr_id asc limit #{listDTO.skip} , #{listDTO.size}
+    </select>
+
+    <insert id="adinsert">
+        insert into tbl_question_reply (q_id , replyText , adm_id)
+        values (#{q_id}, #{replyText} , #{adm_id})
+    </insert>
+
+    <insert id="minsert">
+        insert into tbl_question_reply (q_id , m_id, replyText)
+        values (#{q_id}, #{m_id} , #{replyText})
+    </insert>
+
+    <select id="selectTotalOfBoard" resultType="int">
+        select count(q_id) from tbl_question_reply where q_id =#{q_id} and qr_id > 0
+    </select>
+
+
+    <update id="updateAsRemoved">
+        update tbl_question_reply set replyText = 'DELETED', updateDate = now() where qr_id=#{qr_id}
+    </update>
+
+    <update id="update">
+        update tbl_question_reply set replyText = #{replyText}, updateDate = now() where qr_id=#{qr_id}
+    </update>
+
+
+</mapper>
