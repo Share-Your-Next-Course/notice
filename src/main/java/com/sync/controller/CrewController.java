@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
-@RequestMapping("/crew/*")
+@RequestMapping("/crew/")
 @RequiredArgsConstructor
 public class CrewController {
 

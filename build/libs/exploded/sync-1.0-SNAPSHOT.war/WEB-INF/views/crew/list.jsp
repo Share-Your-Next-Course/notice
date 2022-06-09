@@ -24,12 +24,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/components-accordion.html">
+                    <a href="/question/list">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="/report/list">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
@@ -285,7 +285,11 @@
                                 display: flex;
                             }
                         </style>
+<<<<<<< HEAD
                        <%-- 테이블 style 끝 --%>
+=======
+                       g <%-- 테이블 style 끝 --%>
+>>>>>>> e927a990138555a5219530e1bad1be7e1bd5b927
 
 
                         <div class="row g-3 justify-content-center">

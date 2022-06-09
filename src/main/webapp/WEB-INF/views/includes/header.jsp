@@ -45,7 +45,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="http://106.241.252.54:8086/index.html" class="logo d-flex align-items-center">
+        <a href="/home" class="logo d-flex align-items-center">
             <img src="http://106.241.252.54:8086/assets/img/logo.png" alt="">
             <span class="d-none d-lg-block">SYNC<sup> - Our course </sup></span>
         </a>
