@@ -152,14 +152,13 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">코스 <span>| Today</span></h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="ri-treasure-map-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12</span> <span
+                                        <h6>${courseTotal.total}</h6>
+                                        <span class="text-success small pt-1 fw-bold">${courseTotal.totalNow}</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
                                     </div>
                                 </div>
@@ -187,14 +186,13 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">크루 <span>| This Month</span></h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bxs-group"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8개</span> <span
+                                        <h6>${crewTotal.total}</h6>
+                                        <span class="text-success small pt-1 fw-bold">${crewTotal.totalNow}</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>
@@ -230,8 +228,8 @@
                                         <i class=" ri-user-add-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>20,947</h6>
-                                        <span class="text-danger small pt-1 fw-bold">404명</span> <span
+                                        <h6>${memberTotal.total}</h6>
+                                        <span class="text-danger small pt-1 fw-bold">${memberTotal.totalNow}</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>

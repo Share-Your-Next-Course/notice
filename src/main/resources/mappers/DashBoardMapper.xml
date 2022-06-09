@@ -1,0 +1,25 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.DashBoardMapper">
+
+    <select id="crewTotalNow" resultType="int">
+        select count(*) count
+        from tbl_crew
+        WHERE createDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+    <select id="courseTotalNow" resultType="int">
+        select count(*) count
+        from tbl_course
+        WHERE regDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+    <select id="memberTotalNow" resultType="int">
+        select count(*) count
+        from tbl_member
+        WHERE joinDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+</mapper>
