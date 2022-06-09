@@ -2,25 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/WEB-INF/views/includes/header.jsp" %>
 
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="http://106.241.252.54:8086/index.html" class="logo d-flex align-items-center">
-            <img src="http://106.241.252.54:8086/assets/img/logo.png" alt="">
-            <span class="d-none d-lg-block">SYNC<sup> - Our course </sup></span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-    <div class="search-bar">
-        <form class="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-            <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-        </form>
-    </div><!-- End Search Bar -->
-
-    <nav class="header-nav ms-auto">
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
