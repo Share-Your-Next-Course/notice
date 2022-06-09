@@ -11,6 +11,7 @@ import com.sync.domain.MemberVO;
 import com.sync.mapper.MemberMapper;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -106,6 +107,18 @@ public class MemberServiceImpl implements MemberService {
         memberMapper.delete(m_id);
     }
 
+    @Override
+    public List<Map<String, Object>> memberAddr() {
+        List<Map<String, Object>> memberAddr = memberMapper.memberAddr();
 
+        return memberAddr;
+    }
+
+    @Override
+    public List<Map<String, Object>> memberGender() {
+        List<Map<String, Object>> memberGender = memberMapper.memberGender();
+
+        return memberGender;
+    }
 }
 

@@ -19,7 +19,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/notice">
+                    <a href="/notice/list">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/courseStat">
+                    <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/member">
+                    <a href="/member/list">
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
                 </li>
@@ -356,7 +356,7 @@
             }
 
 
-            const cr_uuid = fileObj.getAttribute("data-uuid")
+            const uuid = fileObj.getAttribute("data-uuid")
             const img = fileObj.getAttribute("data-img")
             const savePath = fileObj.getAttribute("data-savepath")
             const fileName = fileObj.getAttribute("data-filename")

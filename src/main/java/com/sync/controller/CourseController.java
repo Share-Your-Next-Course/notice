@@ -13,6 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 @Controller
 @Log4j2
 @RequestMapping("/course")
@@ -47,8 +51,25 @@ public class CourseController {
 
         log.info(total);
         model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),total));
-//
-//        log.info("==================================");
+
+        //월별 코스 등록
+        List<Map<String, Object>> courseMonth = courseService.courseMonth();
+
+        List<String> dateMonth = courseMonth.stream().map(c -> "\""+c.get("dateMonth") + "월\"").collect(Collectors.toList());
+        List<Object> cTotal = courseMonth.stream().map(c -> c.get("cTotal")).collect(Collectors.toList());
+
+        model.addAttribute("cTotal",cTotal);
+        model.addAttribute("dateMonth", dateMonth);
+
+        //지역별 코스등록
+        List<Map<String, Object>> courseAddr = courseService.courseAddr();
+
+        List<String> addr = courseAddr.stream().map(c -> "\"" + c.get("addr") + "\"").collect(Collectors.toList());
+
+        List<Object> count = courseAddr.stream().map(c -> c.get("count")).collect(Collectors.toList());
+
+        model.addAttribute("addr",addr);
+        model.addAttribute("count",count);
 
     }
 

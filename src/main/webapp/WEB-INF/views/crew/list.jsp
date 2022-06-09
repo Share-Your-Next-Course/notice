@@ -285,7 +285,7 @@
                                 display: flex;
                             }
                         </style>
-                       g <%-- 테이블 style 끝 --%>
+                       <%-- 테이블 style 끝 --%>
 
 
                         <div class="row g-3 justify-content-center">
@@ -309,7 +309,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>
+<%--                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>--%>
 
 
                         <!-- 페이지네이션 시작 -->

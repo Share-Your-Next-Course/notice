@@ -130,7 +130,7 @@
         <h1>회원 관리</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/home" ">Home</a></li>
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
                 <li class="breadcrumb-item">사용자 관리</li>
                 <li class="breadcrumb-item active">회원 관리</li>
             </ol>
@@ -146,34 +146,26 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">나이별 분포도</h5>
+                        <!-- Donut Chart -->
+                        <div id="donutChart"></div>
 
-                        <!-- 실선 차트 시작 -->
-                        <canvas id="lineChart" style="max-height: 400px;"></canvas>
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
-                                new Chart(document.querySelector('#lineChart'), {
-                                    type: 'line',
-                                    data: {
-                                        labels: ['10대', '20대', '30대', '40대', '50대', '60대', '70대'],
-                                        datasets: [{
-                                            label: '나이',
-                                            data: [35, 72, 82, 64, 54, 55, 25],
-                                            fill: false,
-                                            borderColor: 'rgb(75, 192, 192)',
-                                            tension: 0.1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
+                                new ApexCharts(document.querySelector("#donutChart"), {
+                                    series: ${genderCount},
+                                    chart: {
+                                        height: 205,
+                                        type: 'donut',
+                                        toolbar: {
+                                            show: true
                                         }
-                                    }
-                                });
+                                    },
+                                    labels: ${memberGender},
+                                }).render();
                             });
                         </script>
-                        <!-- 실선 차트 끝 -->
+                        <!-- End Donut Chart -->
+                        <!-- End Pie Chart -->
                     </div>
                 </div>
             </div>
@@ -184,8 +176,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">회원 분포도</h5>
-                        <span class="badge rounded-pill bg-primary">dd</span>
-
                         <!-- 막대차트 시작 -->
                         <canvas id="barChart" style="max-height: 400px;"></canvas>
                         <script>
@@ -193,10 +183,10 @@
                                 new Chart(document.querySelector('#barChart'), {
                                     type: 'bar',
                                     data: {
-                                        labels: ['서울', '경기', '인천', '강원', '부산', '대구', '애틀란타'],
+                                        labels: ${addr},
                                         datasets: [{
                                             label: '회원 수',
-                                            data: [75, 59, 34, 65, 56, 55, 40],
+                                            data: ${count},
                                             backgroundColor: [
                                                 'rgba(255, 99, 132, 0.2)',
                                                 'rgba(255, 159, 64, 0.2)',

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
@@ -74,6 +76,27 @@ public class MemberController {
 
         model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),total));
         //담아서 전달한다.
+
+        //member 회원분포도(지역)
+        List<Map<String, Object>> member = memberService.memberAddr();
+
+        List<String> addr = member.stream().map(m -> "\""+m.get("addr")+ "\"")
+                .collect(Collectors.toList());
+
+        List<Object> count = member.stream().map(m -> m.get("count")).collect(Collectors.toList());
+
+        model.addAttribute("count",count);
+        model.addAttribute("addr",addr);
+        
+        //member 성별
+        List<Map<String, Object>> gender = memberService.memberGender();
+        List<String> memberGender = gender.stream().map(g -> g.get("gender").equals("F")? "\""+"여성"+"\"" : "\"" +"남성"+"\"" ).collect(Collectors.toList());
+
+        List<Object> genderCount = gender.stream().map(g -> g.get("count")).collect(Collectors.toList());
+
+        model.addAttribute("memberGender",memberGender);
+        model.addAttribute("genderCount",genderCount);
+
     }
 
     // register.jsp를 get방식으로 requerst 메소드

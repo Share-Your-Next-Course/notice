@@ -1,12 +1,13 @@
 package com.sync.service;
 
-import org.springframework.transaction.annotation.Transactional;
 import com.sync.dto.ListDTO;
 import com.sync.dto.ListResponseDTO;
 import com.sync.dto.MemberDTO;
 import com.sync.dto.MemberUploadResultDTO;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 
 @Transactional
@@ -24,5 +25,7 @@ public interface MemberService {
 
     List<MemberUploadResultDTO> getFiles(Integer m_id);
 
+    List<Map<String, Object>> memberAddr();
 
+    List<Map<String, Object>> memberGender();
 }

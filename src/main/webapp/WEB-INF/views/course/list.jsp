@@ -141,15 +141,15 @@
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
                                 new ApexCharts(document.querySelector("#pieChart"), {
-                                    series: [44, 55, 13, 33, 22],
+                                    series: ${count},
                                     chart: {
-                                        height: 350,
+                                        height: 287,
                                         type: 'pie',
                                         toolbar: {
                                             show: true
                                         }
                                     },
-                                    labels: ['경기', '서울', '전남', '강원', '충북']
+                                    labels: ${addr}
                                 }).render();
                             });
                         </script>
@@ -163,7 +163,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">코스 등록 분포도</h5>
-
                         <!-- Line Chart -->
                         <div id="lineChart"></div>
 
@@ -172,10 +171,10 @@
                                 new ApexCharts(document.querySelector("#lineChart"), {
                                     series: [{
                                         name: "Desktops",
-                                        data: [10, 28, 35, 78, 49, 62, 69, 41, 31]
+                                        data: ${cTotal}
                                     }],
                                     chart: {
-                                        height: 350,
+                                        height: 275,
                                         type: 'line',
                                         zoom: {
                                             enabled: false
@@ -185,7 +184,8 @@
                                         enabled: false
                                     },
                                     stroke: {
-                                        curve: 'straight'
+                                        curve: 'straight',
+                                        colors: '#483D8B'
                                     },
                                     grid: {
                                         row: {
@@ -194,7 +194,7 @@
                                         },
                                     },
                                     xaxis: {
-                                        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                                        categories: ${dateMonth},
                                     }
                                 }).render();
                             });

@@ -71,4 +71,16 @@
     </update>
 
 
+    <select id="memberAddr" resultType="map">
+        select addr, count(addr) count
+        from tbl_member
+        group by addr
+    </select>
+
+    <select id="memberGender" resultType="map">
+        select gender, count(gender) count
+        from tbl_member
+        group by gender
+    </select>
+
 </mapper>

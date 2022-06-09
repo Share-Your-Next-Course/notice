@@ -19,7 +19,7 @@
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/notice">
+                    <a href="/notice/list">
                         <i class="bi bi-circle"></i><span>공지사항</span>
                     </a>
                 </li>
@@ -42,7 +42,7 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/courseStat">
+                    <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
@@ -61,17 +61,17 @@
             </a>
             <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/member" >
+                    <a href="/member/list" >
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
                     <ul>
                         <li>
-                            <a href="/board/read">
+                            <a href="/member/list">
                                 <i class="bi bi-circle"></i><span>회원 정보</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/board/register" >
+                            <a href="/member/register" >
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
                             </a>
                         </li>
@@ -285,7 +285,7 @@
                                 display: flex;
                             }
                         </style>
-                        <%-- 테이블 style 끝 --%>
+                       <%-- 테이블 style 끝 --%>
 
 
                         <div class="row g-3 justify-content-center">
@@ -309,7 +309,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>
+<%--                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>--%>
 
 
                         <!-- 페이지네이션 시작 -->
