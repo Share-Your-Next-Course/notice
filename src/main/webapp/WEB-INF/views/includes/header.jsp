@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
+    <title>Title</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -18,9 +16,9 @@
     <link href="http://106.241.252.54:8086/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="http://106.241.252.54:8086/https://fonts.gstatic.com" rel="preconnect">
-<%--    <link href="http://106.241.252.54:8086/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"--%>
-<%--          rel="stylesheet">--%>
+    <%--    <link href="http://106.241.252.54:8086/https://fonts.gstatic.com" rel="preconnect">--%>
+    <%--    <link href="http://106.241.252.54:8086/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"--%>
+    <%--          rel="stylesheet">--%>
 
     <!-- Vendor CSS Files -->
     <link href="http://106.241.252.54:8086/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,10 +38,7 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-
-    <script src="https://www.google.com/jsapi"></script>
 </head>
-
 <body>
 
 <!-- ======= Header ======= -->
@@ -170,7 +165,7 @@
                                  class="rounded-circle">
                             <div>
                                 <h4>박선정 - 관리자</h4>
-                                <p>코스 통계에서 지역별 코스 개수 그래프가 로딩되지 않는 오류가 발생했습니다. 빠른 확인 부탁드립니다. </p>
+                                <p>코스 통계에서 지역별 코스 개수 그래프가 로딩되지 않는 오류가 발생했습니다, </p>
                                 <p>1시간 전</p>
                             </div>
                         </a>
@@ -210,7 +205,7 @@
                     </li>
 
                     <li class="dropdown-footer">
-                        <a href="#">모든 메세지 조회</a>
+                        <a href="#">Show all messages</a>
                     </li>
 
                 </ul><!-- End Messages Dropdown Items -->

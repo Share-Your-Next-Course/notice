@@ -12,73 +12,66 @@ import java.net.URLEncoder;
 public class ListDTO {
 
     private int page;
-
-    private String link;
-
     private int size;
+    private String link;
+    // t, tc, tcw
+    private String type;
+    private String keyword;
 
-    private String type; //검색 타입
-
-    private String keyword; //검색 키워드
-
-    public ListDTO(){
-        this.page = 1;   //page 는 기본이 1 page
-        this.size = 10;  //size 는 기본 10
-    }
-    public void setPage(int page) {
-
-        this.page = page <= 0? 1: page;
+    public ListDTO() {
+        this.page = 1;
+        this.size = 10;
     }
 
-    public void setSize(int size) {
-
-        this.size = size < 10? 10: size;
-    }
-    public int getSkip(){
-
-        return (this.page - 1) * size;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String[] getTypes(){
-        if(type == null || type.trim().length() == 0){
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String[] getTypes() {
+        if (type == null || type.trim().length() == 0) {
             return new String[]{};
         }
         return type.split("");
     }
 
-    public String getKeyword(){
+    public String getKeyword() {
 
-        return keyword ==null  || type.trim().length() == 0 ? null: keyword.trim();
+        return keyword == null || keyword.trim().length() == 0 ? null : keyword.trim();
     }
 
-    public void setType(String type) {
-
-        this.type = type;
+    public void setPage(int page) {
+        this.page = page <= 0 ? 1 : page;
     }
 
-    public void setKeyword(String keyword) {
-
-        this.keyword = keyword;
+    public void setSize(int size) {
+        this.size = size < 10 ? 10 : size;
     }
 
-    public String getLink(){
+    // mybatis에서 #{skip}이라고 하면 getter로 skip을 찾음
+    public int getSkip() {
+        return (this.page - 1) * size;
+    }
 
+    public String getLink() {
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance();
-        builder.queryParam("page",getPage())
-                .queryParam("size",getSize());
-
+        builder.queryParam("page", getPage())
+                .queryParam("size", getSize());
         if(type != null){
-            builder.queryParam("type",type);
+            builder.queryParam("type", type);
+
         }
         if(keyword != null){
             try {
-                String enStr = URLEncoder.encode(keyword,"UTF-8");
-                builder.queryParam("keyword",enStr);
+                String enStr = URLEncoder.encode(keyword, "UTF-8");
+                builder.queryParam("keyword", enStr);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
         }
-
         return builder.build().toString();
     }
 

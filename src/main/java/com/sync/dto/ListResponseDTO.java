@@ -6,13 +6,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class ListResponseDTO <E>{
 
     private List<E> dtoList;
 
     private int total;
+
+
 }
+
+
+

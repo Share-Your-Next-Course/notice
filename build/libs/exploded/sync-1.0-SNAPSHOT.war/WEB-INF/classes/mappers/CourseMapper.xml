@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.CourseMapper">
+    <sql id="search">
+        <where>
+            <if test="keyword != null">
+                <foreach collection="types" item="item" separator=" OR " open="(" close=")">
+                    <if test='item == "t"'>
+                        title like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "c"'>
+                        addr like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "w"'>
+                        m_id like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+    <insert id="insert">
+        <selectKey resultType="int" keyProperty="cs_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_course (m_id, title, addr, content, point, mainImage)
+        values ( #{m_id}, #{title}, #{addr}, #{content}, #{point}, #{mainImage})
+    </insert>
+
+    <select id="selectList" resultType="com.sync.domain.CourseVO">
+        select cs_id, m_id, title, addr, content, regDate, updateDate
+        from tbl_course
+
+        <include refid="search"></include>
+
+        order by cs_id desc
+        limit #{skip},#{size}
+    </select>
+
+    <delete id="delete">
+        delete
+        from tbl_course
+        where cs_id = #{cs_id}
+    </delete>
+
+    <select id="getTotal" resultType="int">
+        select count(cs_id)
+        from tbl_course
+    </select>
+
+    <select id="selectOne" resultType="com.sync.domain.CourseVO">
+        select *
+        from tbl_course
+        where m_id = #{cs_id}
+    </select>
+
+    <update id="update">
+        update tbl_course
+        set username   = #{username},
+            name= #{name},
+            email      = #{email},
+            phone      = #{phone},
+            addr       = #{addr},
+            content    = #{content},
+            updateDate = #now()
+        where cs_id = #{cs_id}
+    </update>
+
+
+</mapper>

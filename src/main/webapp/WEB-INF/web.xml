@@ -20,7 +20,6 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>/WEB-INF/servlet-context.xml</param-value>
         </init-param>
-
         <init-param>
             <param-name>throwExceptionIfNoHandlerFound</param-name>
             <param-value>true</param-value>
@@ -29,13 +28,18 @@
         <load-on-startup>1</load-on-startup>
 
         <multipart-config>
-            <location>C:\\upload\\temp</location>
+            <location>http://106.241.252.54:8086/C:\\upload\\temp</location>
             <max-file-size>20971520</max-file-size> <!--1MB * 20 -->
             <max-request-size>41943040</max-request-size><!-- 40MB -->
             <file-size-threshold>20971520</file-size-threshold> <!-- 20MB -->
         </multipart-config>
 
     </servlet>
+
+    <servlet-mapping>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <filter>
         <filter-name>encodingFilter</filter-name>
@@ -53,14 +57,4 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-
-    <servlet-mapping>
-        <servlet-name>appServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-
-
-
 </web-app>

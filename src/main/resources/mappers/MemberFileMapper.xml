@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sync.mapper.MemberFileMapper">
+
+    <insert id="insert">
+        insert into  tbl_member_attach (m_uuid, filename, savePath, img, m_id)
+        values (#{m_uuid}, #{fileName}, #{savePath}, #{img}, last_insert_id())
+    </insert>
+
+    <insert id="insertMember">
+        insert into tbl_member_attach (m_uuid, fileName, savePath, img, m_id)
+        values(#{m_uuid}, #{fileName}, #{savePath}, #{img}, #{m_id})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_member_attach where m_id = #{m_id}
+    </delete>
+
+
+
+</mapper>

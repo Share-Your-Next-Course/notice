@@ -38,4 +38,8 @@
 
 </body>
 
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> dc37a51c66ddff734fa4b80ca3977b4786e4d573

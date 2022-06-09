@@ -1,0 +1,71 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.CrewMemberMapper">
+
+
+    <sql id ="search">
+        <where>
+            <if test="keyword != null">
+                <foreach collection="types" item ="item" separator="OR" open="(" close=")">
+                    <if test='item == "t"'>
+                        tm.name like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "c"'>
+                        tm.addr like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "w"'>
+                        cm.status like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+
+    <select id="selectTotalOfCrew" resultType="int">
+        select count(cm_id) from tbl_crewmember where cr_id = #{cr_id} and cm_id >0
+    </select>
+
+
+    <insert id="insertCrewMember">
+        <selectKey  resultType="int" keyProperty="cm_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_crewmember(cr_id, m_id)
+        values (#{cr_id}, #{m_id})
+    </insert>
+
+    <insert id="insertCrewMembers">
+        <selectKey  resultType="int" keyProperty="cm_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_crewmember(cr_id, m_id, status)
+        values (#{cr_id}, #{m_id}, #{status})
+    </insert>
+
+
+    <select id="selectListOfCrew" resultType="com.sync.domain.CrewMemberListVO">
+        select tm.name m_name, cm.status,tm.addr,cr.mainImage,cr.name cr_name ,cr.content,cm.regDate createDate,cm.delflag
+        from tbl_crewmember cm
+                 left join tbl_member tm on cm.m_id = tm.m_id
+                 left join tbl_crew cr on cm.cr_id = cr.cr_id
+        where cm.cr_id = #{cr_id}
+        limit #{skip}, #{size}
+    </select>
+
+    <select id="crewMemberAddr" resultType="map">
+        select tm.addr, count(tm.addr) addrTotal
+        from tbl_crewmember cm
+                 left join tbl_member tm on cm.m_id = tm.m_id
+                 left join tbl_crew cr on cm.cr_id = cr.cr_id
+        where cm.cr_id = #{cr_id}
+        group by tm.addr;
+    </select>
+
+
+
+
+</mapper>

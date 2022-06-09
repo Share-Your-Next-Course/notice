@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.MemberMapper">
+    <sql id="search">
+        <where>
+            <if test="keyword != null">
+                <foreach collection="types" item="item" separator=" OR " open="(" close=")">
+                    <if test='item == "t"'>
+                        username like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "c"'>
+                        name like concat('%', #{keyword}, '%')
+                    </if>
+                    <if test='item == "w"'>
+                        addr like concat('%', #{keyword}, '%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+
+    <insert id="insert">
+        <selectKey resultType="int" keyProperty="m_id" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+        insert into tbl_member (username, name, pw, age, email, birth, phone, gender, content, addr )
+        values ( #{username}, #{name}, #{pw}, #{age}, #{email}, #{birth}, #{phone}, #{gender}, #{content}, #{addr})
+    </insert>
+
+    <select id="selectList" resultType="com.sync.domain.MemberVO">
+        select m_id, username, pw, name, age, birth, gender, content, email, phone, addr, joinDate, updateDate
+        from tbl_member
+
+        <include refid="search"></include>
+
+        order by m_id desc
+        limit #{skip},#{size}
+    </select>
+
+    <delete id="delete">
+        delete
+        from tbl_member
+        where m_id = #{m_id}
+    </delete>
+
+    <select id="getTotal" resultType="int">
+        select count(m_id)
+        from tbl_member
+    </select>
+
+    <select id="selectOne" resultType="com.sync.domain.MemberVO">
+        select *
+        from tbl_member
+        where m_id = #{m_id}
+    </select>
+
+    <update id="update">
+        update tbl_member
+        set username   = #{username},
+            name= #{name},
+            email      = #{email},
+            phone      = #{phone},
+            addr       = #{addr},
+            content    = #{content},
+            updateDate = #now()
+        where m_id = #{m_id}
+    </update>
+
+
+</mapper>
