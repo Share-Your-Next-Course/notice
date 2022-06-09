@@ -26,12 +26,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/question/list">
+                    <a href="/question/list" class="active">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/report/list">
+                    <a href="/report/list" >
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
