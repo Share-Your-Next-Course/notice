@@ -22,4 +22,25 @@
         WHERE joinDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
     </select>
 
+<!--    <select id="memberCount" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count-->
+<!--        FROM tbl_member-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d');-->
+<!--    </select>-->
+
+
+<!--    <select id="memberCountM" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count,gender-->
+<!--        FROM tbl_member-->
+<!--        where gender = 'M'-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d')-->
+<!--    </select>-->
+
+<!--    <select id="memberCountF" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count,gender-->
+<!--        FROM tbl_member-->
+<!--        where gender = 'F'-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d')-->
+<!--    </select>-->
+
 </mapper>

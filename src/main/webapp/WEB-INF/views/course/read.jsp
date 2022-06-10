@@ -62,11 +62,6 @@
                     </a>
                     <ul >
                         <li>
-                            <a href="/member/read" class="active">
-                                <i class="bi bi-circle"></i><span>회원 정보</span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="/member/register">
                                 <i class="bi bi-circle"></i><span>회원 등록</span>
                             </a>

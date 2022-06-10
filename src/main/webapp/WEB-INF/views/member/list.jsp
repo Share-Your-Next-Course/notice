@@ -154,7 +154,7 @@
                                 new ApexCharts(document.querySelector("#donutChart"), {
                                     series: ${genderCount},
                                     chart: {
-                                        height: 205,
+                                        height: 255,
                                         type: 'donut',
                                         toolbar: {
                                             show: true

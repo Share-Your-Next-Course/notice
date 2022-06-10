@@ -64,18 +64,7 @@
                     <a href="/member/list" >
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
-                    <ul>
-                        <li>
-                            <a href="/member/list">
-                                <i class="bi bi-circle"></i><span>회원 정보</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/member/register" >
-                                <i class="bi bi-circle"></i><span>회원 등록</span>
-                            </a>
-                        </li>
-                    </ul>
+
 
                 </li>
                 <li>

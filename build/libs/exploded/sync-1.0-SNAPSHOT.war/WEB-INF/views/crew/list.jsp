@@ -64,18 +64,7 @@
                     <a href="/member/list" >
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
-                    <ul>
-                        <li>
-                            <a href="/member/list">
-                                <i class="bi bi-circle"></i><span>회원 정보</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/member/register" >
-                                <i class="bi bi-circle"></i><span>회원 등록</span>
-                            </a>
-                        </li>
-                    </ul>
+
 
                 </li>
                 <li>
@@ -285,11 +274,7 @@
                                 display: flex;
                             }
                         </style>
-<<<<<<< HEAD
                        <%-- 테이블 style 끝 --%>
-=======
-                       g <%-- 테이블 style 끝 --%>
->>>>>>> e927a990138555a5219530e1bad1be7e1bd5b927
 
 
                         <div class="row g-3 justify-content-center">

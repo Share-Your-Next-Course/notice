@@ -16,7 +16,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/index.html">
+            <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>

@@ -11,6 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 @Controller
 @Log4j2
 @RequiredArgsConstructor
@@ -51,6 +55,20 @@ public class HelloController {
         int memberTotal = memberList.getTotal();
         int memberTotalNow = dashBoardMapper.memberTotalNow();
         model.addAttribute("memberTotal",new TotalDTO(memberTotal,memberTotalNow));
+
+        //그래프(월별)
+        //월별 맴버 증가도
+
+        //월별 코스 등록
+        List<Map<String, Object>> courseMonth = courseService.courseMonth();
+
+        List<String> dateMonthC = courseMonth.stream().map(c -> "\""+c.get("dateMonth") + "월\"").collect(Collectors.toList());
+        List<Object> cTotal = courseMonth.stream().map(c -> c.get("cTotal")).collect(Collectors.toList());
+
+
+
+
+
 
     }
 }
