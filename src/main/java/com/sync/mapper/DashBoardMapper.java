@@ -11,8 +11,8 @@ public interface DashBoardMapper {
 
     int memberTotalNow();
 
-    List<Map<String, Object>> memberCountM();
-    List<Map<String, Object>> memberCountF();
+    List<Map<String, Object>> crewCount();
     List<Map<String, Object>> memberCount();
+    List<Map<String, Object>> courseCount();
 
 }

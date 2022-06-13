@@ -17,9 +17,7 @@ public class TotalDTO {
 
     private List<Object> count;
 
-    private List<Object> countM;
 
-    private List<Object> countF;
 
 
 
@@ -28,11 +26,9 @@ public class TotalDTO {
         this.totalNow = totalNow;
     }
 
-    public TotalDTO(List<String> date, List<Object> count, List<Object> countM, List<Object> countF){
+    public TotalDTO(List<String> date, List<Object> count){
         this.date = date;
         this.count = count;
-        this.countM = countM;
-        this.countF = countF;
     }
 
 }

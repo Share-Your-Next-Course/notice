@@ -57,17 +57,27 @@ public class HelloController {
         model.addAttribute("memberTotal",new TotalDTO(memberTotal,memberTotalNow));
 
         //그래프(월별)
-        //월별 맴버 증가도
+        //월별 코스 증가도
+        List<Map<String, Object>> courseCount = dashBoardMapper.courseCount();
+        List<String> dateMonthC = courseCount.stream().map(c -> "\"" + c.get("dateMonth") + "\"")
+                .collect(Collectors.toList());
+        List<Object> cntC = courseCount.stream().map(c -> c.get("cnt")).collect(Collectors.toList());
 
-        //월별 코스 등록
-        List<Map<String, Object>> courseMonth = courseService.courseMonth();
+        model.addAttribute("course",new TotalDTO(dateMonthC,cntC));
 
-        List<String> dateMonthC = courseMonth.stream().map(c -> "\""+c.get("dateMonth") + "월\"").collect(Collectors.toList());
-        List<Object> cTotal = courseMonth.stream().map(c -> c.get("cTotal")).collect(Collectors.toList());
+        //월별 크루 등록
+        List<Map<String, Object>> crewCount = dashBoardMapper.crewCount();
+        List<String> dateMonthCr = crewCount.stream().map(cr -> "\"" + cr.get("dateMonth") + "\"").collect(Collectors.toList());
+        List<Object> cntCr = crewCount.stream().map(cr -> cr.get("cnt")).collect(Collectors.toList());
 
+        model.addAttribute("crew",new TotalDTO(dateMonthCr,cntCr));
+        //월별 회원 증가
 
+        List<Map<String, Object>> memberCount = dashBoardMapper.memberCount();
+        List<String> dateMonthM = memberCount.stream().map(m -> "\"" + m.get("dateMonth") + "\"").collect(Collectors.toList());
+        List<Object> cntM = memberCount.stream().map(m -> m.get("cnt")).collect(Collectors.toList());
 
-
+        model.addAttribute("member",new TotalDTO(dateMonthM,cntM));
 
 
     }

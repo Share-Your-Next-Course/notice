@@ -22,6 +22,26 @@
         WHERE joinDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
     </select>
 
+    <select id="crewCount" resultType="map">
+        select DATE_FORMAT(createDate, '%Y-%m') dateMonth, count(createDate) cnt
+        from tbl_crew
+        group by dateMonth
+    </select>
+
+    <select id="courseCount" resultType="map">
+        select DATE_FORMAT(regDate, '%Y-%m') dateMonth, count(regDate) cnt
+        from tbl_course
+        group by dateMonth
+    </select>
+
+    <select id="memberCount" resultType="map">
+        select DATE_FORMAT(joinDate, '%Y-%m') dateMonth, count(joinDate) cnt
+        from tbl_member
+        group by dateMonth
+    </select>
+
+
+
 <!--    <select id="memberCount" resultType="map">-->
 <!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count-->
 <!--        FROM tbl_member-->
