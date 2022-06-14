@@ -213,7 +213,7 @@
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart"), {
                                             series: [{
-                                                name: 'Sales',
+                                                name: '코스',
                                                 data: ${course.count}
                                                 ,
                                             }],
@@ -277,7 +277,7 @@
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart1"), {
                                             series: [{
-                                                name: 'Customers',
+                                                name: '크루',
                                                 data: ${crew.count}
                                             }],
                                             chart: {
@@ -340,7 +340,7 @@
                                     document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart2"), {
                                             series: [{
-                                                name: 'Sales',
+                                                name: '회원',
                                                 data: ${member.count},
                                             }],
                                             chart: {

@@ -170,7 +170,7 @@
                             document.addEventListener("DOMContentLoaded", () => {
                                 new ApexCharts(document.querySelector("#lineChart"), {
                                     series: [{
-                                        name: "Desktops",
+                                        name: "코스",
                                         data: ${cTotal}
                                     }],
                                     chart: {

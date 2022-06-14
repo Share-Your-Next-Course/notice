@@ -19,8 +19,6 @@ public class TotalDTO {
 
 
 
-
-
     public TotalDTO(int total, int totalNow) {
         this.total = total;
         this.totalNow = totalNow;
