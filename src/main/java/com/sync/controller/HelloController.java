@@ -59,8 +59,7 @@ public class HelloController {
         //그래프(월별)
         //월별 코스 증가도
         List<Map<String, Object>> courseCount = dashBoardMapper.courseCount();
-        List<String> dateMonthC = courseCount.stream().map(c -> "\"" + c.get("dateMonth") + "\"")
-                .collect(Collectors.toList());
+        List<String> dateMonthC = courseCount.stream().map(c -> "\"" + c.get("dateMonth") + "\"").collect(Collectors.toList());
         List<Object> cntC = courseCount.stream().map(c -> c.get("cnt")).collect(Collectors.toList());
         model.addAttribute("course",new TotalDTO(dateMonthC,cntC));
 
@@ -76,6 +75,18 @@ public class HelloController {
         List<Object> cntM = memberCount.stream().map(m -> m.get("cnt")).collect(Collectors.toList());
         model.addAttribute("member",new TotalDTO(dateMonthM,cntM));
 
+        //지역별 코스등록
+        List<Map<String, Object>> courseAddr = courseService.courseAddr();
+        List<String> addr = courseAddr.stream().map(c -> "\"" + c.get("addr") + "\"").collect(Collectors.toList());
+        List<Object> count = courseAddr.stream().map(c -> c.get("count")).collect(Collectors.toList());
+        model.addAttribute("courseAddr",new TotalDTO(addr,count));
 
+        //코스 실시간 업데이트
+        ListResponseDTO<CourseDTO> responseDTO = courseService.getList(listDTO);
+        model.addAttribute("dtoList",responseDTO.getDtoList());
+
+        //크루 랭킹
+        ListResponseDTO<CrewDTO> list = crewService.getList(listDTO);
+        model.addAttribute("crewList", list.getDtoList());
     }
 }

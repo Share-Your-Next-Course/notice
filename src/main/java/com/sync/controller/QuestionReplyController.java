@@ -19,10 +19,8 @@ public class QuestionReplyController {
 
     private final QuestionReplyService questionReplyService;
 
-
     @GetMapping(value = "/list/{q_id}" , produces = MediaType.APPLICATION_JSON_VALUE)
     public List<QuestionReplyDTO> getListOfBoard(@PathVariable("q_id") Integer q_id, ListDTO listDTO){
-
         log.info("reply list.."+listDTO);
         return questionReplyService.getListOfquestion(q_id,listDTO);
     }
@@ -31,8 +29,6 @@ public class QuestionReplyController {
     public Map<String , Integer> regiser (@RequestBody QuestionReplyDTO questionReplyDTO){
         log.info("=====================");
         log.info(questionReplyDTO);
-
-
 
         int totalCount = questionReplyService.register(questionReplyDTO);
 

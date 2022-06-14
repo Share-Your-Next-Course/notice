@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="ps-3">
                                         <h6>${courseTotal.total}</h6>
-                                        <span class="text-success small pt-1 fw-bold">${courseTotal.totalNow}</span> <span
+                                        <span class="text-primary small pt-1 fw-bold">${courseTotal.totalNow}</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
                                     </div>
                                 </div>
@@ -414,48 +414,33 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">크루장</th>
                                         <th scope="col">크루명</th>
+                                        <th scope="col">크루장</th>
+                                        <th scope="col">활동지역</th>
                                         <th scope="col">팀원</th>
                                         <th scope="col">상태</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <c:forEach items="${crewList}" var="crewList">
                                     <tr>
-                                        <th scope="row"><a href="#">#2457</a></th>
-                                        <td>Brandon Jacob</td>
-                                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                        <td>$64</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
+                                        <th scope="row"><a>${crewList.cr_id}</a></th>
+                                        <td>${crewList.name}</td>
+                                        <td><a>${crewList.m_name}</a></td>
+                                        <td>${crewList.addr}</td>
+                                        <td>${crewList.mtotal}</td>
+                                        <c:choose>
+                                            <c:when test="${crewList.delflag != 0}">
+                                                <!-- Result값이 있다면 실행할 로직 -->
+                                                <td><span class="badge bg-danger">Rejected</span></td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 그렇지 않다면 실행할 로직 -->
+                                                <td><span class="badge bg-success">Approved</span></td>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2147</a></th>
-                                        <td>Bridie Kessler</td>
-                                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                                        <td>$47</td>
-                                        <td><span class="badge bg-warning">Pending</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2049</a></th>
-                                        <td>Ashleigh Langosh</td>
-                                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                        <td>$147</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Angus Grady</td>
-                                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                        <td>$67</td>
-                                        <td><span class="badge bg-danger">Rejected</span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#">#2644</a></th>
-                                        <td>Raheem Lehner</td>
-                                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                        <td>$165</td>
-                                        <td><span class="badge bg-success">Approved</span></td>
-                                    </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
 
@@ -655,68 +640,32 @@
                     </div>
 
                     <div class="card-body pb-0">
-                        <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                        <h5 class="card-title">지역별 코스 <span>| Today</span></h5>
 
-                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+                        <!-- Donut Chart -->
+                        <div id="donutChart"></div>
 
                         <script>
                             document.addEventListener("DOMContentLoaded", () => {
-                                echarts.init(document.querySelector("#trafficChart")).setOption({
-                                    tooltip: {
-                                        trigger: 'item'
+                                new ApexCharts(document.querySelector("#donutChart"), {
+                                    series: ${courseAddr.count},
+                                    chart: {
+                                        height: 255,
+                                        type: 'donut',
+                                        toolbar: {
+                                            show: true
+                                        }
                                     },
-                                    legend: {
-                                        top: '5%',
-                                        left: 'center'
-                                    },
-                                    series: [{
-                                        name: 'Access From',
-                                        type: 'pie',
-                                        radius: ['40%', '70%'],
-                                        avoidLabelOverlap: false,
-                                        label: {
-                                            show: false,
-                                            position: 'center'
-                                        },
-                                        emphasis: {
-                                            label: {
-                                                show: true,
-                                                fontSize: '18',
-                                                fontWeight: 'bold'
-                                            }
-                                        },
-                                        labelLine: {
-                                            show: false
-                                        },
-                                        data: [{
-                                            value: 1048,
-                                            name: 'Search Engine'
-                                        },
-                                            {
-                                                value: 735,
-                                                name: 'Direct'
-                                            },
-                                            {
-                                                value: 580,
-                                                name: 'Email'
-                                            },
-                                            {
-                                                value: 484,
-                                                name: 'Union Ads'
-                                            },
-                                            {
-                                                value: 300,
-                                                name: 'Video Ads'
-                                            }
-                                        ]
-                                    }]
-                                });
+                                    labels: ${courseAddr.date},
+                                }).render();
                             });
                         </script>
-
+                        <!-- End Donut Chart -->
+                        <!-- End Pie Chart -->
                     </div>
-                </div><!-- End Website Traffic -->
-
+                </div>
+                </div>
+                <!-- 나이별 분포도 종료 -->
                 <!-- News & Updates Traffic -->
                 <div class="card">
                     <div class="filter">
@@ -733,39 +682,28 @@
                     </div>
 
                     <div class="card-body pb-0">
+
                         <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
 
                         <div class="news">
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-1.jpg" alt="">
-                                <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                                <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                            </div>
 
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-2.jpg" alt="">
-                                <h4><a href="#">Quidem autem et impedit</a></h4>
-                                <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                            </div>
 
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-3.jpg" alt="">
-                                <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-4.jpg" alt="">
-                                <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                                <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                            </div>
-
-                            <div class="post-item clearfix">
-                                <img src="assets/img/news-5.jpg" alt="">
-                                <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos
-                                    eius...</p>
-                            </div>
+                                <c:forEach items="${dtoList}" var="dtoList" begin="0" end="4" step="1" varStatus="status">
+                                    <div class="post-item clearfix">
+                                        <c:choose>
+                                            <c:when test="${dtoList.mainImage != null}">
+                                                <!-- Result값이 있다면 실행할 로직 -->
+                                                <img src="${dtoList.getMain()}">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- 그렇지 않다면 실행할 로직 -->
+                                                <img src="http://106.241.252.54:8086/assets/img/logo4.png" width="100px;" height="105px;">
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <h4><a>${dtoList.title}</a></h4>
+                                        <p>${dtoList.content}</p>
+                                    </div>
+                                </c:forEach>
 
                         </div><!-- End sidebar recent posts-->
 
