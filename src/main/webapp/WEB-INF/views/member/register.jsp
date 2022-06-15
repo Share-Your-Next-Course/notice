@@ -560,5 +560,5 @@
 </body>
 
 
-<%@ include file="/WEB-INF/views/footer.jsp" %>
+<%@ include file="/WEB-INF/views/includes/footer.jsp" %>
 </html>

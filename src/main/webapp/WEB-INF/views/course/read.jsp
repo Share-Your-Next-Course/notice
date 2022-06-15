@@ -424,7 +424,7 @@
 
 </main><!-- End #main -->
 
-<%@ include file="/WEB-INF/views/footer.jsp"%>
+<%@ include file="/WEB-INF/views/includes/footer.jsp"%>
 <%--${dtoList}--%>
 <%--<div>--%>
 <%--    <div>--%>
