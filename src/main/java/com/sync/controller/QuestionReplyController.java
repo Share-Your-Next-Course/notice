@@ -25,6 +25,7 @@ public class QuestionReplyController {
         return questionReplyService.getListOfquestion(q_id,listDTO);
     }
 
+
     @PostMapping("/")
     public Map<String , Integer> regiser (@RequestBody QuestionReplyDTO questionReplyDTO){
         log.info("=====================");

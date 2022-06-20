@@ -413,7 +413,7 @@
                                 <table class="table table-borderless datatable">
                                     <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">번호</th>
                                         <th scope="col">크루명</th>
                                         <th scope="col">크루장</th>
                                         <th scope="col">활동지역</th>
@@ -498,7 +498,7 @@
                                 new ApexCharts(document.querySelector("#donutChart"), {
                                     series: ${courseAddr.count},
                                     chart: {
-                                        height: 255,
+                                        height: 270,
                                         type: 'donut',
                                         toolbar: {
                                             show: true
@@ -564,6 +564,16 @@
     </section>
 
 </main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+
+
+
+</script>
+
 <!-- End #main -->
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp" %>

@@ -17,6 +17,17 @@ public class TotalDTO {
 
     private List<Object> count;
 
+    private int crewTotal;
+
+    private int crewTotalNow;
+
+    private int courseTotal;
+
+    private int courseTotalNow;
+
+    private int memberTotal;
+
+    private int memberTotalNow;
 
 
     public TotalDTO(int total, int totalNow) {
@@ -28,5 +39,16 @@ public class TotalDTO {
         this.date = date;
         this.count = count;
     }
+
+    public TotalDTO(int crewTotal, int crewTotalNow, int courseTotal, int courseTotalNow, int memberTotal, int memberTotalNow){
+        this.crewTotal = crewTotal;
+        this.crewTotalNow = crewTotalNow;
+        this.courseTotal = courseTotal;
+        this.courseTotalNow = courseTotalNow;
+        this.memberTotal = memberTotal;
+        this.memberTotalNow = memberTotalNow;
+    }
+
+
 
 }

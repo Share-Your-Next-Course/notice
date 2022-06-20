@@ -144,8 +144,8 @@
                                         <i class="ri-treasure-map-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${courseTotal.total}</h6>
-                                        <span class="text-primary small pt-1 fw-bold">${courseTotal.totalNow}</span> <span
+                                        <h6>   </h6>
+                                        <span class="text-primary small pt-1 fw-bold">    </span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
                                     </div>
                                 </div>
@@ -165,8 +165,8 @@
                                         <i class="bxs-group"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${crewTotal.total}</h6>
-                                        <span class="text-success small pt-1 fw-bold">${crewTotal.totalNow}</span> <span
+                                        <h6>   </h6>
+                                        <span class="text-success small pt-1 fw-bold">     </span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>
@@ -188,8 +188,8 @@
                                         <i class=" ri-user-add-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${memberTotal.total}</h6>
-                                        <span class="text-danger small pt-1 fw-bold">${memberTotal.totalNow}</span> <span
+                                        <h6>  </h6>
+                                        <span class="text-danger small pt-1 fw-bold">    </span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>
@@ -209,53 +209,53 @@
 
                                 <!-- Line Chart -->
                                 <div id="reportsChart"></div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new ApexCharts(document.querySelector("#reportsChart"), {
-                                            series: [{
-                                                name: '코스',
-                                                data: ${course.count}
-                                                ,
-                                            }],
-                                            chart: {
-                                                height: 350,
-                                                type: 'area',
-                                                toolbar: {
-                                                    show: false
-                                                },
-                                            },
-                                            markers: {
-                                                size: 4
-                                            },
-                                            colors: ['#4154f1'],
-                                            fill: {
-                                                type: "gradient",
-                                                gradient: {
-                                                    shadeIntensity: 1,
-                                                    opacityFrom: 0.3,
-                                                    opacityTo: 0.4,
-                                                    stops: [0, 90, 100]
-                                                }
-                                            },
-                                            dataLabels: {
-                                                enabled: false
-                                            },
-                                            stroke: {
-                                                curve: 'smooth',
-                                                width: 2
-                                            },
-                                            xaxis: {
-                                                type: 'date',
-                                                categories: ${course.date}
-                                            },
-                                            tooltip: {
-                                                x: {
-                                                    format: 'dd/MM/yy HH:mm'
-                                                },
-                                            }
-                                        }).render();
-                                    });
-                                </script>
+<%--                                <script>--%>
+<%--                                    document.addEventListener("DOMContentLoaded", () => {--%>
+<%--                                        new ApexCharts(document.querySelector("#reportsChart"), {--%>
+<%--                                            series: [{--%>
+<%--                                                name: '코스',--%>
+<%--                                                data: ${course.count}--%>
+<%--                                                ,--%>
+<%--                                            }],--%>
+<%--                                            chart: {--%>
+<%--                                                height: 350,--%>
+<%--                                                type: 'area',--%>
+<%--                                                toolbar: {--%>
+<%--                                                    show: false--%>
+<%--                                                },--%>
+<%--                                            },--%>
+<%--                                            markers: {--%>
+<%--                                                size: 4--%>
+<%--                                            },--%>
+<%--                                            colors: ['#4154f1'],--%>
+<%--                                            fill: {--%>
+<%--                                                type: "gradient",--%>
+<%--                                                gradient: {--%>
+<%--                                                    shadeIntensity: 1,--%>
+<%--                                                    opacityFrom: 0.3,--%>
+<%--                                                    opacityTo: 0.4,--%>
+<%--                                                    stops: [0, 90, 100]--%>
+<%--                                                }--%>
+<%--                                            },--%>
+<%--                                            dataLabels: {--%>
+<%--                                                enabled: false--%>
+<%--                                            },--%>
+<%--                                            stroke: {--%>
+<%--                                                curve: 'smooth',--%>
+<%--                                                width: 2--%>
+<%--                                            },--%>
+<%--                                            xaxis: {--%>
+<%--                                                type: 'date',--%>
+<%--                                                categories: ${course.date}--%>
+<%--                                            },--%>
+<%--                                            tooltip: {--%>
+<%--                                                x: {--%>
+<%--                                                    format: 'dd/MM/yy HH:mm'--%>
+<%--                                                },--%>
+<%--                                            }--%>
+<%--                                        }).render();--%>
+<%--                                    });--%>
+<%--                                </script>--%>
 
                                 <!-- End Line Chart -->
 
@@ -273,52 +273,52 @@
 
                                 <!-- Line Chart -->
                                 <div id="reportsChart1"></div>
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new ApexCharts(document.querySelector("#reportsChart1"), {
-                                            series: [{
-                                                name: '크루',
-                                                data: ${crew.count}
-                                            }],
-                                            chart: {
-                                                height: 350,
-                                                type: 'area',
-                                                toolbar: {
-                                                    show: false
-                                                },
-                                            },
-                                            markers: {
-                                                size: 4
-                                            },
-                                            colors: ['#2eca6a'],
-                                            fill: {
-                                                type: "gradient",
-                                                gradient: {
-                                                    shadeIntensity: 1,
-                                                    opacityFrom: 0.3,
-                                                    opacityTo: 0.4,
-                                                    stops: [0, 90, 100]
-                                                }
-                                            },
-                                            dataLabels: {
-                                                enabled: false
-                                            },
-                                            stroke: {
-                                                curve: 'smooth',
-                                                width: 2
-                                            },
-                                            xaxis: {
-                                                type: 'date',
-                                                categories: ${crew.date}
-                                            },
-                                            tooltip: {
-                                                x: {
-                                                    format: 'dd/MM/yy HH:mm'
-                                                },
-                                            }
-                                        }).render();
-                                    });
-                                </script>
+<%--                                <script>--%>
+<%--                                    document.addEventListener("DOMContentLoaded", () => {--%>
+<%--                                        new ApexCharts(document.querySelector("#reportsChart1"), {--%>
+<%--                                            series: [{--%>
+<%--                                                name: '크루',--%>
+<%--                                                data: ${crew.count}--%>
+<%--                                            }],--%>
+<%--                                            chart: {--%>
+<%--                                                height: 350,--%>
+<%--                                                type: 'area',--%>
+<%--                                                toolbar: {--%>
+<%--                                                    show: false--%>
+<%--                                                },--%>
+<%--                                            },--%>
+<%--                                            markers: {--%>
+<%--                                                size: 4--%>
+<%--                                            },--%>
+<%--                                            colors: ['#2eca6a'],--%>
+<%--                                            fill: {--%>
+<%--                                                type: "gradient",--%>
+<%--                                                gradient: {--%>
+<%--                                                    shadeIntensity: 1,--%>
+<%--                                                    opacityFrom: 0.3,--%>
+<%--                                                    opacityTo: 0.4,--%>
+<%--                                                    stops: [0, 90, 100]--%>
+<%--                                                }--%>
+<%--                                            },--%>
+<%--                                            dataLabels: {--%>
+<%--                                                enabled: false--%>
+<%--                                            },--%>
+<%--                                            stroke: {--%>
+<%--                                                curve: 'smooth',--%>
+<%--                                                width: 2--%>
+<%--                                            },--%>
+<%--                                            xaxis: {--%>
+<%--                                                type: 'date',--%>
+<%--                                                categories: ${crew.date}--%>
+<%--                                            },--%>
+<%--                                            tooltip: {--%>
+<%--                                                x: {--%>
+<%--                                                    format: 'dd/MM/yy HH:mm'--%>
+<%--                                                },--%>
+<%--                                            }--%>
+<%--                                        }).render();--%>
+<%--                                    });--%>
+<%--                                </script>--%>
                                 <!-- End Line Chart -->
 
                             </div>
@@ -336,53 +336,53 @@
                                 <!-- Line Chart -->
                                 <div id="reportsChart2"></div>
 
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        new ApexCharts(document.querySelector("#reportsChart2"), {
-                                            series: [{
-                                                name: '회원',
-                                                data: ${member.count},
-                                            }],
-                                            chart: {
-                                                height: 350,
-                                                type: 'area',
-                                                toolbar: {
-                                                    show: false
-                                                },
-                                            },
-                                            markers: {
-                                                size: 4
-                                            },
-                                            colors: ['#ff771d'],
-                                            fill: {
-                                                type: "gradient",
-                                                gradient: {
-                                                    shadeIntensity: 1,
-                                                    opacityFrom: 0.3,
-                                                    opacityTo: 0.4,
-                                                    stops: [0, 90, 100]
-                                                }
-                                            },
-                                            dataLabels: {
-                                                enabled: false
-                                            },
-                                            stroke: {
-                                                curve: 'smooth',
-                                                width: 2
+<%--                                <script>--%>
+<%--                                    document.addEventListener("DOMContentLoaded", () => {--%>
+<%--                                        new ApexCharts(document.querySelector("#reportsChart2"), {--%>
+<%--                                            series: [{--%>
+<%--                                                name: '회원',--%>
+<%--                                                data: ${member.count},--%>
+<%--                                            }],--%>
+<%--                                            chart: {--%>
+<%--                                                height: 350,--%>
+<%--                                                type: 'area',--%>
+<%--                                                toolbar: {--%>
+<%--                                                    show: false--%>
+<%--                                                },--%>
+<%--                                            },--%>
+<%--                                            markers: {--%>
+<%--                                                size: 4--%>
+<%--                                            },--%>
+<%--                                            colors: ['#ff771d'],--%>
+<%--                                            fill: {--%>
+<%--                                                type: "gradient",--%>
+<%--                                                gradient: {--%>
+<%--                                                    shadeIntensity: 1,--%>
+<%--                                                    opacityFrom: 0.3,--%>
+<%--                                                    opacityTo: 0.4,--%>
+<%--                                                    stops: [0, 90, 100]--%>
+<%--                                                }--%>
+<%--                                            },--%>
+<%--                                            dataLabels: {--%>
+<%--                                                enabled: false--%>
+<%--                                            },--%>
+<%--                                            stroke: {--%>
+<%--                                                curve: 'smooth',--%>
+<%--                                                width: 2--%>
 
-                                            },
-                                            xaxis: {
-                                                type: 'date',
-                                                categories: ${member.date}
-                                            },
-                                            tooltip: {
-                                                x: {
-                                                    format: 'dd/MM/yy HH:mm'
-                                                },
-                                            }
-                                        }).render();
-                                    });
-                                </script>
+<%--                                            },--%>
+<%--                                            xaxis: {--%>
+<%--                                                type: 'date',--%>
+<%--                                                categories: ${member.date}--%>
+<%--                                            },--%>
+<%--                                            tooltip: {--%>
+<%--                                                x: {--%>
+<%--                                                    format: 'dd/MM/yy HH:mm'--%>
+<%--                                                },--%>
+<%--                                            }--%>
+<%--                                        }).render();--%>
+<%--                                    });--%>
+<%--                                </script>--%>
                                 <!-- End Line Chart -->
 
                             </div>
@@ -421,27 +421,27 @@
                                         <th scope="col">상태</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <c:forEach items="${crewList}" var="crewList">
-                                    <tr>
-                                        <th scope="row"><a>${crewList.cr_id}</a></th>
-                                        <td>${crewList.name}</td>
-                                        <td><a>${crewList.m_name}</a></td>
-                                        <td>${crewList.addr}</td>
-                                        <td>${crewList.mtotal}</td>
-                                        <c:choose>
-                                            <c:when test="${crewList.delflag != 0}">
-                                                <!-- Result값이 있다면 실행할 로직 -->
-                                                <td><span class="badge bg-danger">Rejected</span></td>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <!-- 그렇지 않다면 실행할 로직 -->
-                                                <td><span class="badge bg-success">Approved</span></td>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </tr>
-                                    </c:forEach>
-                                    </tbody>
+<%--                                    <tbody>--%>
+<%--                                    <c:forEach items="${crewList}" var="crewList">--%>
+<%--                                    <tr>--%>
+<%--                                        <th scope="row"><a>${crewList.cr_id}</a></th>--%>
+<%--                                        <td>${crewList.name}</td>--%>
+<%--                                        <td><a>${crewList.m_name}</a></td>--%>
+<%--                                        <td>${crewList.addr}</td>--%>
+<%--                                        <td>${crewList.mtotal}</td>--%>
+<%--                                        <c:choose>--%>
+<%--                                            <c:when test="${crewList.delflag != 0}">--%>
+<%--                                                <!-- Result값이 있다면 실행할 로직 -->--%>
+<%--                                                <td><span class="badge bg-danger">Rejected</span></td>--%>
+<%--                                            </c:when>--%>
+<%--                                            <c:otherwise>--%>
+<%--                                                <!-- 그렇지 않다면 실행할 로직 -->--%>
+<%--                                                <td><span class="badge bg-success">Approved</span></td>--%>
+<%--                                            </c:otherwise>--%>
+<%--                                        </c:choose>--%>
+<%--                                    </tr>--%>
+<%--                                    </c:forEach>--%>
+<%--                                    </tbody>--%>
                                 </table>
 
                             </div>
@@ -493,21 +493,21 @@
                         <!-- Donut Chart -->
                         <div id="donutChart"></div>
 
-                        <script>
-                            document.addEventListener("DOMContentLoaded", () => {
-                                new ApexCharts(document.querySelector("#donutChart"), {
-                                    series: ${courseAddr.count},
-                                    chart: {
-                                        height: 270,
-                                        type: 'donut',
-                                        toolbar: {
-                                            show: true
-                                        }
-                                    },
-                                    labels: ${courseAddr.date},
-                                }).render();
-                            });
-                        </script>
+<%--                        <script>--%>
+<%--                            document.addEventListener("DOMContentLoaded", () => {--%>
+<%--                                new ApexCharts(document.querySelector("#donutChart"), {--%>
+<%--                                    series: ${courseAddr.count},--%>
+<%--                                    chart: {--%>
+<%--                                        height: 270,--%>
+<%--                                        type: 'donut',--%>
+<%--                                        toolbar: {--%>
+<%--                                            show: true--%>
+<%--                                        }--%>
+<%--                                    },--%>
+<%--                                    labels: ${courseAddr.date},--%>
+<%--                                }).render();--%>
+<%--                            });--%>
+<%--                        </script>--%>
                         <!-- End Donut Chart -->
                         <!-- End Pie Chart -->
                     </div>
@@ -536,22 +536,22 @@
                         <div class="news">
 
 
-                                <c:forEach items="${dtoList}" var="dtoList" begin="0" end="4" step="1" varStatus="status">
-                                    <div class="post-item clearfix">
-                                        <c:choose>
-                                            <c:when test="${dtoList.mainImage != null}">
-                                                <!-- Result값이 있다면 실행할 로직 -->
-                                                <img src="${dtoList.getMain()}">
-                                            </c:when>
-                                            <c:otherwise>
-                                                <!-- 그렇지 않다면 실행할 로직 -->
-                                                <img src="http://106.241.252.54:8086/assets/img/logo4.png" width="100px;" height="105px;">
-                                            </c:otherwise>
-                                        </c:choose>
-                                        <h4><a>${dtoList.title}</a></h4>
-                                        <p>${dtoList.content}</p>
-                                    </div>
-                                </c:forEach>
+<%--                                <c:forEach items="${dtoList}" var="dtoList" begin="0" end="4" step="1" varStatus="status">--%>
+<%--                                    <div class="post-item clearfix">--%>
+<%--                                        <c:choose>--%>
+<%--                                            <c:when test="${dtoList.mainImage != null}">--%>
+<%--                                                <!-- Result값이 있다면 실행할 로직 -->--%>
+<%--                                                <img src="${dtoList.getMain()}">--%>
+<%--                                            </c:when>--%>
+<%--                                            <c:otherwise>--%>
+<%--                                                <!-- 그렇지 않다면 실행할 로직 -->--%>
+<%--                                                <img src="http://106.241.252.54:8086/assets/img/logo4.png" width="100px;" height="105px;">--%>
+<%--                                            </c:otherwise>--%>
+<%--                                        </c:choose>--%>
+<%--                                        <h4><a>${dtoList.title}</a></h4>--%>
+<%--                                        <p>${dtoList.content}</p>--%>
+<%--                                    </div>--%>
+<%--                                </c:forEach>--%>
 
                         </div><!-- End sidebar recent posts-->
 
@@ -565,27 +565,12 @@
 
 </main>
 
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 
-    const start = () =>{
-        const promise = getServerList().then();
-        console.log(promise)
-
-    }
-
-
-    async function getServerList(){
-
-        const res = await axios.get(`/dash/cartA`)
-        const data = res.data
-        console.log(data)
-    }
 
 
 </script>
-
 <!-- End #main -->
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp" %>

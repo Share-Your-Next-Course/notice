@@ -89,4 +89,8 @@ public class HelloController {
         ListResponseDTO<CrewDTO> list = crewService.getList(listDTO);
         model.addAttribute("crewList", list.getDtoList());
     }
+
+
+
+
 }
