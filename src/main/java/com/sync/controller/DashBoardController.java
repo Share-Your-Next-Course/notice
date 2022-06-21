@@ -23,8 +23,6 @@ public class DashBoardController {
     private final CourseService courseService;
     private final DashBoardMapper dashBoardMapper;
 
-    @GetMapping("/")
-    public String basic(){return "/dash";}
 
     @GetMapping(value = "/cartA" , produces = MediaType.APPLICATION_JSON_VALUE)
     public TotalDTO getCrewTotal(ListDTO listDTO){

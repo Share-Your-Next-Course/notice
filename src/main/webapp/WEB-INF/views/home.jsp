@@ -144,8 +144,8 @@
                                         <i class="ri-treasure-map-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${courseTotal.total}</h6>
-                                        <span class="text-primary small pt-1 fw-bold">${courseTotal.totalNow}</span> <span
+                                        <h6 class="courseTotal">00</h6>
+                                        <span class="text-primary small pt-1 fw-bold courseTotalNow">0</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
                                     </div>
                                 </div>
@@ -165,8 +165,8 @@
                                         <i class="bxs-group"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${crewTotal.total}</h6>
-                                        <span class="text-success small pt-1 fw-bold">${crewTotal.totalNow}</span> <span
+                                        <h6 class="crewTotal">00</h6>
+                                        <span class="text-success small pt-1 fw-bold crewTotalNow">0</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>
@@ -188,8 +188,8 @@
                                         <i class=" ri-user-add-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>${memberTotal.total}</h6>
-                                        <span class="text-danger small pt-1 fw-bold">${memberTotal.totalNow}</span> <span
+                                        <h6 class="memberTotal">00</h6>
+                                        <span class="text-danger small pt-1 fw-bold memberTotalNow">0</span> <span
                                             class="text-muted small pt-2 ps-1">신규</span>
 
                                     </div>
@@ -568,8 +568,37 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+    //즉시 실행 함수
+    const dashService = (function (){
 
+        async function getCartA(){
 
+            const res = await axios.get(`/dash/cartA`)
+
+            return res.data
+        }
+
+        return{getCartA}
+    })
+
+    const courseTotal = document.querySelector(".courseTotal")
+    const courseTotalNow = document.querySelector(".courseTotalNow")
+    const crewTotal = document.querySelector(".crewTotal")
+    const crewTotalNow = document.querySelector(".crewTotalNow")
+    const memberTotal = document.querySelector(".memberTotal")
+    const memberTotalNow = document.querySelector(".memberTotalNow")
+
+    const cartA = dashService().getCartA().then(v =>{
+        courseTotal.innerHTML = v.courseTotal
+        courseTotalNow.innerHTML = v.courseTotalNow
+        crewTotal.innerHTML = v.crewTotal
+        crewTotalNow.innerHTML = v.crewTotalNow
+        memberTotal.innerHTML = v.memberTotal
+        memberTotalNow.innerHTML = v.memberTotalNow
+    });
+
+    const element = document.querySelector(".dataTable-selector");
+    console.log(element)
 
 
 </script>

@@ -38,23 +38,23 @@ public class HelloController {
     @GetMapping("/home")
     public void mainPage(ListDTO listDTO, Model model){
 
-        //크루 총 개수 + 신규
-        ListResponseDTO<CrewDTO> crewList = crewService.getList(listDTO);
-        int crewTotal = crewList.getTotal();
-        int crewTotalNow = dashBoardMapper.crewTotalNow();
-        model.addAttribute("crewTotal", new TotalDTO(crewTotal,crewTotalNow));
-
-        //코스 총 개수 + 신규
-        ListResponseDTO<CourseDTO> courseList = courseService.getList(listDTO);
-        int courseTotal = courseList.getTotal();
-        int courseTotalNow = dashBoardMapper.courseTotalNow();
-        model.addAttribute("courseTotal",new TotalDTO(courseTotal,courseTotalNow));
-
-        //회원 총 개수 + 신규
-        ListResponseDTO<MemberDTO> memberList = memberService.getList(listDTO);
-        int memberTotal = memberList.getTotal();
-        int memberTotalNow = dashBoardMapper.memberTotalNow();
-        model.addAttribute("memberTotal",new TotalDTO(memberTotal,memberTotalNow));
+//        //크루 총 개수 + 신규
+//        ListResponseDTO<CrewDTO> crewList = crewService.getList(listDTO);
+//        int crewTotal = crewList.getTotal();
+//        int crewTotalNow = dashBoardMapper.crewTotalNow();
+//        model.addAttribute("crewTotal", new TotalDTO(crewTotal,crewTotalNow));
+//
+//        //코스 총 개수 + 신규
+//        ListResponseDTO<CourseDTO> courseList = courseService.getList(listDTO);
+//        int courseTotal = courseList.getTotal();
+//        int courseTotalNow = dashBoardMapper.courseTotalNow();
+//        model.addAttribute("courseTotal",new TotalDTO(courseTotal,courseTotalNow));
+//
+//        //회원 총 개수 + 신규
+//        ListResponseDTO<MemberDTO> memberList = memberService.getList(listDTO);
+//        int memberTotal = memberList.getTotal();
+//        int memberTotalNow = dashBoardMapper.memberTotalNow();
+//        model.addAttribute("memberTotal",new TotalDTO(memberTotal,memberTotalNow));
 
         //그래프(월별)
         //월별 코스 증가도
