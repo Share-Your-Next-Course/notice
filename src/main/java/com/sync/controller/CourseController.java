@@ -61,4 +61,18 @@ public class CourseController {
 
     }
 
+    @GetMapping("/coordinates")
+    public void readCoord(){
+
+    }
+
+    @GetMapping("/recordMain")
+    public void startRecord(){
+
+    }
+
+    @GetMapping("/stopWatch")
+    public void getWatch(){
+
+    }
 }
