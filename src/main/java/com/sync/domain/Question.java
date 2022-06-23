@@ -22,6 +22,7 @@ public class Question {
     private String mainImage;
 
 
+    private String uname;
     private String name;
 
     private LocalDateTime regDate;

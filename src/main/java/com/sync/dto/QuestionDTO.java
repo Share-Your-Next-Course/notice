@@ -24,6 +24,7 @@ public class QuestionDTO {
     private int delflag;
     private int replyCount;
     private String mainImage;
+    private String uname;
 
     private String name;
 

@@ -13,19 +13,19 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 public class TimeMapperTests {
 
-    @Autowired(required = false)
-    private TimeMapper timeMapper;
-
-    @Test
-    public void testNow(){
-
-        log.info("------------------------");
-        log.info(timeMapper.getClass().getName());
-
-        log.info(timeMapper.getTime());
-
-
-    }
+//    @Autowired(required = false)
+//    private TimeMapper timeMapper;
+//
+//    @Test
+//    public void testNow(){
+//
+//        log.info("------------------------");
+//        log.info(timeMapper.getClass().getName());
+//
+//        log.info(timeMapper.getTime());
+//
+//
+//    }
 
 
 }
