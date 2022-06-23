@@ -38,6 +38,12 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon-32x32.png"/>
+    <script src="https://www.google.com/jsapi"></script>
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0&callback=initMap&v=weekly"
+            defer></script>
 </head>
 <body>
 

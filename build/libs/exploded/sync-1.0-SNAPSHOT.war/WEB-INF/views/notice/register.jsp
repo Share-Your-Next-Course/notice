@@ -11,6 +11,7 @@
             <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
+
             </a>
         </li><!-- End Dashboard Nav -->
 
@@ -116,76 +117,78 @@
 </aside>
 <!-- 사이드바 종료-->
 
+<main id="main" class="main">
 
-<!-- Begin Page Content -->
-<div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">공지사항 등록</h1>
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
 
-    <form class="actionForm" action="/notice/register" method="post">
+                <!-- Page Heading -->
+                <h1 class="h3 mb-4 text-gray-800">공지사항 등록</h1>
 
-        <div class="mb-3">
-            <label class="form-label">Username</label>
-            <input type="text" name="adm_id1" class="form-control" aria-describedby="emailHelp"
-                   value="<c:out value="아이디입력(adm_id)"/>">
-            <div class="form-text">아이디를 입력해주세요</div>
-        </div>
+                <form class="actionForm" action="/notice/register" method="post">
 
-        <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input type="text" name="title1" class="form-control" aria-describedby="emailHelp"
-                   value="<c:out value="제목입력"/>">
-            <div class="form-text">제목을 입력해주세요</div>
-        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="adm_id1" class="form-control" aria-describedby="emailHelp"
+                               value="<c:out value="아이디입력(adm_id)"/>">
+                        <div class="form-text">아이디를 입력해주세요</div>
+                    </div>
 
-        <div class="mb-3">
-            <label class="form-label">Content</label>
-            <textarea name="content1" class="form-control" aria-label="With textarea"><c:out value="내용입력"/></textarea>
-            <div class="form-text">내용을 입력해주세요</div>
-        </div>
+                    <div class="mb-3">
+                        <label class="form-label">Title</label>
+                        <input type="text" name="title1" class="form-control" aria-describedby="emailHelp"
+                               value="<c:out value="제목입력"/>">
+                        <div class="form-text">제목을 입력해주세요</div>
+                    </div>
 
-    </form>
+                    <div class="mb-3">
+                        <label class="form-label">Content</label>
+                        <textarea name="content1" class="form-control" aria-label="With textarea"><c:out value="내용입력"/></textarea>
+                        <div class="form-text">내용을 입력해주세요</div>
+                    </div>
 
-    <div>
-        <label class="form-label">파일업로드</label>
-        <div class="input-group mb-3 uploadInputDiv">
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary uploadBtn" type="button">Upload</button>
-            </div>
-            <input type="file" name="upload" multiple class="form-control uploadFile" aria-describedby="emailHelp">
-        </div>
-    </div>
+                </form>
 
-    <section class="section">
-        <div class="row">
-            <div class="col-lg-12 form-control">
-                <div class="card">
-                    <div class="card-body">
-                        <style>
-                            .uploadResult > div {
-                                float:left;
-                                /*margin: 3em;*/
-                                border: 1px solid darkviolet;
-                            }
-                        </style>
-                        <div class="uploadResult">
-
+                <div>
+                    <label class="form-label">파일업로드</label>
+                    <div class="input-group mb-3 uploadInputDiv">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary uploadBtn" type="button">Upload</button>
                         </div>
+                        <input type="file" name="upload" multiple class="form-control uploadFile" aria-describedby="emailHelp">
                     </div>
                 </div>
+
+                <section class="section">
+                    <div class="row">
+                        <div class="col-lg-12 form-control">
+                            <div class="card">
+                                <div class="card-body">
+                                    <style>
+                                        .uploadResult > div {
+                                            float: left;
+                                            /*margin: 3em;*/
+                                            border: 1px solid darkviolet;
+                                        }
+                                    </style>
+                                    <div class="uploadResult">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <button class="regBtn btn btn-secondary">등록하기</button>
+                <button class="listBtn btn btn-secondary">목록으로 가기</button>
             </div>
-        </div>
-    </section>
-
-    <button class="regBtn btn btn-secondary">등록하기</button>
-    <button class="listBtn btn btn-secondary">목록으로 가기</button>
+            <!-- /.container-fluid -->
+</main>
 
 
-</div>
-<!-- /.container-fluid -->
 
-</div>
 <!-- End of Main Content -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -203,10 +206,10 @@
         const divArr = document.querySelectorAll(".uploadResult > div")
 
         let str = ""
-        for (let i = 0; i < divArr.length ; i++) {
+        for (let i = 0; i < divArr.length; i++) {
             const fileObj = divArr[i]
 
-            if(i===0){
+            if (i === 0) {
                 const mainImageLink = fileObj.querySelector("img").getAttribute("src")
                 str += `<input type="hidden" name="mainImage" value="\${mainImageLink}">`
             }
@@ -221,9 +224,9 @@
             str += `<input type="hidden" name="uploads[\${i}].savePath" value="\${savePath}">`
             str += `<input type="hidden" name="uploads[\${i}].fileName" value="\${fileName}">`
         }//endfor
-        str+= `<input type="hidden" name="adm_id" value="\${adm_id}">`
-        str+= `<input type="hidden" name="title" value="\${title}">`
-        str+= `<textarea type="hidden" name="content">\${content}</textarea>`
+        str += `<input type="hidden" name="adm_id" value="\${adm_id}">`
+        str += `<input type="hidden" name="title" value="\${title}">`
+        str += `<textarea type="hidden" name="content">\${content}</textarea>`
 
         document.querySelector(".actionForm").innerHTML += str
         actionForm.submit()
@@ -233,15 +236,15 @@
         self.location = "/notice/list"
     }, false)
 
-    uploadResult.addEventListener("click", (e)=>{
-        if(e.target.getAttribute("class").indexOf("delBtn") < 0){
+    uploadResult.addEventListener("click", (e) => {
+        if (e.target.getAttribute("class").indexOf("delBtn") < 0) {
             return
         }
         const link = e.target.getAttribute("data-link")
-        deleteToServer(link).then(result=>{
+        deleteToServer(link).then(result => {
             document.querySelector(".uploadCard").remove()
         })
-    },false)
+    }, false)
 
 
     document.querySelector(".uploadBtn").addEventListener("click", (e) => {
@@ -253,6 +256,7 @@
             console.log(files[i])
             formObj.append("files", files[i]);
         }
+
         uploadToServer(formObj).then(resultArr =>{
             uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) =>
                 `<div class="card uploadCard" style="width: 15em;" data-uuid='\${uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
@@ -285,8 +289,8 @@
         return response.data
     }
 
-    async function deleteToServer(fileName){
-        const options = {headers: {"Content-Type": "application/x-www-form-urlencoded" }}
+    async function deleteToServer(fileName) {
+        const options = {headers: {"Content-Type": "application/x-www-form-urlencoded"}}
         const res = await axios.post("/delete", "fileName=" + fileName, options)
         console.log(res.data)
     }
