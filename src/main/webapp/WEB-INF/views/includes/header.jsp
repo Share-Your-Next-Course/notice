@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!doctype html>
 <head>
@@ -38,6 +39,12 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/favicon-32x32.png"/>
+    <script src="https://www.google.com/jsapi"></script>
+
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0&callback=initMap&v=weekly"
+            defer></script>
 </head>
 <body>
 
@@ -217,12 +224,12 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="http://106.241.252.54:8086/assets/img/admin-img3.png" alt="Profile"
                          class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">이동헌 - 관리자</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2"><sec:authentication property="principal.name"/> - 관리자</span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>이동헌</h6>
+                        <h6><sec:authentication property="principal.name"/></h6>
                         <span></span>
                     </li>
                     <li>

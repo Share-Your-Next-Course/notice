@@ -4,12 +4,15 @@ import com.sync.dto.*;
 import com.sync.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Log4j2
 @Controller
@@ -19,6 +22,7 @@ public class MemberController {
 
     private final MemberService memberService; //boardService타입의 객체 의존성 주입
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/read/{m_id}"})
     public String read(@PathVariable("m_id") Integer m_id, MemberDTO memberDTO, Model model){
 
@@ -34,6 +38,7 @@ public class MemberController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/modify/{m_id}"})
     public String modifyGET(@PathVariable("m_id") Integer m_id, ListDTO listDTO, Model model){
 
@@ -49,7 +54,7 @@ public class MemberController {
 
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     //list로 redirect하는 메소드
     @GetMapping("/") //매핑
     public String basic(){ // board로 들어오면 list로 redirct하는 메소드
@@ -57,7 +62,9 @@ public class MemberController {
         return "list"; //redirect: 으로 시작하면 무조건 redirect이다.
     }
 
+
     //list.jsp를 get방식으로 requerst 메소드
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO, Model model){ //void의 경우 무조건 경로의 jsp가 된다. //파라미터로 listDTO와 model을 던져준다.
 
@@ -74,15 +81,38 @@ public class MemberController {
 
         model.addAttribute("pageMaker", new PageMaker(listDTO.getPage(),total));
         //담아서 전달한다.
+
+        //member 회원분포도(지역)
+        List<Map<String, Object>> member = memberService.memberAddr();
+
+        List<String> addr = member.stream().map(m -> "\""+m.get("addr")+ "\"")
+                .collect(Collectors.toList());
+
+        List<Object> count = member.stream().map(m -> m.get("count")).collect(Collectors.toList());
+
+        model.addAttribute("count",count);
+        model.addAttribute("addr",addr);
+        
+        //member 성별
+        List<Map<String, Object>> gender = memberService.memberGender();
+        List<String> memberGender = gender.stream().map(g -> g.get("gender").equals("F")? "\""+"여성"+"\"" : "\"" +"남성"+"\"" ).collect(Collectors.toList());
+
+        List<Object> genderCount = gender.stream().map(g -> g.get("count")).collect(Collectors.toList());
+
+        model.addAttribute("memberGender",memberGender);
+        model.addAttribute("genderCount",genderCount);
+
     }
 
     // register.jsp를 get방식으로 requerst 메소드
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGet(){
 
     }
 
     // 등록할 때 쓰는 POST 메소드
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String registerPOST(MemberDTO memberDTO, RedirectAttributes rttr){
         //파라미터의 자동 수집으로 boardDTO를 넣어준다. request.getparameter를 하지 않아도, 알아서 수집한다.
@@ -96,9 +126,10 @@ public class MemberController {
         // 일회용으로 데이터를 전달하기 위해 사용
 
 
-        return "member/list";
+        return "redirect:/member/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{m_id}")
     @ResponseBody
     public List<MemberUploadResultDTO> getFiles(@PathVariable("m_id") Integer m_id){

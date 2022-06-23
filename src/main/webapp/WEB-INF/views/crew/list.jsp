@@ -7,7 +7,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/index.html">
+            <a class="nav-link collapsed" href="/home">
                 <i class="bi bi-grid"></i>
                 <span>대시보드</span>
             </a>
@@ -64,18 +64,7 @@
                     <a href="/member/list" >
                         <i class="bi bi-circle"></i><span>회원 관리</span>
                     </a>
-                    <ul>
-                        <li>
-                            <a href="/member/list">
-                                <i class="bi bi-circle"></i><span>회원 정보</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/member/register" >
-                                <i class="bi bi-circle"></i><span>회원 등록</span>
-                            </a>
-                        </li>
-                    </ul>
+
 
                 </li>
                 <li>
@@ -193,7 +182,7 @@
                             document.addEventListener("DOMContentLoaded", () => {
                                 new ApexCharts(document.querySelector("#lineChart"), {
                                     series: [{
-                                        name: "Desktops",
+                                        name: "크루원",
                                         data: ${dateTotal}
                                     }],
                                     chart: {
@@ -285,7 +274,7 @@
                                 display: flex;
                             }
                         </style>
-                       g <%-- 테이블 style 끝 --%>
+                       <%-- 테이블 style 끝 --%>
 
 
                         <div class="row g-3 justify-content-center">
@@ -309,7 +298,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>
+<%--                        <button type="button" class="btn btn-secondary btn_register" onclick="location.href='/crew/register'">크루 등록</button>--%>
 
 
                         <!-- 페이지네이션 시작 -->

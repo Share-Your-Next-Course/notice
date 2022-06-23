@@ -1,0 +1,66 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sync.mapper.DashBoardMapper">
+
+    <select id="crewTotalNow" resultType="int">
+        select count(*) count
+        from tbl_crew
+        WHERE createDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+    <select id="courseTotalNow" resultType="int">
+        select count(*) count
+        from tbl_course
+        WHERE regDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+    <select id="memberTotalNow" resultType="int">
+        select count(*) count
+        from tbl_member
+        WHERE joinDate BETWEEN DATE_ADD(NOW(),INTERVAL -1 day ) AND NOW()
+    </select>
+
+    <select id="crewCount" resultType="map">
+        select DATE_FORMAT(createDate, '%Y-%m') dateMonth, count(createDate) cnt
+        from tbl_crew
+        group by dateMonth
+    </select>
+
+    <select id="courseCount" resultType="map">
+        select DATE_FORMAT(regDate, '%Y-%m') dateMonth, count(regDate) cnt
+        from tbl_course
+        group by dateMonth
+    </select>
+
+    <select id="memberCount" resultType="map">
+        select DATE_FORMAT(joinDate, '%Y-%m') dateMonth, count(joinDate) cnt
+        from tbl_member
+        group by dateMonth
+    </select>
+
+
+
+<!--    <select id="memberCount" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count-->
+<!--        FROM tbl_member-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d');-->
+<!--    </select>-->
+
+
+<!--    <select id="memberCountM" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count,gender-->
+<!--        FROM tbl_member-->
+<!--        where gender = 'M'-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d')-->
+<!--    </select>-->
+
+<!--    <select id="memberCountF" resultType="map">-->
+<!--        SELECT DATE_FORMAT(joinDate, '%Y-%m-%d') AS date, count(*) AS count,gender-->
+<!--        FROM tbl_member-->
+<!--        where gender = 'F'-->
+<!--        GROUP BY DATE_FORMAT(joinDate, '%Y-%m-%d')-->
+<!--    </select>-->
+
+</mapper>

@@ -26,15 +26,6 @@
             <appender-ref ref="console" />
         </logger>
 
-
-        <logger name="org.zerock" level="INFO" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
-
-        <logger name="org.zerock.sp1.mapper" level="TRACE" additivity="false">
-            <appender-ref ref="console" />
-        </logger>
-
         <root level="INFO" additivity="false">
             <AppenderRef ref="console"/>
         </root>

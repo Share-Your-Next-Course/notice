@@ -116,8 +116,6 @@
 
 </aside>
 <!-- 사이드바 종료-->
-
-<%-- 공지사항 게시물 시작 --%>
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -125,253 +123,256 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="http://106.241.252.54:8086/index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="/notice/list">게시판 관리</a></li>
+                <li class="breadcrumb-item">게시판 관리</li>
                 <li class="breadcrumb-item active">공지사항</li>
             </ol>
         </nav>
     </div>
 
-<section class="section">
-    <div class="row">
-        <div class="col-lg-12">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">공지사항
+                                <button class="btn btn-secondary small regBtn" style="float: right">등록</button>
+                            </h5>
 
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">공지사항
-                        <button class="btn btn-secondary small regBtn" style="float: right">등록</button>
-                    </h5>
+                            <!-- Default Table -->
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">글쓴이</th>
+                                    <th scope="col">작성시간</th>
+                                </tr>
+                                </thead>
+                                <tbody class="dtoList">
+                                <c:forEach items="${dtoList}" var="board">
+                                    <tr>
+                                        <th scope="row">${board.nt_id}</th>
+                                        <td><a href="/notice/read/${board.nt_id}"
+                                               class="dtoLink">${board.title}</a>
+                                        </td>
+                                        <td>${board.username}</td>
+                                        <td>${board.regDate}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                            <!-- End Default Table Example -->
+                            <footer class="blockquote-footer">총 게시글 수: <cite
+                                    title="Source Title">${pageMaker.total}</cite>
+                            </footer>
 
-                    <!-- Default Table -->
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <%--                            <th scope="col">이미지</th>--%>
-                            <th scope="col">제목</th>
-                            <th scope="col">글쓴이</th>
-                            <th scope="col">작성시간</th>
-                        </tr>
-                        </thead>
-                        <tbody class="dtoList">
-                        <c:forEach items="${dtoList}" var="board">
-                            <tr>
-                                <th scope="row">${board.nt_id}</th>
-                                <td><a href="/notice/read/${board.nt_id}"
-                                       class="dtoLink">${board.title}</a>
-                                </td>
-                                <td>${board.username}</td>
-                                <td>${board.regDate}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                    <!-- End Default Table Example -->
-                    <footer class="blockquote-footer">총 게시글 수: <cite title="Source Title">${pageMaker.total}</cite>
-                    </footer>
+                            <div class="row g-3 justify-content-center searchDiv">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <select class="type small">
+                                            <option value="">--</option>
+                                            <option value="t" ${listDTO.type == "t"?"selected":""}>제목</option>
+                                            <option value="tc" ${listDTO.type == "tc"?"selected":""}>제목+내용</option>
+                                            <option value="tcw" ${listDTO.type == "tcw"?"selected":""}>제목+내용+작성자
+                                            </option>
+                                        </select>
 
-                    <div class="row g-3 justify-content-center searchDiv">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <select class="type small">
-                                    <option value="">--</option>
-                                    <option value="t" ${listDTO.type == "t"?"selected":""}>제목</option>
-                                    <option value="tc" ${listDTO.type == "tc"?"selected":""}>제목+내용</option>
-                                    <option value="tcw" ${listDTO.type == "tcw"?"selected":""}>제목+내용+작성자</option>
-                                </select>
+                                        <input type="text" class="form-control small inputText"
+                                               name="keyword"
+                                               placeholder="Search for..."
+                                               aria-label="Search" aria-describedby="basic-addon2"
+                                               value="${listDTO.keyword}">
+                                        <button class="searchBtn btn btn-secondary btn1" type="button">
+                                            <i class="ri-search-2-line"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
-                                <input type="text" class="form-control small inputText"
-                                       name="keyword"
-                                       placeholder="Search for..."
-                                       aria-label="Search" aria-describedby="basic-addon2"
-                                       value="${listDTO.keyword}">
-                                <button class="searchBtn btn btn-secondary btn1" type="button">
-                                    <i class="ri-search-2-line"></i>
-                                </button>
+                            <%--                    <style>--%>
+                            <%--                        select {--%>
+                            <%--                            width: 75px;--%>
+                            <%--                            padding: .8em .5em;--%>
+                            <%--                            border: 1px solid #999;--%>
+                            <%--                            font-family: inherit;--%>
+                            <%--                            border-radius: 0px;--%>
+                            <%--                            -webkit-appearance: none;--%>
+                            <%--                            -moz-appearance: none;--%>
+                            <%--                            appearance: none;--%>
+                            <%--                        }--%>
+
+                            <%--                        select::-ms-expand {--%>
+                            <%--                            display: none;--%>
+                            <%--                        }--%>
+
+                            <%--                    </style>--%>
+
+                            <!-- pagination -->
+                            <ul class="secondary pagination small justify-content-center">
+                                <c:if test="${pageMaker.prev}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="${pageMaker.start -1}"
+                                           aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                                <c:forEach begin="${pageMaker.start}" end="${pageMaker.end }"
+                                           var="num">
+                                    <li class="page-item <c:out value="${pageMaker.page == num ? 'active':''}"/>"><a
+                                            class="page-link"
+                                            href="${num}">${num}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:if test="${pageMaker.next}">
+                                    <li class="page-item">
+                                        <a class="page-link" href="${pageMaker.end +1}"
+                                           aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </ul>
+                            <!--end pagination-->
+                            <style>
+                                .page-link {
+                                    color: #000;
+                                    background-color: #fff;
+                                    border: 1px solid #ccc;
+                                }
+
+                                .page-item.active .page-link {
+                                    z-index: 1;
+                                    color: #555;
+                                    font-weight: bold;
+                                    background-color: #f1f1f1;
+                                    border-color: #ccc;
+
+                                }
+
+                                .page-link:focus, .page-link:hover {
+                                    color: #000;
+                                    background-color: #fafafa;
+                                    border-color: #ccc;
+                                }
+                            </style>
+
+                        </div>
+                    </div>
+
+
+                    <!-- page, size, type, keyword담기 -->
+                    <form class="actionForm" action="/notice/list" method="get">
+                        <input type="hidden" name="page" value="${listDTO.page}">
+                        <input type="hidden" name="size" value="${listDTO.size}">
+                        <input type="hidden" name="type" value="${listDTO.type == null?'':listDTO.type}">
+                        <input type="hidden" name="keyword" value="${listDTO.keyword == null?'':listDTO.keyword}">
+                    </form>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <span class="modalText">처리되었다구우우</span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-<%--                    <style>--%>
-<%--                        select {--%>
-<%--                            width: 75px;--%>
-<%--                            padding: .8em .5em;--%>
-<%--                            border: 1px solid #999;--%>
-<%--                            font-family: inherit;--%>
-<%--                            border-radius: 0px;--%>
-<%--                            -webkit-appearance: none;--%>
-<%--                            -moz-appearance: none;--%>
-<%--                            appearance: none;--%>
-<%--                        }--%>
-
-<%--                        select::-ms-expand {--%>
-<%--                            display: none;--%>
-<%--                        }--%>
-
-<%--                    </style>--%>
-
-                    <!-- pagination -->
-                    <ul class="secondary pagination small justify-content-center">
-                        <c:if test="${pageMaker.prev}">
-                            <li class="page-item">
-                                <a class="page-link" href="${pageMaker.start -1}"
-                                   aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                        </c:if>
-                        <c:forEach begin="${pageMaker.start}" end="${pageMaker.end }"
-                                   var="num">
-                            <li class="page-item <c:out value="${pageMaker.page == num ? 'active':''}"/>"><a
-                                    class="page-link"
-                                    href="${num}">${num}</a>
-                            </li>
-                        </c:forEach>
-                        <c:if test="${pageMaker.next}">
-                            <li class="page-item">
-                                <a class="page-link" href="${pageMaker.end +1}"
-                                   aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </c:if>
-                    </ul>
-                    <!--end pagination-->
-                    <style>
-                        .page-link {
-                            color: #000;
-                            background-color: #fff;
-                            border: 1px solid #ccc;
-                        }
-
-                        .page-item.active .page-link {
-                            z-index: 1;
-                            color: #555;
-                            font-weight: bold;
-                            background-color: #f1f1f1;
-                            border-color: #ccc;
-
-                        }
-
-                        .page-link:focus, .page-link:hover {
-                            color: #000;
-                            background-color: #fafafa;
-                            border-color: #ccc;
-                        }
-                    </style>
-
                 </div>
             </div>
-
-
-            <!-- page, size, type, keyword담기 -->
-            <form class="actionForm" action="/notice/list" method="get">
-                <input type="hidden" name="page" value="${listDTO.page}">
-                <input type="hidden" name="size" value="${listDTO.size}">
-                <input type="hidden" name="type" value="${listDTO.type == null?'':listDTO.type}">
-                <input type="hidden" name="keyword" value="${listDTO.keyword == null?'':listDTO.keyword}">
-            </form>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <span class="modalText">처리되었다구우우</span>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                    crossorigin="anonymous"></script>
-
-
-            <script>
-
-                //페이징 링크에 이벤트를 한번에 걸어주는 방법
-                const actionForm = document.querySelector(".actionForm")
-                const linkDiv = document.querySelector(".pagination")
-
-                linkDiv.addEventListener("click", (e) => {
-                    e.stopPropagation()
-                    e.preventDefault()
-
-                    const target = e.target
-                    //console.log(target)
-                    if (target.getAttribute("class") !== 'page-link') {
-                        return
-                    }
-
-                    const pageNum = target.getAttribute("href")
-                    actionForm.querySelector("input[name = 'page']").value = pageNum
-                    actionForm.setAttribute("action", "/notice/list")
-                    actionForm.submit()
-                }, false)
-
-                //조회페이지로 이동할때 목록페이지 번호, 검색조건, 검색키워드를 유지한 상태로 이동
-                document.querySelector(".dtoList").addEventListener("click", (e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-
-                    const target = e.target
-                    //console.log(target)
-
-                    if (target.getAttribute("class").indexOf("dtoLink") < 0) {
-                        return
-                    }
-                    const url = target.getAttribute("href")
-                    //alert(url)
-                    actionForm.setAttribute("action", url)
-                    actionForm.submit()
-
-                }, false)
-
-
-                <!-- 검색버튼 누르면 검색조건, 키워드 적용 / 1페이지로 이동 -->
-                document.querySelector(".searchBtn").addEventListener("click", (e) => {
-                    const type = document.querySelector(".searchDiv .type").value
-                    const keyword = document.querySelector(".searchDiv input[name = 'keyword']").value
-
-                    console.log(type, keyword)
-
-                    actionForm.querySelector("input[name='page']").value = 1
-                    actionForm.querySelector("input[name='type']").value = type
-                    actionForm.querySelector("input[name='keyword']").value = keyword
-                    actionForm.submit()
-                }, false)
-
-                document.querySelector(".regBtn").addEventListener("click", (e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-
-                    self.location = `/notice/register/`
-
-
-                }, false)
-
-                const result = '${result}'
-                if (result !== '') {
-                    const modalObj = document.querySelector("#exampleModal")
-                    const modalDiv = new bootstrap.Modal(modalObj)
-
-                    modalDiv.show()
-                }
-            </script>
-
-        </div>
+        </section>
     </div>
-    </div>
-    </div>
-</section>
-</main>
+    <%--    end container-fluid--%>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+
+    <script>
+
+        //페이징 링크에 이벤트를 한번에 걸어주는 방법
+        const actionForm = document.querySelector(".actionForm")
+        const linkDiv = document.querySelector(".pagination")
+
+        linkDiv.addEventListener("click", (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+
+            const target = e.target
+            //console.log(target)
+            if (target.getAttribute("class") !== 'page-link') {
+                return
+            }
+
+            const pageNum = target.getAttribute("href")
+            actionForm.querySelector("input[name = 'page']").value = pageNum
+            actionForm.setAttribute("action", "/notice/list")
+            actionForm.submit()
+        }, false)
+
+        //조회페이지로 이동할때 목록페이지 번호, 검색조건, 검색키워드를 유지한 상태로 이동
+        document.querySelector(".dtoList").addEventListener("click", (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            const target = e.target
+            //console.log(target)
+
+            if (target.getAttribute("class").indexOf("dtoLink") < 0) {
+                return
+            }
+            const url = target.getAttribute("href")
+            //alert(url)
+            actionForm.setAttribute("action", url)
+            actionForm.submit()
+
+        }, false)
+
+
+        <!-- 검색버튼 누르면 검색조건, 키워드 적용 / 1페이지로 이동 -->
+        document.querySelector(".searchBtn").addEventListener("click", (e) => {
+            const type = document.querySelector(".searchDiv .type").value
+            const keyword = document.querySelector(".searchDiv input[name = 'keyword']").value
+
+            console.log(type, keyword)
+
+            actionForm.querySelector("input[name='page']").value = 1
+            actionForm.querySelector("input[name='type']").value = type
+            actionForm.querySelector("input[name='keyword']").value = keyword
+            actionForm.submit()
+        }, false)
+
+        document.querySelector(".regBtn").addEventListener("click", (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+
+            self.location = `/notice/register/`
+
+
+        }, false)
+
+        const result = '${result}'
+        if (result !== '') {
+            const modalObj = document.querySelector("#exampleModal")
+            const modalDiv = new bootstrap.Modal(modalObj)
+
+            modalDiv.show()
+        }
+    </script>
+
 <%@ include file="/WEB-INF/views/includes/footer.jsp" %>

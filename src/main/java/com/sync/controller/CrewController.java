@@ -5,6 +5,7 @@ import com.sync.dto.*;
 import com.sync.service.CrewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,11 @@ public class CrewController {
 
     private final CrewService service;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/")
     public String basic(){return "/crew/list";}
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void crewList(ListDTO listDTO, Model model){
         log.info("crew List.....");
@@ -68,11 +71,13 @@ public class CrewController {
         model.addAttribute("dateTotal", dateTotal);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
         public void crewRegisterGET(){
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
         public String crewRegisterPOST(CrewDTO crewDTO, RedirectAttributes rttr){
         log.info("crew register.....");
@@ -82,6 +87,7 @@ public class CrewController {
         return "redirect:/crew/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read/{cr_id}")
     public String crewReadGET(@PathVariable("cr_id") Integer cr_id, ListDTO listDTO, Model model){
         log.info("crew read.....");
@@ -115,6 +121,7 @@ public class CrewController {
     }
 
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{cr_id}")
     @ResponseBody
     public List<UploadResultDTO> getFiles(@PathVariable("cr_id") Integer cr_id){

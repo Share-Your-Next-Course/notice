@@ -64,7 +64,7 @@ public class UploadController {
 
                 try {
                     Thumbnails.of(saveFile)
-                            .size(200, 200)
+                            .size(40, 40)
                             .toFile(thumbFile);
                 } catch (IOException e) {
                     e.printStackTrace();

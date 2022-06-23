@@ -4,6 +4,7 @@ import com.sync.dto.*;
 import com.sync.service.ReportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class ReportController {
     }
 
     //void 일때는 자동으로 경로를 타게됨
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO , Model model){
 
@@ -44,11 +46,13 @@ public class ReportController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGET(){
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String registerPOST(ReportDTO reportDTO, RedirectAttributes rttr){
 
@@ -63,6 +67,7 @@ public class ReportController {
         return "redirect:/report/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read/{q_id}")
     public String read(@PathVariable("q_id") Integer q_id , ListDTO listDTO, Model model){
 
@@ -77,6 +82,7 @@ public class ReportController {
         return "/report/read";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/modify/{q_id}")
     public String modify(@PathVariable("q_id") Integer q_id , ListDTO listDTO, Model model){
 
@@ -90,6 +96,8 @@ public class ReportController {
 
         return "/report/modify";
     }
+
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/remove/{q_id}")
     public String removePost(@PathVariable("q_id") Integer q_id,RedirectAttributes rttr){
         log.info("--------------");
@@ -105,6 +113,7 @@ public class ReportController {
         return "redirect:/report/list";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{q_id}")
     public String removePost(@PathVariable("q_id") Integer q_id ,ReportDTO reportDTO ,ListDTO listDTO , RedirectAttributes rttr){
         log.info("--------------");
@@ -121,11 +130,14 @@ public class ReportController {
         return "redirect:/report/read/"+q_id + listDTO.getLink();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/remove/{q_id}"})
     public String getNotSupported(){
 
         return "redirect:/report/list";
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{q_id}")
     @ResponseBody
     public List<UploadResultDTO> getFiles(@PathVariable("q_id") Integer q_id){

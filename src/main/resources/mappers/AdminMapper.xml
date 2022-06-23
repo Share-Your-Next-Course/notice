@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sync.mapper.AdminMapper">
+
+    <resultMap id="adminMap" type="com.sync.domain.Admin">
+        <result property="adm_id" column="adm_id"></result>
+        <result property="username" column="username"></result>
+        <result property="pw" column="pw"></result>
+        <result property="name" column="name"></result>
+        <result property="email" column="email"></result>
+        <result property="phone" column="phone"></result>
+
+        <collection property="authorityList" resultMap="authMap" javaType="java.util.ArrayList"></collection>
+    </resultMap>
+
+    <resultMap id="authMap" type="com.sync.domain.Authority">
+        <result property="username" column="username"></result>
+        <result property="rolename" column="rolename"></result>
+    </resultMap>
+
+    <select id="selectOne" resultMap="adminMap">
+        select *
+        from tbl_admin adm
+                 left join tbl_authority auth
+                            on adm.username = auth.username
+        where adm.username = #{username}
+    </select>
+
+
+</mapper>

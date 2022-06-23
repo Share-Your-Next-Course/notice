@@ -124,114 +124,117 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="http://106.241.252.54:8086/index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="/notice/list">게시판 관리</a></li>
+                <li class="breadcrumb-item">게시판 관리</li>
                 <li class="breadcrumb-item active">공지사항</li>
             </ol>
         </nav>
 
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-<!-- Begin Page Content -->
-<div class="container-fluid">
-
-    <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">공지사항 : ${dto.title}</h1>
-
-    <div class="card">
-        <div class="card-header">
-            공지사항
-        </div>
-        <div class="card-body">
-            <blockquote class="blockquote mb-0">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-gray-800">공지사항 : ${dto.title}</h1>
 
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><c:out value="${dto.nt_id}"></c:out></span>
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
-                           readonly value="<c:out value="${dto.title}"></c:out>">
-                    <span class="input-group-text"><c:out value="${dto.username}"></c:out></span>
-                    <span class="input-group-text"><c:out value="${dto.regDate}"></c:out></span>
+            <div class="card">
+                <div class="card-header">
+                    공지사항
                 </div>
-                <div class="mb-3">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><c:out value="${dto.nt_id}"></c:out></span>
+                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)"
+                                   readonly value="<c:out value="${dto.title}"></c:out>">
+                            <span class="input-group-text"><c:out value="${dto.username}"></c:out></span>
+                            <span class="input-group-text"><c:out value="${dto.regDate}"></c:out></span>
+                        </div>
+                        <div class="mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><c:out
                             value="${dto.content}"></c:out></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-secondary moreBtn">더보기</button>
+                            <div class="pictures">
+                                <c:if test="${dto.mainImage != null}">
+                                    <img src="${dto.getMain()}">
+                                </c:if>
+                            </div>
+                        </div>
+                    </blockquote>
                 </div>
-                <div>
-                    <button class="btn btn-outline-secondary moreBtn">더보기</button>
-                    <div class="pictures">
-                        <c:if test="${dto.mainImage != null}">
-                            <img src="${dto.getMain()}">
+
+                <div class="card-footer text-muted">
+                    <div style="float: right">
+                        <sec:authentication property="principal" var="pinfo"/>
+                        <sec:authorize access="isAuthenticated()"/>
+                        <c:if test="${pinfo.username eq dto.username}">
+                            <button class="btn btn-secondary modBtn">수정</button>
                         </c:if>
+                        <button class="btn btn-secondary listBtn">목록</button>
                     </div>
                 </div>
-            </blockquote>
-        </div>
 
-        <div class="card-footer text-muted">
-            <div style="float: right">
-                <button class="btn btn-secondary modBtn">수정</button>
-                <button class="btn btn-secondary listBtn">목록</button>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-5">
-                    <form class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 actionForm"
-                          action="/notice/list" method="get">
-                        <input type="hidden" name="page" value="${listDTO.page}">
-                        <input type="hidden" name="size" value="${listDTO.size}">
-                        <input type="hidden" name="type" value="${listDTO.type == null ? '':listDTO.type}">
-                        <input type="hidden" name="keyword"
-                               value="${listDTO.keyword == null ? '':listDTO.keyword}">
-                    </form>
-                </div>
-                <div class="col-sm-4 ">
-                    <nav aria-label="Page navigation example">
-                    </nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                            <form class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 actionForm"
+                                  action="/notice/list" method="get">
+                                <input type="hidden" name="page" value="${listDTO.page}">
+                                <input type="hidden" name="size" value="${listDTO.size}">
+                                <input type="hidden" name="type" value="${listDTO.type == null ? '':listDTO.type}">
+                                <input type="hidden" name="keyword"
+                                       value="${listDTO.keyword == null ? '':listDTO.keyword}">
+                            </form>
+                        </div>
+                        <div class="col-sm-4 ">
+                            <nav aria-label="Page navigation example">
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        document.querySelector(".moreBtn").addEventListener("click", (e) => {
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script>
+                document.querySelector(".moreBtn").addEventListener("click", (e) => {
 
-            axios.get("/notice/files/${dto.nt_id}").then(
-                res => {
-                    console.log(res.data)
-                    const arr = res.data
-                    let str = ""
-                    for (let i = 0; i < arr.length; i++) {
-                        str += `<img src='/view?fileName=\${arr[i].link}';">`
-                    }
-                    console.log(str)
-                    document.querySelector(".pictures").innerHTML = str
+                    axios.get("/notice/files/${dto.nt_id}").then(
+                        res => {
+                            console.log(res.data)
+                            const arr = res.data
+                            let str = ""
+                            for (let i = 0; i < arr.length; i++) {
+                                str += `<img src='/view?fileName=\${arr[i].link}';">`
+                            }
+                            console.log(str)
+                            document.querySelector(".pictures").innerHTML = str
+                        }
+                    )
+
+                }, false)
+
+
+                // ------------------------------------------------------------------------------------------------------
+
+
+                document.querySelector(".listBtn").addEventListener("click", (e) => {
+                    self.location = `/notice/list${listDTO.link}`
+                }, false)
+
+                document.querySelector(".modBtn").addEventListener("click", (e) => {
+                    self.location = `/notice/modify/${nt_id}${listDTO.link}`
+                }, false)
+
+
+                let initState = {
+
+                    nt_id: ${dto.nt_id},
                 }
-            )
 
-        }, false)
-
-
-        // ------------------------------------------------------------------------------------------------------
-
-
-        document.querySelector(".listBtn").addEventListener("click", (e) => {
-            self.location = `/notice/list${listDTO.link}`
-        }, false)
-
-        document.querySelector(".modBtn").addEventListener("click", (e) => {
-            self.location = `/notice/modify/${nt_id}${listDTO.link}`
-        }, false)
-
-
-        let initState = {
-
-            nt_id: ${dto.nt_id},
-        }
-
-    </script>
-</div>
-<!-- /.container-fluid -->
+            </script>
+        </div>
+        <!-- /.container-fluid -->
 <%@ include file="/WEB-INF/views/includes/footer.jsp" %>

@@ -70,5 +70,18 @@
         where cs_id = #{cs_id}
     </update>
 
+    <select id="courseMonth" resultType="map">
+        select MONTH(regDate) dateMonth, count(MONTH(regDate)) cTotal
+        from tbl_course
+        group by dateMonth
+    </select>
+
+    <select id="courseAddr" resultType="map">
+        select addr, count(addr) count
+        from tbl_course
+        group by addr
+    </select>
+
+
 
 </mapper>

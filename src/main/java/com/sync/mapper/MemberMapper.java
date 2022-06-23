@@ -4,6 +4,7 @@ import com.sync.domain.MemberAttachFileVO;
 import com.sync.domain.MemberVO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberMapper extends GenericMapper<MemberVO,Integer> {
     //인터페이스의 상속기능
@@ -16,4 +17,11 @@ public interface MemberMapper extends GenericMapper<MemberVO,Integer> {
     MemberVO selectOne(Integer m_id);
 
     void update(MemberVO memberVO);
+
+    //회원분포도 통계
+    List<Map<String, Object>> memberAddr();
+
+    //성별 통계
+    List<Map<String, Object>> memberGender();
+
 }
