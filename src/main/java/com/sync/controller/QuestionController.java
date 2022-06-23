@@ -4,6 +4,7 @@ import com.sync.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import com.sync.service.QuestionService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,7 @@ public class QuestionController {
     }
 
     //void 일때는 자동으로 경로를 타게됨
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO , Model model){
 
@@ -44,6 +46,7 @@ public class QuestionController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGET(){
 
@@ -63,6 +66,7 @@ public class QuestionController {
         return "redirect:/question/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read/{q_id}")
     public String read(@PathVariable("q_id") Integer q_id , ListDTO listDTO, Model model){
 
@@ -77,6 +81,7 @@ public class QuestionController {
         return "/question/read";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/modify/{q_id}")
     public String modify(@PathVariable("q_id") Integer q_id , ListDTO listDTO, Model model){
 
@@ -90,6 +95,8 @@ public class QuestionController {
 
         return "/question/modify";
     }
+
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/remove/{q_id}")
     public String removePost(@PathVariable("q_id") Integer q_id,RedirectAttributes rttr){
         log.info("--------------");
@@ -105,6 +112,7 @@ public class QuestionController {
         return "redirect:/question/list";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{q_id}")
     public String removePost(@PathVariable("q_id") Integer q_id ,QuestionDTO questionDTO ,ListDTO listDTO , RedirectAttributes rttr){
         log.info("--------------");
@@ -121,11 +129,14 @@ public class QuestionController {
         return "redirect:/question/read/"+q_id + listDTO.getLink();
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/remove/{q_id}"})
     public String getNotSupported(){
 
         return "redirect:/question/list";
     }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{q_id}")
     @ResponseBody
     public List<UploadResultDTO> getFiles(@PathVariable("q_id") Integer q_id){

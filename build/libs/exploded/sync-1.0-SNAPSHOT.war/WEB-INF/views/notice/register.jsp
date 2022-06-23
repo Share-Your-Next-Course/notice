@@ -116,80 +116,88 @@
 
 </aside>
 <!-- 사이드바 종료-->
-
 <main id="main" class="main">
 
+    <div class="pagetitle">
+        <h1>공지사항</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="http://106.241.252.54:8086/index.html">Home</a></li>
+                <li class="breadcrumb-item">게시판 관리</li>
+                <li class="breadcrumb-item active">공지사항</li>
+            </ol>
+        </nav>
+    </div>
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">공지사항 등록</h1>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800">공지사항 등록</h1>
 
-                <form class="actionForm" action="/notice/register" method="post">
+        <form class="actionForm" action="/notice/register" method="post">
 
-                    <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" name="adm_id1" class="form-control" aria-describedby="emailHelp"
-                               value="<c:out value="아이디입력(adm_id)"/>">
-                        <div class="form-text">아이디를 입력해주세요</div>
-                    </div>
+            <div class="mb-3">
+                <label class="form-label">Adm_id</label>
+                <input type="text" name="username1" class="form-control" aria-describedby="emailHelp"
+                       value="<sec:authentication property="principal.adm_id"/>" readonly>
+            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Title</label>
-                        <input type="text" name="title1" class="form-control" aria-describedby="emailHelp"
-                               value="<c:out value="제목입력"/>">
-                        <div class="form-text">제목을 입력해주세요</div>
-                    </div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" name="title1" class="form-control" aria-describedby="emailHelp"
+                       value="<c:out value="제목입력"/>">
+                <div class="form-text">제목을 입력해주세요</div>
+            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Content</label>
-                        <textarea name="content1" class="form-control" aria-label="With textarea"><c:out value="내용입력"/></textarea>
-                        <div class="form-text">내용을 입력해주세요</div>
-                    </div>
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea name="content1" class="form-control" aria-label="With textarea"><c:out
+                        value="내용입력"/></textarea>
+                <div class="form-text">내용을 입력해주세요</div>
+            </div>
 
-                </form>
+        </form>
 
-                <div>
-                    <label class="form-label">파일업로드</label>
-                    <div class="input-group mb-3 uploadInputDiv">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary uploadBtn" type="button">Upload</button>
-                        </div>
-                        <input type="file" name="upload" multiple class="form-control uploadFile" aria-describedby="emailHelp">
-                    </div>
+        <div>
+            <label class="form-label">파일업로드</label>
+            <div class="input-group mb-3 uploadInputDiv">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary uploadBtn" type="button">Upload</button>
                 </div>
+                <input type="file" name="upload" multiple class="form-control uploadFile" aria-describedby="emailHelp">
+            </div>
+        </div>
 
-                <section class="section">
-                    <div class="row">
-                        <div class="col-lg-12 form-control">
-                            <div class="card">
-                                <div class="card-body">
-                                    <style>
-                                        .uploadResult > div {
-                                            float: left;
-                                            /*margin: 3em;*/
-                                            border: 1px solid darkviolet;
-                                        }
-                                    </style>
-                                    <div class="uploadResult">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12 form-control">
+                    <div class="card">
+                        <div class="card-body">
+                            <style>
+                                .uploadResult > div {
+                                    float: left;
+                                    /*margin: 3em;*/
+                                    border: 1px solid darkviolet;
+                                }
+                            </style>
+                            <div class="uploadResult">
 
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <button class="regBtn btn btn-secondary">등록하기</button>
-                <button class="listBtn btn btn-secondary">목록으로 가기</button>
+                </div>
             </div>
-            <!-- /.container-fluid -->
-</main>
+        </section>
+
+        <button class="regBtn btn btn-secondary">등록하기</button>
+        <button class="listBtn btn btn-secondary">목록으로 가기</button>
 
 
+    </div>
+    <!-- /.container-fluid -->
 
-<!-- End of Main Content -->
+</main><!-- End #main -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script>
@@ -199,7 +207,7 @@
 
     document.querySelector(".regBtn").addEventListener("click", (e) => {
 
-        const adm_id = document.querySelector('input[name="adm_id1"]').value
+        const username = document.querySelector('input[name="username1"]').value
         const title = document.querySelector('input[name="title1"]').value
         const content = document.querySelector('textarea[name="content1"]').value
 
@@ -214,17 +222,17 @@
                 str += `<input type="hidden" name="mainImage" value="\${mainImageLink}">`
             }
 
-            const uuid = fileObj.getAttribute("data-uuid")
+            const nt_uuid = fileObj.getAttribute("data-nt_uuid")
             const img = fileObj.getAttribute("data-img")
             const savePath = fileObj.getAttribute("data-savePath")
             const fileName = fileObj.getAttribute("data-fileName")
 
-            str += `<input type="hidden" name="uploads[\${i}].uuid" value="\${uuid}">`
+            str += `<input type="hidden" name="uploads[\${i}].nt_uuid" value="\${nt_uuid}">`
             str += `<input type="hidden" name="uploads[\${i}].img" value="\${img}">`
             str += `<input type="hidden" name="uploads[\${i}].savePath" value="\${savePath}">`
             str += `<input type="hidden" name="uploads[\${i}].fileName" value="\${fileName}">`
         }//endfor
-        str += `<input type="hidden" name="adm_id" value="\${adm_id}">`
+        str += `<input type="hidden" name="username" value="\${username}">`
         str += `<input type="hidden" name="title" value="\${title}">`
         str += `<textarea type="hidden" name="content">\${content}</textarea>`
 
@@ -256,10 +264,9 @@
             console.log(files[i])
             formObj.append("files", files[i]);
         }
-
-        uploadToServer(formObj).then(resultArr =>{
-            uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) =>
-                `<div class="card uploadCard" style="width: 15em;" data-uuid='\${uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
+        uploadToServer(formObj).then(resultArr => {
+            uploadResult.innerHTML += resultArr.map(({nt_uuid, thumbnail, link, fileName, savePath, img}) =>
+                `<div class="card uploadCard" style="width: 15em;" data-nt_uuid='\${nt_uuid}' data-fileName='\${fileName}' data-savePath='\${savePath}' data-img='\${img}'>
             <img src='/view?fileName=\${thumbnail}' class="card-img-top" alt="...">
             <div class="card-body">
             <p class="card-text" style="height: 4rem">\${fileName}</p>

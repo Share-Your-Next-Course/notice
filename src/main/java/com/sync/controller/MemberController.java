@@ -4,6 +4,7 @@ import com.sync.dto.*;
 import com.sync.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ public class MemberController {
 
     private final MemberService memberService; //boardService타입의 객체 의존성 주입
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/read/{m_id}"})
     public String read(@PathVariable("m_id") Integer m_id, MemberDTO memberDTO, Model model){
 
@@ -36,6 +38,7 @@ public class MemberController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping({"/modify/{m_id}"})
     public String modifyGET(@PathVariable("m_id") Integer m_id, ListDTO listDTO, Model model){
 
@@ -51,7 +54,7 @@ public class MemberController {
 
     }
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     //list로 redirect하는 메소드
     @GetMapping("/") //매핑
     public String basic(){ // board로 들어오면 list로 redirct하는 메소드
@@ -59,7 +62,9 @@ public class MemberController {
         return "list"; //redirect: 으로 시작하면 무조건 redirect이다.
     }
 
+
     //list.jsp를 get방식으로 requerst 메소드
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO, Model model){ //void의 경우 무조건 경로의 jsp가 된다. //파라미터로 listDTO와 model을 던져준다.
 
@@ -100,12 +105,14 @@ public class MemberController {
     }
 
     // register.jsp를 get방식으로 requerst 메소드
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGet(){
 
     }
 
     // 등록할 때 쓰는 POST 메소드
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String registerPOST(MemberDTO memberDTO, RedirectAttributes rttr){
         //파라미터의 자동 수집으로 boardDTO를 넣어준다. request.getparameter를 하지 않아도, 알아서 수집한다.
@@ -122,6 +129,7 @@ public class MemberController {
         return "redirect:/member/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{m_id}")
     @ResponseBody
     public List<MemberUploadResultDTO> getFiles(@PathVariable("m_id") Integer m_id){

@@ -4,6 +4,7 @@ import com.sync.dto.*;
 import com.sync.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,13 @@ public class NoticeController {
 
     private final NoticeService service;
 
+
     @GetMapping("/")
     public String basic(){
         return "redirect:/notice/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO, Model model){
         log.info("notice list...........");
@@ -40,11 +43,13 @@ public class NoticeController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
     public void registerGET(){
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String  registerPOST(NoticeDTO noticeDTO, RedirectAttributes rttr){ // title, contents, writer등 파라미터를 자동수집해줌
 
@@ -56,6 +61,7 @@ public class NoticeController {
         return "redirect:/notice/list";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read/{nt_id}")
     public String read(@PathVariable("nt_id") Integer nt_id, ListDTO listDTO, Model model){
         log.info("========================");
@@ -66,6 +72,7 @@ public class NoticeController {
         return "/notice/read";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/modify/{nt_id}")
     public String modify(@PathVariable("nt_id") Integer nt_id, ListDTO listDTO, Model model){
         log.info("=======================");
@@ -76,6 +83,7 @@ public class NoticeController {
         return "/notice/modify";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/remove/{nt_id}")
     public String removePost(@PathVariable("nt_id") Integer nt_id, RedirectAttributes rttr){
         log.info("------------------------");
@@ -88,11 +96,13 @@ public class NoticeController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/remove/{nt_id}")
     public String getNotSupported(){
         return "redirect:/notice/list";
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/modify/{nt_id}")
     public String modifyPost(@PathVariable("nt_id") Integer nt_id, NoticeDTO noticeDTO, ListDTO listDTO, RedirectAttributes rttr){
         log.info("------------------------");
@@ -107,6 +117,7 @@ public class NoticeController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/files/{nt_id}")
     @ResponseBody
     public List<UploadResultDTO> getFiles(@PathVariable("nt_id")Integer nt_id){

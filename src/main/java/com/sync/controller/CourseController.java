@@ -8,6 +8,7 @@ import com.sync.dto.PageMaker;
 import com.sync.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ public class CourseController {
     private final CourseService courseService;
 
     //list로 redirect하는 메소드
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/") //매핑
     public String basic(){ // course로 들어오면 list로 redirct하는 메소드
 
@@ -33,7 +35,7 @@ public class CourseController {
     }
 
 
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/list")
     public void list(ListDTO listDTO, Model model){
         log.info("==================================");
@@ -72,22 +74,22 @@ public class CourseController {
         model.addAttribute("count",count);
 
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/read")
     public void readGet(){
 
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/coordinates")
     public void readCoord(){
 
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/recordMain")
     public void startRecord(){
 
     }
-
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/stopWatch")
     public void getWatch(){
 
