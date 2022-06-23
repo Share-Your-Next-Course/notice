@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 public class HelloController {
 
     private final CrewService crewService;
-    private final MemberService memberService;
     private final CourseService courseService;
     private final DashBoardMapper dashBoardMapper;
 
