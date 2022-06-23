@@ -16,7 +16,7 @@
                         content like concat('%' , #{keyword} , '%')
                     </if>
                     <if test='item =="w"'>
-                        writer like concat('%' , #{keyword} , '%')
+                        username like concat('%' , #{keyword} , '%')
                     </if>
                 </foreach>
             </if>
@@ -79,7 +79,7 @@
     </update>
 
     <select id="getTotal" resultType="int">
-        select count(q_id) from tbl_question
+        select count(q_id) from (select * from tbl_question where category = 'R') tbl_question left join tbl_admin ta on tbl_question.adm_id = ta.adm_id
         <include refid="search"></include>
     </select>
 
