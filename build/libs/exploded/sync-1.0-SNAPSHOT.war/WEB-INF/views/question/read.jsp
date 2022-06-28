@@ -151,14 +151,14 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" readonly><c:out
                             value="${dto.content}"></c:out></textarea>
                     </div>
-                    <div>
-                        <button class="btn btn-outline-secondary moreBtn">더보기</button>
-                        <div class="pictures">
-                            <c:if test="${dto.mainImage != null}">
-                                <img src="${dto.getMain()}">
-                            </c:if>
-                        </div>
-                    </div>
+<%--                    <div>--%>
+<%--                        <button class="btn btn-outline-secondary moreBtn">더보기</button>--%>
+<%--                        <div class="pictures">--%>
+<%--                            <c:if test="${dto.mainImage != null}">--%>
+<%--                                <img src="${dto.getMain()}">--%>
+<%--                            </c:if>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
                 </blockquote>
             </div>
             <div class="card-footer text-muted">
@@ -205,7 +205,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary modReplyBtn" data-bs-dismiss="modal">댓글 추가</button>
+                        <button type="button" class="btn btn-secondary modReplyBtn" data-bs-dismiss="modal">댓글 수정</button>
                         <button type="button" class="btn btn-primary removeReplyBtn" data-bs-dismiss="modal">댓글 삭제</button>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
 
     </ul>
 
-    <ul class="pageUL">
+    <ul class="pageUL secondary pagination small justify-content-center">
 
     </ul>
 
@@ -233,19 +233,19 @@
 
 
 
-        //더보기 버튼은 되돌릴수없다
-        document.querySelector(".moreBtn").addEventListener("click",(e) =>{
-            axios.get("/question/files/${dto.q_id}").then(
-                res => {
-                    const arr = res.data
-                    let str = ""
-                    for(let i = 0; i < arr.length; i++){
-                        str += `<img src ='/view?fileName=\${arr[i].link}'>`
-                    }
-                    document.querySelector(".pictures").innerHTML = str
-                }
-            )
-        },false)
+<%--        //더보기 버튼은 되돌릴수없다--%>
+<%--        document.querySelector(".moreBtn").addEventListener("click",(e) =>{--%>
+<%--            axios.get("/question/files/${dto.q_id}").then(--%>
+<%--                res => {--%>
+<%--                    const arr = res.data--%>
+<%--                    let str = ""--%>
+<%--                    for(let i = 0; i < arr.length; i++){--%>
+<%--                        str += `<img src ='/view?fileName=\${arr[i].link}'>`--%>
+<%--                    }--%>
+<%--                    document.querySelector(".pictures").innerHTML = str--%>
+<%--                }--%>
+<%--            )--%>
+<%--        },false)--%>
 
         document.querySelector(".listBtn").addEventListener("click",(e)=>{
 
@@ -390,15 +390,15 @@
                 let str =''
 
                 if(prev){
-                    str += `<li data-num=\${startPage-1}>이전</li>`
+                    str += `<li class="page-item page-link" data-num=\${startPage-1}>이전</li>`
                 }
 
                 for(let i = startPage; i <= endPage; i++){
-                    str += `<li data-num=\${i}>\${i}</li>`
+                    str += `<li class="page-item page-link" data-num=\${i}>\${i}</li>`
                 }
 
                 if(next){
-                    str+= `<li data-num=\${endPage+1}>다음</li>`
+                    str+= `<li class="page-item page-link" data-num=\${endPage+1}>다음</li>`
                 }
 
                 pageUL.innerHTML = str

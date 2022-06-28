@@ -9,14 +9,14 @@
         <where>
             <if test="keyword != null">
                 <foreach collection="types" item="item" separator="OR" open="(" close=")">
-                    <if test='item =="t"'>
+                    <if test='item == "t"'>
                         title like concat('%' , #{keyword} , '%')
                     </if>
-                    <if test='item =="c"'>
+                    <if test='item == "c"'>
                         content like concat('%' , #{keyword} , '%')
                     </if>
                     <if test='item =="w"'>
-                        adm_id like concat('%' , #{keyword} , '%')
+                        username like concat('%' , #{keyword} , '%')
                     </if>
                 </foreach>
             </if>
@@ -42,10 +42,10 @@
     </insert>
 
     <select id="admquestionList" resultType="com.sync.domain.Question">
-        select tbl_question.q_id, tbl_question.adm_id adm_id, tbl_question.m_id, ta.name, tbl_question.title title, tbl_question.content content, tbl_question.category, tbl_question.regDate, tbl_question.replyCount, tbl_question.mainImage
+        select tbl_question.q_id, tbl_question.adm_id adm_id, tbl_question.m_id, ta.username uname, tbl_question.title title, tbl_question.content content, tbl_question.category, tbl_question.regDate, tbl_question.replyCount, tbl_question.mainImage
         from (select * from tbl_question where category = 'Q') tbl_question left join tbl_admin ta on tbl_question.adm_id = ta.adm_id
         <include refid="search"></include>
-        order by q_id desc
+        order by q_id asc
         limit #{skip},#{size}
     </select>
 
@@ -79,7 +79,9 @@
     </update>
 
     <select id="getTotal" resultType="int">
-        select count(q_id) from tbl_question
+
+        select count(q_id)  from  (select * from tbl_question where category = 'Q') tbl_question left join tbl_admin ta on tbl_question.adm_id = ta.adm_id
+
         <include refid="search"></include>
     </select>
 

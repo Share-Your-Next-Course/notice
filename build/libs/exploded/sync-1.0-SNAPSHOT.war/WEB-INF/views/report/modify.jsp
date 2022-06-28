@@ -132,11 +132,8 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">신고내역 수정/삭제</h1>
 
-      <form class="modForm" action="/report/modify/${dto.q_id}" method="post">
-            <input type="hidden" name="page" value="${listDTO.page}">
-            <input type="hidden" name="size" value="${listDTO.size}">
-            <input type="hidden" name="type" value="${listDTO.type}">
-            <input type="hidden" name="keyword" value="${listDTO.keyword}">
+
+
 
             <section class="section">
                 <div class="row">
@@ -146,7 +143,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">수정/삭제</h5>
 
-
+                                <form class="modForm" action="/report/modify/${dto.q_id}" method="post">
                                 <div>
                                     <div class="mb-3">
                                         <label class="form-label">게시글번호</label>
@@ -180,46 +177,37 @@
                                     </div>
 
                                 </div>
-
+                                    <input type="hidden" name="page" value="${listDTO.page}">
+                                    <input type="hidden" name="size" value="${listDTO.size}">
+                                    <input type="hidden" name="type" value="${listDTO.type}">
+                                    <input type="hidden" name="keyword" value="${listDTO.keyword}">
+                                </form>
+                                <div style="float: right">
+                                    <button class="listBtn btn btn-secondary">리스트</button>
+                                    <button class="modPostBtn btn btn-secondary">수정하기</button>
+                                    <button class="delPostBtn btn btn-secondary">삭제하기</button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        </form>
-
-        <section class="section">
-            <div class="row">
-                <div class="col-lg-12 form-control">
-                    <div class="card">
-                        <div class="card-body">
-                            <style>
-                                .uploadResult {
-                                    /*display:flex;*/
-                                }
-
-                                .uploadResult > div {
-                                    float: left;
-                                    margin: 1em;
-                                    border: 1px solid darkviolet;
-                                }
-                            </style>
                             <div class="uploadResult">
 
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <style>
+            .uploadResult {
+                /*display:flex;*/
+            }
 
+            .uploadResult > div {
+                float: left;
+                margin: 1em;
+                border: 1px solid darkviolet;
+            }
+        </style>
 
-        <div>
-            <button class="listBtn btn btn-secondary">리스트</button>
-            <button class="modPostBtn btn btn-secondary">수정하기</button>
-            <button class="delPostBtn btn btn-secondary">삭제하기</button>
-        </div>
 
 
         <form class="actionForm" action="/report/remove/${q_id}" method="post">

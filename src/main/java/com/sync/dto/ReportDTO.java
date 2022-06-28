@@ -24,6 +24,7 @@ public class ReportDTO {
     private int replyCount;
     private String mainImage;
 
+    private String uname;
     private String name;
 
     private List<UploadResultDTO> uploads = new ArrayList<>();

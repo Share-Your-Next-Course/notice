@@ -12,15 +12,15 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(locations ="file:src/main/webapp/WEB-INF/root-context.xml" )
 public class SampleTests {
 
-
-    @Autowired
-    private SampleDAO sampleDAO;
-
-
-    @Test
-    public void test1(){
-        
-        log.info(sampleDAO);
-    }
+//
+//    @Autowired
+//    private SampleDAO sampleDAO;
+//
+//
+//    @Test
+//    public void test1(){
+//
+//        log.info(sampleDAO);
+//    }
     
 }

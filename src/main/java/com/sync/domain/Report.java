@@ -20,7 +20,7 @@ public class Report {
     private int replyCount;
     private String mainImage;
 
-
+    private String uname;
     private String name;
 
     private LocalDateTime regDate;

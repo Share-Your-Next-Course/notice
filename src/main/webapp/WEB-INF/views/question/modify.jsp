@@ -133,11 +133,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">공지사항 수정/삭제</h1>
 
-      <form class="modForm" action="/question/modify/${dto.q_id}" method="post">
-            <input type="hidden" name="page" value="${listDTO.page}">
-            <input type="hidden" name="size" value="${listDTO.size}">
-            <input type="hidden" name="type" value="${listDTO.type}">
-            <input type="hidden" name="keyword" value="${listDTO.keyword}">
+
 
             <section class="section">
                 <div class="row">
@@ -147,7 +143,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">수정/삭제</h5>
 
-
+                                <form class="modForm" action="/question/modify/${dto.q_id}" method="post">
                                 <div>
                                     <div class="mb-3">
                                         <label class="form-label">게시글번호</label>
@@ -171,56 +167,39 @@
                                         <div class="form-text">게시글 내용</div>
                                     </div>
 
-                                    <div class="input-group mb-3 uploadInputDiv">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary uploadBtn" type="button">Upload
-                                            </button>
-                                        </div>
-                                        <input type="file" name="upload" multiple class="form-control uploadFile"
-                                               aria-describedby="emailHelp">
-                                    </div>
+<%--                                    <div class="input-group mb-3 uploadInputDiv">--%>
+<%--                                        <div class="input-group-append">--%>
+<%--                                            <button class="btn btn-outline-secondary uploadBtn" type="button">Upload--%>
+<%--                                            </button>--%>
+<%--                                        </div>--%>
+<%--                                        <input type="file" name="upload" multiple class="form-control uploadFile"--%>
+<%--                                               aria-describedby="emailHelp">--%>
+<%--                                    </div>--%>
 
                                 </div>
-
+                                    <input type="hidden" name="page" value="${listDTO.page}">
+                                    <input type="hidden" name="size" value="${listDTO.size}">
+                                    <input type="hidden" name="type" value="${listDTO.type}">
+                                    <input type="hidden" name="keyword" value="${listDTO.keyword}">
+                                </form>
+                                <div style="float: right">
+                                    <button class="listBtn btn btn-secondary">리스트</button>
+                                    <button class="modPostBtn btn btn-secondary">수정하기</button>
+                                    <button class="delPostBtn btn btn-secondary">삭제하기</button>
+                                </div>
                             </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
             </section>
 
-        </form>
-
-        <section class="section">
-            <div class="row">
-                <div class="col-lg-12 form-control">
-                    <div class="card">
-                        <div class="card-body">
-                            <style>
-                                .uploadResult {
-                                    /*display:flex;*/
-                                }
-
-                                .uploadResult > div {
-                                    float: left;
-                                    margin: 1em;
-                                    border: 1px solid darkviolet;
-                                }
-                            </style>
-                            <div class="uploadResult">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
-        <div>
-            <button class="listBtn btn btn-secondary">리스트</button>
-            <button class="modPostBtn btn btn-secondary">수정하기</button>
-            <button class="delPostBtn btn btn-secondary">삭제하기</button>
-        </div>
+
+
 
 
         <form class="actionForm" action="/question/remove/${q_id}" method="post">
@@ -231,78 +210,78 @@
 
         <script>
 
-            const uploadResult = document.querySelector(".uploadResult")
+            <%--const uploadResult = document.querySelector(".uploadResult")--%>
 
-            function loadImages() {
-                axios.get("/question/files/${q_id}").then(
-                    res => {
-                        const resultArr = res.data
-                        //첨부파일 결과를 문자열로 만들어서 div 태그로 보내주기
-                        uploadResult.innerHTML += resultArr.map(({
-                                                                     uuid,
-                                                                     thumbnail,
-                                                                     link,
-                                                                     fileName,
-                                                                     savePath,
-                                                                     img }) => `
-                <div data-uuid='\${uuid}' data-img='\${img}' data-filename='\${fileName}' data-savepath='\${savePath}'>
-               <img src ='/view?fileName=\${thumbnail}'>
-               <button data-link='\${link}' class="delBtn">X</button>
-               \${fileName}</div>`).join(" ")
+            <%--function loadImages() {--%>
+            <%--    axios.get("/question/files/${q_id}").then(--%>
+            <%--        res => {--%>
+            <%--            const resultArr = res.data--%>
+            <%--            //첨부파일 결과를 문자열로 만들어서 div 태그로 보내주기--%>
+            <%--            uploadResult.innerHTML += resultArr.map(({--%>
+            <%--                                                         uuid,--%>
+            <%--                                                         thumbnail,--%>
+            <%--                                                         link,--%>
+            <%--                                                         fileName,--%>
+            <%--                                                         savePath,--%>
+            <%--                                                         img }) => `--%>
+            <%--    <div data-uuid='\${uuid}' data-img='\${img}' data-filename='\${fileName}' data-savepath='\${savePath}'>--%>
+            <%--   <img src ='/view?fileName=\${thumbnail}'>--%>
+            <%--   <button data-link='\${link}' class="delBtn">X</button>--%>
+            <%--   \${fileName}</div>`).join(" ")--%>
 
-                    }
-                )
-            }
+            <%--        }--%>
+            <%--    )--%>
+            <%--}--%>
 
-            loadImages()
+            <%--loadImages()--%>
 
-            //삭제 이벤트
-            uploadResult.addEventListener("click", (e) => {
+            <%--//삭제 이벤트--%>
+            <%--uploadResult.addEventListener("click", (e) => {--%>
 
-                if (e.target.getAttribute("class").indexOf("delBtn") < 0) {
-                    return
-                }
+            <%--    if (e.target.getAttribute("class").indexOf("delBtn") < 0) {--%>
+            <%--        return--%>
+            <%--    }--%>
 
-                const btn = e.target
-                const link = btn.getAttribute("data-link")
+            <%--    const btn = e.target--%>
+            <%--    const link = btn.getAttribute("data-link")--%>
 
-                deleteToServer(link).then(result => {
-                    btn.closest("div").remove()
-                })
+            <%--    deleteToServer(link).then(result => {--%>
+            <%--        btn.closest("div").remove()--%>
+            <%--    })--%>
 
-            }, false)
+            <%--}, false)--%>
 
-            //파일 업로드 버튼 이벤트 처리
-            document.querySelector(".uploadBtn").addEventListener("click", (e) => {
-                e.preventDefault()
-                e.stopPropagation()
+            <%--//파일 업로드 버튼 이벤트 처리--%>
+            <%--document.querySelector(".uploadBtn").addEventListener("click", (e) => {--%>
+            <%--    e.preventDefault()--%>
+            <%--    e.stopPropagation()--%>
 
-                //파일 업로드 처리
-                const formObj = new FormData();
+            <%--    //파일 업로드 처리--%>
+            <%--    const formObj = new FormData();--%>
 
-                const fileInput = document.querySelector(".uploadFile")
+            <%--    const fileInput = document.querySelector(".uploadFile")--%>
 
-                console.log(fileInput.files)
+            <%--    console.log(fileInput.files)--%>
 
-                const files = fileInput.files
+            <%--    const files = fileInput.files--%>
 
-                for (let i = 0; i < files.length; i++) {
-                    console.log(files[i])
-                    formObj.append("files", files[i]);
-                }
+            <%--    for (let i = 0; i < files.length; i++) {--%>
+            <%--        console.log(files[i])--%>
+            <%--        formObj.append("files", files[i]);--%>
+            <%--    }--%>
 
-                //resultArr == uploadResultDTO
-                uploadToServer(formObj).then(resultArr => {
-                    //첨부파일 결과를 문자열로 만들어서 div 태그로 보내주기
-                    uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) => `
-                <div data-uuid='\${uuid}' data-img='\${img}' data-filename='\${fileName}' data-savepath='\${savePath}'>
-               <img src ='/view?fileName=\${thumbnail}'>
-               <button data-link='\${link}' class="delBtn">X</button>
-               \${fileName}</div>`).join(" ")
+            <%--    //resultArr == uploadResultDTO--%>
+            <%--    uploadToServer(formObj).then(resultArr => {--%>
+            <%--        //첨부파일 결과를 문자열로 만들어서 div 태그로 보내주기--%>
+            <%--        uploadResult.innerHTML += resultArr.map(({uuid, thumbnail, link, fileName, savePath, img}) => `--%>
+            <%--    <div data-uuid='\${uuid}' data-img='\${img}' data-filename='\${fileName}' data-savepath='\${savePath}'>--%>
+            <%--   <img src ='/view?fileName=\${thumbnail}'>--%>
+            <%--   <button data-link='\${link}' class="delBtn">X</button>--%>
+            <%--   \${fileName}</div>`).join(" ")--%>
 
-                })
+            <%--    })--%>
 
-            }, false)
+            <%--}, false)--%>
 
 
             //삭제 통신
@@ -394,8 +373,6 @@
 
 
         </script>
-
-    </div>
 
 
 

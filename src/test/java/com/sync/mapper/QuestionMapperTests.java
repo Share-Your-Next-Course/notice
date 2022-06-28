@@ -22,12 +22,12 @@ public class QuestionMapperTests {
     @Test
     public void testInsert(){
 
-        for (int i = 0; i <1000; i++) {
+        for (int i = 0; i <50; i++) {
 
             Question question = Question.builder()
                     .title("제목")
                     .content("내용")
-                    .adm_id(1)
+                    .adm_id(10)
                     .category("Q")
                     .delflag(0)
                     .build();

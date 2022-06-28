@@ -161,7 +161,7 @@
                                             <c:out value="${report.title}"/></a>
 
                                         </td>
-                                        <th><c:out value="${report.adm_id}"/></th>
+                                        <th><c:out value="${report.uname}"/></th>
                                         <th><c:out value="${report.regDate}"/></th>
                                     </tr>
                                 </c:forEach>

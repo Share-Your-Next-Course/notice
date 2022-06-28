@@ -159,6 +159,7 @@
                                 </tr>
                                 </thead>
                                 <tbody class="dtoList">
+
                                 <c:forEach items="${dtoList}" var="question">
                                     <tr>
                                         <th scope="row">${question.q_id}</th>
@@ -167,7 +168,7 @@
                                             <c:out value="${question.title}"/></a>
 
                                         </td>
-                                        <th><c:out value="${question.adm_id}"/></th>
+                                        <th><c:out value="${question.uname}"/></th>
                                         <th><c:out value="${question.regDate}"/></th>
                                     </tr>
                                 </c:forEach>
@@ -184,8 +185,8 @@
                                         <select class="type small">
                                             <option value="">--</option>
                                             <option value="t" ${listDTO.type == "t"?"selected":""}>제목</option>
-                                            <option value="tc" ${listDTO.type == "tc"?"selected":""}>제목+내용</option>
-                                            <option value="tcw" ${listDTO.type == "tcw"?"selected":""}>제목+내용+작성자
+                                            <option value="c" ${listDTO.type == "c"?"selected":""}>내용</option>
+                                            <option value="w" ${listDTO.type == "w"?"selected":""}>작성자
                                             </option>
                                         </select>
 

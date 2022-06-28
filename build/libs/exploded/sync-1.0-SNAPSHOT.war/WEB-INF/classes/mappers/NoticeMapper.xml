@@ -15,7 +15,7 @@
                         content like concat('%', #{keyword}, '%')
                     </if>
                     <if test='item == "w"'>
-                        writer like concat('%', #{keyword}, '%')
+                        username like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
             </if>
@@ -27,7 +27,7 @@
             select last_insert_id()
         </selectKey>
         insert into tbl_notice (adm_id, title, content)
-        values (#{adm_id}, #{title}, #{content});
+        values (#{username}, #{title}, #{content});
     </insert>
 
     <select id="selectList" resultType="com.sync.domain.NoticeVO">
@@ -39,7 +39,7 @@
     </select>
 
     <select id="getTotal" resultType="int">
-        select count(nt_id) from tbl_notice
+        select count(nt_id) from tbl_notice left outer join tbl_admin ta on ta.adm_id = tbl_notice.adm_id
         <include refid="search"></include>
     </select>
 
