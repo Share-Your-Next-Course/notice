@@ -72,9 +72,9 @@ public class CourseController {
         model.addAttribute("count",count);
 
     }
-
     @GetMapping("/read")
     public void readGet(){
+
 
     }
 
