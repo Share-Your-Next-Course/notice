@@ -82,6 +82,7 @@
 
 </style>
 <main id="main" class="main">
+
     <div class="card">
         <div class="card-header">
             GPS 정보 수집 기능(Geolocation을 이용한 위도 및 경도 수집)
@@ -94,15 +95,10 @@
         <div class="card-footer text-muted">
             <button type="button" class="btn btn-primary startBtn" id="start">Start</button>
             <button type="button" class="btn btn-primary stopBtn" id="stop">Stop</button>
-            <button href="#" class="btn btn-success">코스 생성</button>
+            <button href="#" class="btn btn-success create">코스 생성</button>
         </div>
     </div>
-    <div class="row">
-        <div class="card">
-            <div class="map">
-            </div>
-        </div>
-    </div>
+    <div id="map" style="width:100%; height: 100vh;"></div>
     <%--    &lt;%&ndash;  모달 창 &ndash;%&gt;--%>
     <%--    <div class="modal" tabindex="-1" role="dialog">--%>
     <%--        <div class="modal-dialog" role="document">--%>
@@ -124,6 +120,7 @@
     <%--        </div>--%>
     <%--    </div>--%>
 </main>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0&callback=initMap&v=weekly" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     const start = document.querySelector("#start")
@@ -152,6 +149,8 @@
                 console.log('-----위치정보 수집 중-----------')
                 console.log(window.localStorage.getItem("coordinates"))
 
+                initMap(coordinates)
+
                 const li = document.createElement("li")
                 li.style.color = "black"
                 li.style.listStyle = 'none'
@@ -178,99 +177,101 @@
                 navigator.geolocation.clearWatch(mylocation)
                 console.log('-----위치정보 수집 종료-----------')
                 console.log(coordinates)
-                initMap()
+                console.log("----")
+                initMap(coordinates)
             }
         )
 
     })
 
-    function getLocation() {
-        if (navigator.geolocation) { // GPS를 지원하면
-            navigator.geolocation.getCurrentPosition(function (position) {
 
-                const mylat = position.coords.latitude
-                const mylng = position.coords.longitude
-
-                console.log("현재 " + "위도: " + mylat + " | 경도: " + mylng)
-
-                function initMap() {
-
-                    const path = [{
-                        lat: mylat, lng: mylng
-                    }];
-
-                    //구글 맵 기본옵션
-                    const defaultOptions = {
-                        zoom: 17, //지도 확대 및 축소 수준
-                        center: path[0], //초기 지도 위치
-                        mapTypeId: "roadmap", //기본 지도 유형  = normal, default 2D map
-                        disableDefaultUI: true, //모든 기본 UI 버튼 비활성화
-                        gestureHandling: "none", //모든 터치 제스처 및 스크롤 이벤트는 지도를 이동하거나 확대/축소 : "greedy"
-                        keyboardShortCuts: false, //키보드 제어 비활성화
-                        clickableIcons: false, //정보창 비활성화
-                        mapId: '48cb216d9a8215f9' //map 스타일 적용을 위한 Key
-
-                    }
-
-                    //map 객체 생성
-                    const map = new google.maps.Map(document.querySelector('.map'), defaultOptions);
-
-                    // const markerIcon = "./images/Ripple.svg"
-                    //마커 객체 생성
-                    const marker = new google.maps.Marker({
-                        position: path[0],
-                        map: map,
-                        // icon: markerIcon,
-                        Animation: google.maps.Animation.BOUNCE,
-                        optimized: false
-                    })
-
-                }
-
-                initMap();
-            }, function (error) {
-                console.error(error);
-            }, {
-                enableHighAccuracy: false, //배터리를 더 소모해서 더 정확한 위치를 찾음
-                maximumAge: 0, //한 번 찾은 위치 정보를 해당 초만큼 캐싱
-                timeout: Infinity //주어진 초 안에 찾지 못하면 에러 발생
-            })
-        } else {
-            alert('GPS를 지원하지 않습니다');
-        }
-    }
-
-    // function initMap() {
-    //     navigator.geolocation.getCurrentPosition(position => {
+    // function getLocation() {
+    //     if (navigator.geolocation) { // GPS를 지원하면
+    //         navigator.geolocation.getCurrentPosition(function (position) {
     //
-    //         const path = coordinates[]
-    //         //구글 맵 기본옵션
-    //         const defaultOptions = {
-    //             zoom: 17, //지도 확대 및 축소 수준
-    //             center: coordinates[4], //초기 지도 위치
-    //             mapTypeId: "roadmap", //기본 지도 유형  = normal, default 2D map
-    //             disableDefaultUI: true, //모든 기본 UI 버튼 비활성화
-    //             gestureHandling: "none", //모든 터치 제스처 및 스크롤 이벤트는 지도를 이동하거나 확대/축소 : "greedy"
-    //             keyboardShortCuts: false, //키보드 제어 비활성화
-    //             clickableIcons: false, //정보창 비활성화
-    //             mapId: '48cb216d9a8215f9' //map 스타일 적용을 위한 Key
-    //         }
+    //            let mylat = position.coords.latitude
+    //            let mylng = position.coords.longitude
     //
-    //         //map 객체 생성
-    //         const map = new google.maps.Map(document.querySelector('.map'), defaultOptions);
+    //             console.log("현재 " + "위도: " + mylat + " | 경도: " + mylng)
     //
-    //
-    //         // const markerIcon = "./images/Ripple.svg"
-    //         //마커 객체 생성
-    //         const marker = new google.maps.Marker({
-    //             position: coordinates[0],
-    //             map: map,
-    //             // icon: markerIcon,
-    //             Animation: google.maps.Animation.BOUNCE,
-    //             optimized: false
+    //             // function initMap() {
+    //             //
+    //             //     const path = [{
+    //             //         lat: mylat, lng: mylng
+    //             //     }];
+    //             //
+    //             //     //구글 맵 기본옵션
+    //             //     const defaultOptions = {
+    //             //         zoom: 17, //지도 확대 및 축소 수준
+    //             //         center: path[0], //초기 지도 위치
+    //             //         mapTypeId: "roadmap", //기본 지도 유형  = normal, default 2D map
+    //             //         disableDefaultUI: true, //모든 기본 UI 버튼 비활성화
+    //             //         gestureHandling: "none", //모든 터치 제스처 및 스크롤 이벤트는 지도를 이동하거나 확대/축소 : "greedy"
+    //             //         keyboardShortCuts: false, //키보드 제어 비활성화
+    //             //         clickableIcons: false, //정보창 비활성화
+    //             //         mapId: '48cb216d9a8215f9' //map 스타일 적용을 위한 Key
+    //             //
+    //             //     }
+    //             //
+    //             //     //map 객체 생성
+    //             //     const map = new google.maps.Map(document.querySelector('.map'), defaultOptions);
+    //             //
+    //             //     // const markerIcon = "./images/Ripple.svg"
+    //             //     //마커 객체 생성
+    //             //     const marker = new google.maps.Marker({
+    //             //         position: path[0],
+    //             //         map: map,
+    //             //         // icon: markerIcon,
+    //             //         Animation: google.maps.Animation.BOUNCE,
+    //             //         optimized: false
+    //             //     })
+    //             //
+    //             // }
+    //             //
+    //             // initMap();
+    //         }, function (error) {
+    //             console.error(error);
+    //         }, {
+    //             enableHighAccuracy: false, //배터리를 더 소모해서 더 정확한 위치를 찾음
+    //             maximumAge: 0, //한 번 찾은 위치 정보를 해당 초만큼 캐싱
+    //             timeout: Infinity //주어진 초 안에 찾지 못하면 에러 발생
     //         })
-    //     })
+    //     } else {
+    //         alert('GPS를 지원하지 않습니다');
+    //     }
     // }
+
+    document.querySelector(".create").addEventListener('click',(e) => {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log('컹스')
+    })
+
+
+    function initMap(coordinates) {
+
+        //구글 맵 기본옵션
+        var map = new google.maps.Map( document.getElementById('map'), {
+            zoom: 15, //지도 확대 및 축소 수준
+            center: coordinates[0], //초기 지도 위치
+            mapTypeId: "roadmap", //기본 지도 유형  = normal, default 2D map
+            disableDefaultUI: true, //모든 기본 UI 버튼 비활성화
+            gestureHandling: "none", //모든 터치 제스처 및 스크롤 이벤트는 지도를 이동하거나 확대/축소 : "greedy"
+            keyboardShortCuts: false, //키보드 제어 비활성화
+            clickableIcons: false, //정보창 비활성화
+            mapId: '48cb216d9a8215f9' //map 스타일 적용을 위한 Key
+        });
+
+        //마커 객체 생성
+        new google.maps.Marker({
+            position: coordinates[0],
+            map: map,
+            // label: "서울 중심 좌표",
+            //icon: markerIcon,
+            Animation: google.maps.Animation.BOUNCE,
+            optimized: false
+        });
+    }
 
 
 </script>

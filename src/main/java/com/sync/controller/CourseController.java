@@ -74,10 +74,8 @@ public class CourseController {
         model.addAttribute("count",count);
 
     }
-<<<<<<< HEAD
-=======
+
     @PreAuthorize("hasRole('ROLE_ADMIN')")
->>>>>>> 46330849fa1f6b5ebe4660069234898c8cf94d92
     @GetMapping("/read")
     public void readGet(){
 
