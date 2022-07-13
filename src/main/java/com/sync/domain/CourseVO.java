@@ -12,7 +12,7 @@ public class CourseVO {
 
     private Integer cs_id;
     private Integer m_id; //FK
-    private String title, addr, content, point, mainImage;
+    private String title, addr, content, point, mainImage, center;
     private int delflag;
     private LocalDate regDate;
     private LocalDate updateDate;

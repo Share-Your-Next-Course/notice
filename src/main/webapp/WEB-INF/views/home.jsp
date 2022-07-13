@@ -596,6 +596,8 @@
         memberTotalNow.innerHTML = v.memberTotalNow
     });
 
+    // Map<Stirng, List<Map<String, Object>> 대시 보드 팁
+
     const element = document.querySelector(".dataTable-selector");
     console.log(element)
 

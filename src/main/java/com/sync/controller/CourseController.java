@@ -1,10 +1,7 @@
 package com.sync.controller;
 
 
-import com.sync.dto.CourseDTO;
-import com.sync.dto.ListDTO;
-import com.sync.dto.ListResponseDTO;
-import com.sync.dto.PageMaker;
+import com.sync.dto.*;
 import com.sync.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +9,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 import java.util.Map;
@@ -76,9 +76,14 @@ public class CourseController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/read")
-    public void readGet(){
+    @GetMapping("/read/{cs_id}")
+    public String courseReadGet(@PathVariable("cs_id") Integer cs_id, ListDTO listDTO, Model model){
+        log.info("course read....");
+        log.info("cr_id: " + cs_id);
 
+        model.addAttribute("dtoList",courseService.getOne(cs_id));
+
+        return "/course/read";
 
     }
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -95,5 +100,21 @@ public class CourseController {
     @GetMapping("/stopWatch")
     public void getWatch(){
 
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/register")
+    public void CourseRegisterGet(){
+
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/register")
+    public String CourseRegisterPost(CourseDTO courseDTO, RedirectAttributes rttr){
+        log.info("course register....");
+        log.info(courseDTO);
+        courseService.register(courseDTO);
+        rttr.addFlashAttribute("result", "register");
+        return "redirect:/course/list" ;
     }
 }
