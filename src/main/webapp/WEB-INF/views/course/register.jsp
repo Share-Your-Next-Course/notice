@@ -277,15 +277,18 @@
 
             </div>
             <div class="col-lg-6">
-
                 <div class="card">
                     <div class="card-body">
-                        <img class="mapImg" width="600" src="https://maps.googleapis.com/maps/api/staticmap?
-                        &zoom=15&scale=1&size=600x300&maptype=roadmap
+                        <h5 class="card-title">코스 이미지</h5>
+                        <div>
+                            <img class="mapImg" width="600" src="https://maps.googleapis.com/maps/api/staticmap?
+                        &zoom=17&scale=1&size=600x300&maptype=roadmap
                         &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0
                         ">
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -310,7 +313,7 @@
     let latlngArray = []
     let arrayLatLng = []
     let polyline = null
-
+    let str ='';
 
     const mapImg = document.querySelector(".mapImg")
 
@@ -430,14 +433,12 @@
         e.preventDefault()
         e.stopPropagation()
 
-        console.log(latlngArray)
 
+        const actionForm = document.querySelector(".actionForm")
+        str += `<input type="hidden" name="center" value="\${mapImg.src}">`
 
-        // const actionForm = document.querySelector(".actionForm")
-        //
-        //
-        //
-        // actionForm.submit()
+        actionForm.innerHTML += str
+        //actionForm.submit()
 
 
     }, false)
