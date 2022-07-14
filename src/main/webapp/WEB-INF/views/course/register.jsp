@@ -280,11 +280,10 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <img width="600" src="https://maps.googleapis.com/maps/api/staticmap?center=37.57024452957905,126.98522115153976
-        &zoom=15&scale=1&size=600x300&maptype=roadmap
-        &format=png&visual_refresh=true
-        &path=color:0xff0000ff%7Cweight:5%7C37.571012313240985,126.98338124419965%7C37.571080342461954,126.98683592941083%7C37.5705531143742, 126.9879302706889
-        &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0">
+                        <img class="mapImg" width="600" src="https://maps.googleapis.com/maps/api/staticmap?
+                        &zoom=15&scale=1&size=600x300&maptype=roadmap
+                        &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0
+                        ">
                     </div>
                 </div>
             </div>
@@ -300,38 +299,21 @@
 
 <script>
 
-
-    document.querySelector(".formBtn").addEventListener("click", (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-
-        const actionForm = document.querySelector(".actionForm")
-
-        actionForm.submit()
-
-
-    }, false)
-
-    document.querySelector(".formBtn").addEventListener("click", (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-
-
-    })
-
-
-
-
-
-
-
-
+    // center=
+    // &zoom=15&scale=1&size=600x300&maptype=roadmap
+    // &format=png&visual_refresh=true
+    // &path=color:0xff0000ff|weight:5|37.571012313240985,126.98338124419965|37.571080342461954,126.98683592941083|37.5705531143742,126.9879302706889
+    // &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0
 
     let map;
     // define global array to store markers added
-    // let markersArray = [];
     let latlngArray = []
+    let arrayLatLng = []
     let polyline = null
+
+
+    const mapImg = document.querySelector(".mapImg")
+
 
     //geolocation function
     if (navigator.geolocation) { // GPS를 지원하면
@@ -339,7 +321,9 @@
 
             const mylat = { lat : position.coords.latitude, lng : position.coords.longitude}
 
-            console.log(mylat)
+            console.log(mylat.lat, mylat.lng)
+
+            mapImg.src += "&center="+mylat.lat+","+mylat.lng+"&path=color:0xff0000ff|weight:3";
 
             initMap(mylat)
 
@@ -369,12 +353,10 @@
 
         });
 
-        map.addListener('click', function (e) {
-            // console.log(e.latLng);
-            addMarker(e.latLng);
 
-            // console.log(markersArray)
-            console.log(latlngArray)
+        map.addListener('click', function (e) {
+
+            addMarker(e.latLng.toJSON());
 
             drawPolyline()
 
@@ -398,15 +380,27 @@
             }
         });
 
-        let arr = {
-            lat: latLng.lat(),
-            lng: latLng.lng()
-        }
+        // let arr = {
+        //     lat: latLng.lat(),
+        //     lng: latLng.lng()
+        // }
 
-        console.log(arr)
         //store the marker object drawn on map in global array
         // markersArray.push(marker);
-        latlngArray.push(arr)
+        latlngArray.push(latLng)
+
+        console.log(latlngArray)
+
+
+        arrayLatLng = latlngArray.map(function(obj){
+            let rObj = {};
+            rObj= [obj.lat,obj.lng];
+            return rObj;
+        });
+
+        console.log(arrayLatLng)
+
+        mapImg.src += "|"+latLng.lat+","+latLng.lng;
     }
 
     function drawPolyline() {
@@ -430,6 +424,24 @@
     document.querySelector(".listBtn").addEventListener("click", (e)=>{
         self.location = "/course/list"
     },false)
+
+
+    document.querySelector(".formBtn").addEventListener("click", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log(latlngArray)
+
+
+        // const actionForm = document.querySelector(".actionForm")
+        //
+        //
+        //
+        // actionForm.submit()
+
+
+    }, false)
+
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0&callback=initMap&v=weekly">

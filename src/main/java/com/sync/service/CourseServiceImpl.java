@@ -43,7 +43,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void register(CourseDTO courseDTO) {
-
+        CourseVO courseVO = modelMapper.map(courseDTO, CourseVO.class);
+        log.info(courseVO);
+        courseMapper.insert(courseVO);
     }
 
     @Override
