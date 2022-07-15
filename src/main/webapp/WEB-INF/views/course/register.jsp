@@ -238,7 +238,7 @@
                         </div>
 
 
-                        <%--크루 등록 모달 시작--%>
+                        <%--코스 등록 모달 시작--%>
                         <div class="modal fade" id="scrollingModal" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -249,7 +249,6 @@
                                     </div>
                                     <div class="modal-body">
 
-                                        <!-- Default Accordion -->
                                         <div class="accordion" id="accordionExample">
                                             <div style="text-align: center">
                                                 <span><strong>코스 등록을 계속 진행하시겠습니다?</strong></span>
@@ -267,7 +266,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- 크루등록 모달창 끝-->
+                        <!-- 코스등록 모달창 끝-->
                         <div class="uploadResult">
                         </div>
 
@@ -309,16 +308,21 @@
     // &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0
 
     let map;
-    // define global array to store markers added
+
+    //{[lat: ,lng: ],} 형식
     let latlngArray = []
+
+    //[[위도, 경도]] 형식
     let arrayLatLng = []
+
     let polyline = null
+
+    //actionForm str
     let str ='';
 
     const mapImg = document.querySelector(".mapImg")
 
-
-    //geolocation function
+    //geolocation 함수
     if (navigator.geolocation) { // GPS를 지원하면
         navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -342,7 +346,7 @@
     }
 
 
-    //initMap function
+    //google map 함수
     function initMap(mylat) {
         map = new google.maps.Map(document.getElementById('map'), {
             center: mylat,
@@ -356,7 +360,7 @@
 
         });
 
-
+        //map click event
         map.addListener('click', function (e) {
 
             addMarker(e.latLng.toJSON());
@@ -368,8 +372,7 @@
 
     }
 
-
-    // define function to add marker at given lat & lng
+    //마커 추가 함수(lat,lng를 넘겨줘야한다)
     function addMarker(latLng) {
         let marker = new google.maps.Marker({
             map: map,
@@ -383,13 +386,8 @@
             }
         });
 
-        // let arr = {
-        //     lat: latLng.lat(),
-        //     lng: latLng.lng()
-        // }
-
         //store the marker object drawn on map in global array
-        // markersArray.push(marker);
+
         latlngArray.push(latLng)
 
         console.log(latlngArray)

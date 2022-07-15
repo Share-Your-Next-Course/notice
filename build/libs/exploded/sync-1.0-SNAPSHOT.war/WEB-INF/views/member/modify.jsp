@@ -440,12 +440,12 @@
             </a>
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/board/courseStat">
+                    <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
                 </li>
                 <%--                <li>--%>
-                <%--                    <a href="/board/courseStat">--%>
+                <%--                    <a href="/course/list">--%>
                 <%--                        <i class="bi bi-circle"></i><span>코스 통계</span>--%>
                 <%--                    </a>--%>
                 <%--                </li>--%>

@@ -130,7 +130,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">코스 관리</a></li>
-                <li class="breadcrumb-item"><a href="/member/list">코스 목록</a></li>
+                <li class="breadcrumb-item"><a href="/course/list">코스 목록</a></li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
