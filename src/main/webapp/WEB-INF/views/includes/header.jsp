@@ -51,7 +51,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="/home" class="logo d-flex align-items-center">
-            <img src="http://106.241.252.54:8086/assets/img/logo.png" alt="">
+            <img src="/resources/images/apple-icon.png" alt="">
             <span class="d-none d-lg-block">SYNC<sup> - Our course </sup></span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>

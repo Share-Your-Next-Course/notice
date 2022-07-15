@@ -169,7 +169,7 @@
 
                                                         <!-- List group with Advanced Contents -->
                                                         <div class="list-group">
-                                                            <a href="/board/course"
+                                                            <a href="/course/list"
                                                                class="list-group-item list-group-item-action"
                                                                aria-current="true">
                                                                 <div class="d-flex w-100 justify-content-between"></div>

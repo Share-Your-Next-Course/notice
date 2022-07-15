@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <%--                <li>--%>
-                <%--                    <a href="/board/courseStat">--%>
+                <%--                    <a href="/course/list">--%>
                 <%--                        <i class="bi bi-circle"></i><span>코스 통계</span>--%>
                 <%--                    </a>--%>
                 <%--                </li>--%>

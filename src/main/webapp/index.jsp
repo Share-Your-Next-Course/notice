@@ -14,13 +14,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="http://106.241.252.54:8086/assets/img/favicon.png" rel="icon">
-    <link href="http://106.241.252.54:8086/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="http://106.241.252.54:8086/https://fonts.gstatic.com" rel="preconnect">
-    <link href="http://106.241.252.54:8086/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon-48x48.png"/>
 
     <!-- Vendor CSS Files -->
     <link href="http://106.241.252.54:8086/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +43,7 @@
                         <%--  로고 시작    --%>
                         <div class="d-flex justify-content-center py- ">
                             <a href="/home" class="logo d-flex align-items-center w-auto ">
-                                <img class="loginLogo" src="http://106.241.252.54:8086/assets/img/logo.png" alt="SYNC logoimage">
+                                <img class="loginLogo" src="/resources/images/apple-icon-180x180.png" alt="SYNC logoimage">
                                 <span class="loginTitle d-none d-lg-block">SYNC</span>
                             </a>
                         </div><!-- 로그 종료 -->
@@ -64,7 +58,7 @@
                                 </div>
 
                                 <%--   로그인 폼 시작    --%>
-                                <form class="row g-3 needs-validation" novalidate>
+                                <form class="row g-3 needs-validation" action="/login" method="post" novalidate>
 
                                     <%--    아이디 입력    --%>
                                     <div class="col-12">
@@ -88,9 +82,7 @@
                                     <%--   자동 로그인    --%>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" value="true"
-                                                   id="rememberMe">
-                                            <label class="form-check-label" for="rememberMe">자동 로그인</label>
+                                            <input class="form-check-input" type="checkbox" name="remember-me">자동로그인
                                         </div>
                                     </div>
 

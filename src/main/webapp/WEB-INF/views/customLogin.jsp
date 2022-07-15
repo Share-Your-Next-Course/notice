@@ -9,18 +9,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+    <title>SYNC - Our course</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="http://106.241.252.54:8086/assets/img/favicon.png" rel="icon">
-    <link href="http://106.241.252.54:8086/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/icon-48x48.png"/>
 
-    <!-- Google Fonts -->
-    <link href="http://106.241.252.54:8086/https://fonts.gstatic.com" rel="preconnect">
-    <link href="http://106.241.252.54:8086/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="http://106.241.252.54:8086/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +44,7 @@
                         <%--  로고 시작    --%>
                         <div class="d-flex justify-content-center py- ">
                             <a href="/home" class="logo d-flex align-items-center w-auto ">
-                                <img class="loginLogo" src="http://106.241.252.54:8086/assets/img/logo.png" alt="SYNC logoimage">
+                                <img class="loginLogo" src="/resources/images/apple-icon-180x180.png" alt="SYNC logoimage">
                                 <span class="loginTitle d-none d-lg-block">SYNC</span>
                             </a>
                         </div><!-- 로그 종료 -->
