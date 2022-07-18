@@ -108,6 +108,12 @@ public class CourseController {
 
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/register1")
+    public void CourseRegisterGet1(){
+
+    }
+
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String CourseRegisterPost(CourseDTO courseDTO, RedirectAttributes rttr){
