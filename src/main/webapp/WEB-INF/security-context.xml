@@ -7,10 +7,11 @@
     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean id="loginFailHandler" class="com.sync.security.handler.CustomLoginFailHandler"></bean>
+    <bean id="loginSuccessHandler" class="com.sync.security.handler.CustomLoginSuccessHandler"></bean>
 
     <security:http>
 
-        <security:form-login login-page="/customLogin" authentication-failure-handler-ref="loginFailHandler"/>
+        <security:form-login login-page="/customLogin" authentication-failure-handler-ref="loginFailHandler" authentication-success-handler-ref="loginSuccessHandler"/>
 
 <!--        <security:intercept-url pattern="/notice/list" access="hasRole('ROLE_ADMIN')"></security:intercept-url>-->
 <!--        <security:intercept-url pattern="/notice/read/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>-->

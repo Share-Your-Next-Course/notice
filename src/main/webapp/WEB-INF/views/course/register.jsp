@@ -197,7 +197,7 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">코스 제목</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="name1" class="form-control name" placeholder="20자 내외">
+                                    <input type="text" name="title1" class="form-control title" placeholder="20자 내외">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -312,6 +312,9 @@
     //{[lat: ,lng: ],} 형식
     let latlngArray = []
 
+
+    let latlngArrayString = []
+
     //[[위도, 경도]] 형식
     let arrayLatLng = []
 
@@ -392,7 +395,7 @@
 
         console.log(latlngArray)
 
-
+        latlngArrayString = JSON.stringify(latlngArray)
         arrayLatLng = latlngArray.map(function(obj){
             let rObj = {};
             rObj= [obj.lat,obj.lng];
@@ -427,16 +430,32 @@
     },false)
 
 
+
+
     document.querySelector(".formBtn").addEventListener("click", (e) => {
         e.preventDefault()
         e.stopPropagation()
 
+        const title = document.querySelector(".title").value
+        const content = document.querySelector(".content").value
+        const addr = document.querySelector(".addr").value
+        const m_id = 42
 
+        console.log(title)
         const actionForm = document.querySelector(".actionForm")
         str += `<input type="hidden" name="center" value="\${mapImg.src}">`
 
+        console.log(latlngArrayString)
+
+        str += `<input type="hidden" name="point" value='\${latlngArrayString}'>`
+
+
+        str += `<input type='hidden' name='title' value='\${title}'>`
+        str += `<input type='hidden' name='content' value='\${content}'>`
+        str += `<input type='hidden' name='addr' value='\${addr}'>`
+        str += `<input type='hidden' name='m_id' value='\${m_id}'>`
         actionForm.innerHTML += str
-        //actionForm.submit()
+        actionForm.submit()
 
 
     }, false)

@@ -46,6 +46,9 @@
                     <a href="/course/list" class="active">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
+                    <a href="/course/register" >
+                        <i class="bi bi-circle"></i><span>코스 등록</span>
+                    </a>
                 </li>
             </ul>
         </li><!-- End Forms Nav -->
@@ -226,6 +229,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">코스번호</th>
+                                <th scope="col">코스</th>
                                 <th scope="col">작성자</th>
                                 <th scope="col">제목</th>
                                 <th scope="col">지역</th>
@@ -240,6 +244,7 @@
                                 <c:forEach items="${dtoList}" var="course">
                             <tr>
                                 <td> ${course.cs_id}</td>
+                                <td> <img class="mapImg" width="300" src=${course.center}></td>
                                 <td> ${course.m_id}</td>
                                 <td>${course.title}</td>
                                 <td>${course.addr}</td>

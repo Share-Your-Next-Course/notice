@@ -4,13 +4,13 @@ import com.sync.dto.*;
 import com.sync.mapper.DashBoardMapper;
 import com.sync.service.CourseService;
 import com.sync.service.CrewService;
-import com.sync.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Map;
@@ -32,9 +32,9 @@ public class HelloController {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/login")
-    public void login(){
-
+    @PostMapping("/login")
+    public String login(){
+        return "redirect:/home";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")

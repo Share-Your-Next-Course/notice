@@ -27,12 +27,12 @@
         <selectKey resultType="int" keyProperty="cs_id" order="AFTER">
             select last_insert_id()
         </selectKey>
-        insert into tbl_course (m_id, title, addr, content, point, mainImage)
-        values ( #{m_id}, #{title}, #{addr}, #{content}, #{point}, #{mainImage})
+        insert into tbl_course (m_id, title, addr, content, point, mainImage, center)
+        values ( #{m_id}, #{title}, #{addr}, #{content}, #{point}, #{mainImage}, #{center})
     </insert>
 
     <select id="selectList" resultType="com.sync.domain.CourseVO">
-        select cs_id, m_id, title, addr, content, regDate, updateDate
+        select cs_id, m_id, title, addr, content, point, center, regDate, updateDate
         from tbl_course
 
         <include refid="search"></include>
@@ -55,7 +55,7 @@
     <select id="selectOne" resultType="com.sync.domain.CourseVO">
         select *
         from tbl_course
-        where m_id = #{cs_id}
+        where cs_id = #{cs_id}
     </select>
 
     <update id="update">

@@ -541,9 +541,9 @@
                                 <c:forEach items="${dtoList}" var="dtoList" begin="0" end="4" step="1" varStatus="status">
                                     <div class="post-item clearfix">
                                         <c:choose>
-                                            <c:when test="${dtoList.mainImage != null}">
+                                            <c:when test="${dtoList.center != null}">
                                                 <!-- Result값이 있다면 실행할 로직 -->
-                                                <img src="${dtoList.getMain()}">
+                                                <img class="mapImg" width="100px;" height="130px;" src="${dtoList.center}">
                                             </c:when>
                                             <c:otherwise>
                                                 <!-- 그렇지 않다면 실행할 로직 -->
