@@ -114,15 +114,35 @@
 <%--    header 종료 --%>
 
 <main id="main" class="main">
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+        <!-- 코스 맵 -->
+        <div class="course_map">
+            <div id="map"></div>
+        </div>
+            <h5 class="card-title">코스 이미지</h5>
+        <div>
+            <img class="mapImg" width="50%" src="${dtoList.center}">
+        </div>
+        </div>
+        </div>
+            </div>
+        </div>
+
+    </section>
 
     <section class="section">
         <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">코스 이미지</h5>
-                    <div>
-                        <img class="mapImg" width="550" src="${dtoList.center}">
+                    <!-- 고도 그래프 -->
+                    <div class="elevation_graph">
+                        <h2 class="card-title"> 고도<small>&nbsp;<sub>(m)</sub></small></h2>
+                        <div id="elevation_chart"></div>
                     </div>
                 </div>
             </div>
@@ -213,13 +233,101 @@
 
 
 </main><!-- End #main -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script src="https://www.google.com/jsapi"></script>
+
 <script>
 
     document.querySelector(".listBtn").addEventListener("click", (e)=>{
         self.location = "/course/list"
     },false)
 
-</script>
+    // Load the Visualization API and the columnchart package.
+    // @ts-ignore TODO(jpoehnelt) update to newest visualization library
+    google.load("visualization", "1", { packages: ["columnchart"] });
 
+    function initMap() {
+        // The following path marks a path from Mt. Whitney, the highest point in the
+        // continental United States to Badwater, Death Valley, the lowest point.
+        const path = ${dtoList.point}
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 16,
+            center: path[2],
+            mapTypeId: "terrain",
+        });
+
+
+        // Create an ElevationService.
+        const elevator = new google.maps.ElevationService();
+
+        // Draw the path, using the Visualization API and the Elevation service.
+        displayPathElevation(path, elevator, map);
+
+
+    }
+
+
+    function displayPathElevation(path, elevator, map) {
+        // Display a polyline of the elevation path.
+        new google.maps.Polyline({
+            path: path,
+            strokeWeight: 5,
+            strokeColor: "#0002CC",
+            strokeOpacity: 1,
+            map: map,
+        });
+        // Create a PathElevationRequest object using this array.
+        // Ask for 256 samples along that path.
+        // Initiate the path request.
+        elevator
+            .getElevationAlongPath({
+                path: path,
+                samples: 256,
+            })
+            .then(plotElevation)
+            .catch((e) => {
+                const chartDiv = document.getElementById("elevation_chart");
+
+                // Show the error code inside the chartDiv.
+                chartDiv.innerHTML = "Cannot show elevation: request failed because " + e;
+            });
+    }
+
+    // Takes an array of ElevationResult objects, draws the path on the map
+    // and plots the elevation profile on a Visualization API ColumnChart.
+    function plotElevation({ results }) {
+        const chartDiv = document.getElementById("elevation_chart");
+        // Create a new chart in the elevation_chart DIV.
+        const chart = new google.visualization.ColumnChart(chartDiv);
+        // Extract the data from which to populate the chart.
+        // Because the samples are equidistant, the 'Sample'
+        // column here does double duty as distance along the
+        // X axis.
+        const data = new google.visualization.DataTable();
+
+        data.addColumn("string", "Sample");
+        data.addColumn("number", "Elevation");
+
+        for (let i = 0; i < results.length; i++) {
+            data.addRow(["", results[i].elevation]);
+        }
+
+        // Draw the chart using the data within its DIV.
+        chart.draw(data, {
+            height: 200,
+            legend: "none",
+            // @ts-ignore TODO(jpoehnelt) update to newest visualization library
+            titleY: "Elevation (m)",
+        });
+    }
+
+
+    window.initMap = initMap;
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0&callback=initMap&v=weekly">
+</script>
 
 <%@ include file="/WEB-INF/views/includes/footer.jsp"%>
