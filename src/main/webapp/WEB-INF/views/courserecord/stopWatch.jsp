@@ -176,7 +176,7 @@
     <div class="row">
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" class="btn btn-secondary small" data-toggle="modal" data-target="#exampleModalCenter">
             Launch demo modal
         </button>
 
@@ -209,7 +209,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary small">Save changes</button>
                     </div>
                 </div>
             </div>

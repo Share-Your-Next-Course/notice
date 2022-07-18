@@ -206,7 +206,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary modReplyBtn" data-bs-dismiss="modal">댓글 수정</button>
-                        <button type="button" class="btn btn-primary removeReplyBtn" data-bs-dismiss="modal">댓글 삭제</button>
+                        <button type="button" class="btn btn-secondary small removeReplyBtn" data-bs-dismiss="modal">댓글 삭제</button>
                     </div>
                 </div>
             </div>

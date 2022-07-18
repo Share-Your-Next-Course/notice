@@ -266,7 +266,7 @@
                                 <td>${member.joinDate}</td>
                                 <td>${member.updateDate}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary readBtn"
+                                    <button type="button" class="btn btn-secondary small readBtn"
                                             onclick="location.href='/member/read/${member.m_id}'">
                                         상세조회
                                     </button>
@@ -313,7 +313,7 @@
                         </div>
                         <%--    검색창 종료    --%>
 
-                        <button type="button" class="btn btn-primary btn_register"
+                        <button type="button" class="btn btn-secondary small btn_register"
                                 onclick="location.href='/member/register'">회원 등록
                         </button>
                         <%--    회원등록 버튼     --%>

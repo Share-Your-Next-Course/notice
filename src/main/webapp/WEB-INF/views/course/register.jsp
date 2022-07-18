@@ -238,37 +238,37 @@
                         </div>
 
 
-                        <%--코스 등록 모달 시작--%>
-                        <div class="modal fade" id="scrollingModal" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">코스 등록</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
+<%--                        &lt;%&ndash;코스 등록 모달 시작&ndash;%&gt;--%>
+<%--                        <div class="modal fade" id="scrollingModal" tabindex="-1">--%>
+<%--                            <div class="modal-dialog">--%>
+<%--                                <div class="modal-content">--%>
+<%--                                    <div class="modal-header">--%>
+<%--                                        <h5 class="modal-title">코스 등록</h5>--%>
+<%--                                        <button type="button" class="btn-close" data-bs-dismiss="modal"--%>
+<%--                                                aria-label="Close"></button>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="modal-body">--%>
 
-                                        <div class="accordion" id="accordionExample">
-                                            <div style="text-align: center">
-                                                <span><strong>코스 등록을 계속 진행하시겠습니다?</strong></span>
-                                            </div>
-                                        </div><!-- End Default Accordion Example -->
+<%--                                        <div class="accordion" id="accordionExample">--%>
+<%--                                            <div style="text-align: center">--%>
+<%--                                                <span><strong>코스 등록을 계속 진행하시겠습니다?</strong></span>--%>
+<%--                                            </div>--%>
+<%--                                        </div><!-- End Default Accordion Example -->--%>
 
-                                    </div>
-                                    <%--   모달 닫기 / 확인 버튼 시작 --%>
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-secondary formBtn">확인</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
-                                        </button>
-                                    </div>
-                                    <%--   모달 닫기 / 확인 버튼 끝 --%>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 코스등록 모달창 끝-->
-                        <div class="uploadResult">
-                        </div>
+<%--                                    </div>--%>
+<%--                                    &lt;%&ndash;   모달 닫기 / 확인 버튼 시작 &ndash;%&gt;--%>
+<%--                                    <div class="modal-footer">--%>
+<%--                                        <button type="submit" class="btn btn-secondary formBtn">확인</button>--%>
+<%--                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기--%>
+<%--                                        </button>--%>
+<%--                                    </div>--%>
+<%--                                    &lt;%&ndash;   모달 닫기 / 확인 버튼 끝 &ndash;%&gt;--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <!-- 코스등록 모달창 끝-->--%>
+<%--                        <div class="uploadResult">--%>
+<%--                        </div>--%>
 
 
                     </div>

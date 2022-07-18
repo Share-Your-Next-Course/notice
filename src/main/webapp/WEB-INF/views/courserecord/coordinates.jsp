@@ -93,9 +93,9 @@
 
         </div>
         <div class="card-footer text-muted">
-            <button type="button" class="btn btn-primary startBtn" id="start">Start</button>
-            <button type="button" class="btn btn-primary stopBtn" id="stop">Stop</button>
-            <button href="#" class="btn btn-success create">코스 생성</button>
+            <button type="button" class="btn btn-secondary small startBtn" id="start">Start</button>
+            <button type="button" class="btn btn-secondary small stopBtn" id="stop">Stop</button>
+            <button href="#" class="btn btn-secondary small create">코스 생성</button>
         </div>
     </div>
     <div id="map" style="width:100%; height: 100vh;"></div>

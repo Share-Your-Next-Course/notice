@@ -49,8 +49,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public CourseDTO getOne(Integer cr_id) {
-        return null;
+    public CourseDTO getOne(Integer cs_id) {
+
+        CourseVO courseVO = courseMapper.selectOne(cs_id);
+        CourseDTO courseDTO = modelMapper.map(courseVO, CourseDTO.class);
+
+        return courseDTO;
     }
 
     @Override
@@ -59,7 +63,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void remove(Integer cr_id) {
+    public void remove(Integer cs_id) {
 
     }
 

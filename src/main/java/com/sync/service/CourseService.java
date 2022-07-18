@@ -15,11 +15,11 @@ public interface CourseService {
 
     ListResponseDTO<CourseDTO> getList(ListDTO listDTO);
 
-    CourseDTO getOne(Integer cr_id);
+    CourseDTO getOne(Integer cs_id);
 
     void update(CourseDTO courseDTO);
 
-    void remove(Integer cr_id);
+    void remove(Integer cs_id);
 
 //    List<MemberUploadResultDTO> getFiles(Integer cr_id);
 

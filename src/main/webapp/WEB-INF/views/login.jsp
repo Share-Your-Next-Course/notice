@@ -101,7 +101,7 @@
                                         </style>
                                     <%--    로그인  버튼    --%>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 loginBtn" type="submit">로그인</button>
+                                        <button class="btn btn-secondary small w-100 loginBtn" type="submit">로그인</button>
                                         <div class="invalid-feedback">해당 계정은 로그인이 불가합니다.</div>
                                     </div>
 

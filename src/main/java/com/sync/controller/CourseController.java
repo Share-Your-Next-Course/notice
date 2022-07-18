@@ -79,8 +79,8 @@ public class CourseController {
     @GetMapping("/read/{cs_id}")
     public String courseReadGet(@PathVariable("cs_id") Integer cs_id, ListDTO listDTO, Model model){
         log.info("course read....");
-        log.info("cr_id: " + cs_id);
-
+        log.info("cs_id: " + cs_id);
+        log.info(courseService.getOne(cs_id));
         model.addAttribute("dtoList",courseService.getOne(cs_id));
 
         return "/course/read";

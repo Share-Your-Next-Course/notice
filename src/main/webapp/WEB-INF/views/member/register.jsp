@@ -265,10 +265,10 @@
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-3">
-                                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
                                             data-bs-target="#scrollingModal">회원가입
                                     </button>
-                                    <button type="button" class="btn btn-primary"
+                                    <button type="button" class="btn btn-secondary small"
                                             onclick="location.href='/board/member'">목록으로
                                     </button>
                                 </div>
@@ -406,7 +406,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
                                             </button>
-                                            <button type="submit" class="btn btn-primary formBtn">확인</button>
+                                            <button type="submit" class="btn btn-secondary small formBtn">확인</button>
                                         </div>
                                         <%--   모달 닫기 / 확인 버튼 끝 --%>
                                     </div>

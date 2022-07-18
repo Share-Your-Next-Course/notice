@@ -346,7 +346,7 @@
 
                                                     <!-- Scrolling Modal -->
                                                     <span class="button">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
                                                     data-bs-target="#scrollingModal">
                                                 활동정지
                                             </button>
@@ -376,7 +376,7 @@
                                                                         닫기
                                                                     </button>
                                                                     <button type="button"
-                                                                            class="btn btn-primary">
+                                                                            class="btn btn-secondary small">
                                                                         확인
                                                                     </button>
                                                                 </div>
@@ -386,7 +386,7 @@
 
                                                     <!-- Modal Dialog Scrollable -->
                                                     <span class="button">
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
                                                     data-bs-target="#modalDialogScrollable">
                                                 강제탈퇴
                                             </button>
@@ -429,7 +429,7 @@
                                                                         닫기
                                                                     </button>
                                                                     <button type="button"
-                                                                            class="btn btn-primary">
+                                                                            class="btn btn-secondary small">
                                                                         완전 탈퇴
                                                                     </button>
                                                                 </div>
@@ -453,7 +453,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     닫기
                 </button>
-                <button type="button" class="btn btn-primary">확인</button>
+                <button type="button" class="btn btn-secondary small">확인</button>
             </div>
         </div>
     </div>

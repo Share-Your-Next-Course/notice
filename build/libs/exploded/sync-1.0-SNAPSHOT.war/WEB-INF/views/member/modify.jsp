@@ -678,7 +678,7 @@
                                 <td>${member.joinDate}</td>
                                 <td>${member.updateDate}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary"
+                                    <button type="button" class="btn btn-secondary small"
                                             onclick="location.href='/board/read/${member.m_id}'">
                                         상세조회
                                     </button>
@@ -724,7 +724,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary btn_register"
+                        <button type="button" class="btn btn-secondary small btn_register"
                                 onclick="location.href='/member/register'">회원 등록
                         </button>
 

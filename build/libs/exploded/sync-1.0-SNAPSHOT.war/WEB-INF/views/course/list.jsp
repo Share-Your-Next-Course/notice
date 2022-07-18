@@ -251,11 +251,9 @@
                                 <td>${course.regDate}</td>
                                 <td>${course.updateDate}</td>
                                 <td>
-                                    <button type="button" class="btn btn-primary readBtn" data-bs-toggle="modal"
-                                            data-bs-target="#scrollingModal">
+                                    <button type="button" class="btn btn-secondary small" onclick="location.href='/course/read/${course.cs_id}'">
                                         상세조회
-                                    </button>
-                                </td>
+                                    </button></td>
                             </tr>
                             </c:forEach>
                             </tr>
@@ -301,7 +299,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-primary btn_register"
+                        <button type="button" class="btn btn-secondary small btn_register"
                                 onclick="location.href='/course/register'">코스 등록
                         </button>
 
