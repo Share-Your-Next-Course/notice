@@ -17,7 +17,7 @@
                             <div class="card">
                                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                                    <img src="http://106.241.252.54:8086/assets/img/dongheon-profile.jpg"
+                                    <img src=""
                                          alt="Profile" class="rounded-circle">
                                     <h2>이동헌</h2>
                                     <h3>경기 남양주</h3>

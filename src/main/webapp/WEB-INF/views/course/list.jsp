@@ -46,9 +46,14 @@
                     <a href="/course/list" class="active">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
-                    <a href="/course/register" >
-                        <i class="bi bi-circle"></i><span>코스 등록</span>
-                    </a>
+                    <ul>
+                        <li>
+                            <a href="/course/register" >
+                                <i class="bi bi-circle"></i><span>코스 등록</span>
+                            </a>
+                        </li>
+                    </ul>
+
                 </li>
             </ul>
         </li><!-- End Forms Nav -->
