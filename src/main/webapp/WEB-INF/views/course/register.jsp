@@ -47,10 +47,14 @@
                     <a href="/course/list">
                         <i class="bi bi-circle"></i><span>코스 목록</span>
                     </a>
+                </li>
+                <ul>
+                <li>
                     <a href="/course/register" class="active">
                         <i class="bi bi-circle"></i><span>코스 등록</span>
                     </a>
                 </li>
+                </ul>
             </ul>
         </li><!--  코스 관리 종료  -->
 
@@ -85,35 +89,35 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/users-profile.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
         </li><!-- 관리자 정보 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- F.A.Q 페이지-->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
         </li><!-- 비상연락망 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
         </li><!-- 관리자 등록 페이지  -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
+            <a class="nav-link collapsed" href="/logout">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
@@ -439,7 +443,7 @@
         const title = document.querySelector(".title").value
         const content = document.querySelector(".content").value
         const addr = document.querySelector(".addr").value
-        const m_id = 42
+        const m_id = <sec:authentication property="principal.adm_id"/>
 
         console.log(title)
         const actionForm = document.querySelector(".actionForm")

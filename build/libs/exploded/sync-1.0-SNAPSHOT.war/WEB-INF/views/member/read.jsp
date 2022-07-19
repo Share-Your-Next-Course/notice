@@ -82,35 +82,35 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/users-profile.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
         </li><!-- 관리자 정보 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- F.A.Q 페이지-->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
         </li><!-- 비상연락망 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
         </li><!-- 관리자 등록 페이지  -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
+            <a class="nav-link collapsed" href="/logout">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
@@ -144,7 +144,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="http://106.241.252.54:8086/assets/img/admin-img.png" alt="Profile" class="rounded-circle">
+                        <img src="http://125.128.120.90:8080/assets/img/admin-img.png" alt="Profile" class="rounded-circle">
                         <h2>${dto.name}</h2>
                         <h3>${dto.addr}</h3>
                         <div class="social-links mt-2">

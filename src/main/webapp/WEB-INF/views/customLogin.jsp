@@ -18,16 +18,16 @@
 
 
     <!-- Vendor CSS Files -->
-    <link href="http://106.241.252.54:8086/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="http://106.241.252.54:8086/assets/css/style.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -117,17 +117,17 @@
         class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
-<script src="http://106.241.252.54:8086/assets/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/chart.js/chart.min.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/echarts/echarts.min.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/quill/quill.min.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="http://106.241.252.54:8086/assets/vendor/tinymce/tinymce.min.js"></script>
-<script src="http://106.241.252.54:8086//vendor/php-email-form/validate.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/chart.js/chart.min.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/echarts/echarts.min.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/quill/quill.min.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="http://125.128.120.90:8080/assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="http://125.128.120.90:8080//vendor/php-email-form/validate.js"></script>
 
 <!-- Template Main JS File -->
-<script src="http://106.241.252.54:8086/assets/js/main.js"></script>
+<script src="http://125.128.120.90:8080/assets/js/main.js"></script>
 
 </body>
 

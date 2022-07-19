@@ -83,35 +83,35 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/users-profile.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
         </li><!-- 관리자 정보 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- F.A.Q 페이지-->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
         </li><!-- 비상연락망 페이지 -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
         </li><!-- 관리자 등록 페이지  -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
+            <a class="nav-link collapsed" href="/logout">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
@@ -134,25 +134,25 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="http://106.241.252.54:8086/assets/img/favicon.png" rel="icon">
-    <link href="http://106.241.252.54:8086/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="http://125.128.120.90:8080/assets/img/favicon.png" rel="icon">
+    <link href="http://125.128.120.90:8080/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="http://106.241.252.54:8086/https://fonts.gstatic.com" rel="preconnect">
-    <link href="http://106.241.252.54:8086/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    <link href="http://125.128.120.90:8080/https://fonts.gstatic.com" rel="preconnect">
+    <link href="http://125.128.120.90:8080/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="http://106.241.252.54:8086/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="http://106.241.252.54:8086/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="http://106.241.252.54:8086/assets/css/style.css" rel="stylesheet">
+    <link href="http://125.128.120.90:8080/assets/css/style.css" rel="stylesheet">
 
     <!-- =======================================================
     * Template Name: NiceAdmin - v2.2.2
@@ -167,8 +167,8 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-        <a href="http://106.241.252.54:8086/index.html" class="logo d-flex align-items-center">
-            <img src="http://106.241.252.54:8086/assets/img/logo.png" alt="">
+        <a href="http://125.128.120.90:8080/index.html" class="logo d-flex align-items-center">
+            <img src="http://125.128.120.90:8080/assets/img/logo.png" alt="">
             <span class="d-none d-lg-block">SYNC<sup> - Our course </sup></span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -283,7 +283,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="http://106.241.252.54:8086/assets/img/messages-1.jpg" alt=""
+                            <img src="http://125.128.120.90:8080/assets/img/messages-1.jpg" alt=""
                                  class="rounded-circle">
                             <div>
                                 <h4>박선정 - 관리자</h4>
@@ -298,7 +298,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="http://106.241.252.54:8086/assets/img/messages-2.jpg" alt=""
+                            <img src="http://125.128.120.90:8080/assets/img/messages-2.jpg" alt=""
                                  class="rounded-circle">
                             <div>
                                 <h4>Anna Nelson</h4>
@@ -313,7 +313,7 @@
 
                     <li class="message-item">
                         <a href="#">
-                            <img src="http://106.241.252.54:8086/assets/img/messages-3.jpg" alt=""
+                            <img src="http://125.128.120.90:8080/assets/img/messages-3.jpg" alt=""
                                  class="rounded-circle">
                             <div>
                                 <h4>David Muldon</h4>
@@ -337,7 +337,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="http://106.241.252.54:8086/assets/img/admin-img3.png" alt="Profile"
+                    <img src="http://125.128.120.90:8080/assets/img/admin-img3.png" alt="Profile"
                          class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2">이동헌 - 관리자</span>
                 </a><!-- End Profile Iamge Icon -->
@@ -353,7 +353,7 @@
 
                     <li>
                         <a class="dropdown-item d-flex align-items-center"
-                           href="http://106.241.252.54:8086/users-profile.html">
+                           href="http://125.128.120.90:8080/users-profile.html">
                             <i class="bi bi-person"></i>
                             <span>관리자 정보</span>
                         </a>
@@ -364,7 +364,7 @@
 
                     <li>
                         <a class="dropdown-item d-flex align-items-center"
-                           href="http://106.241.252.54:8086/users-profile.html">
+                           href="http://125.128.120.90:8080/users-profile.html">
                             <i class="bi bi-gear"></i>
                             <span>계정 설정</span>
                         </a>
@@ -375,7 +375,7 @@
 
                     <li>
                         <a class="dropdown-item d-flex align-items-center"
-                           href="http://106.241.252.54:8086/pages-faq.html">
+                           href="http://125.128.120.90:8080/pages-faq.html">
                             <i class="bi bi-question-circle"></i>
                             <span>도움말</span>
                         </a>
@@ -422,12 +422,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/components-accordion.html">
+                    <a href="http://125.128.120.90:8080/components-accordion.html">
                         <i class="bi bi-circle"></i><span>묻고 답하기</span>
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="http://125.128.120.90:8080/tables-data.html">
                         <i class="bi bi-circle"></i><span>신고내역</span>
                     </a>
                 </li>
@@ -477,7 +477,7 @@
 
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="http://125.128.120.90:8080/tables-data.html">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
@@ -488,35 +488,35 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/users-profile.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
         </li><!-- End Register Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
+            <a class="nav-link collapsed" href="/logout">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
@@ -534,7 +534,7 @@
         <h1>회원 관리</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="http://106.241.252.54:8086/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="http://125.128.120.90:8080/index.html">Home</a></li>
                 <li class="breadcrumb-item">사용자 관리</li>
                 <li class="breadcrumb-item active">회원 관리</li>
             </ol>

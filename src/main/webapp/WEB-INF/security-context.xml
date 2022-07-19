@@ -11,8 +11,8 @@
 
     <security:http>
 
-        <security:form-login login-page="/customLogin" authentication-failure-handler-ref="loginFailHandler" authentication-success-handler-ref="loginSuccessHandler"/>
-
+        <security:form-login login-page="/customLogin" authentication-failure-handler-ref="loginFailHandler" authentication-success-handler-ref="loginSuccessHandler" />
+        <security:logout delete-cookies="remember-me,JSESSIONID" logout-success-url="/home"/>
 <!--        <security:intercept-url pattern="/notice/list" access="hasRole('ROLE_ADMIN')"></security:intercept-url>-->
 <!--        <security:intercept-url pattern="/notice/read/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>-->
 <!--        <security:intercept-url pattern="/notice/modify/**" access="hasRole('ROLE_ADMIN')"></security:intercept-url>-->

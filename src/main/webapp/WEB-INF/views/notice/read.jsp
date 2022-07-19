@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="http://106.241.252.54:8086/tables-data.html">
+                    <a href="http://125.128.120.90:8080/tables-data.html">
                         <i class="bi bi-circle"></i><span>크루 관리</span>
                     </a>
                 </li>
@@ -78,35 +78,35 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/users-profile.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/users-profile.html">
                 <i class="bi bi-person"></i>
                 <span>관리자 정보</span>
             </a>
         </li><!-- End Profile Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-faq.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
             </a>
         </li><!-- End F.A.Q Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-contact.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-contact.html">
                 <i class="bi bi-envelope"></i>
                 <span>비상연락망</span>
             </a>
         </li><!-- End Contact Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-register.html">
+            <a class="nav-link collapsed" href="http://125.128.120.90:8080/pages-register.html">
                 <i class="bi bi-card-list"></i>
                 <span>관리자 등록</span>
             </a>
         </li><!-- End Register Page Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="http://106.241.252.54:8086/pages-login.html">
+            <a class="nav-link collapsed" href="/logout">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>로그아웃</span>
             </a>
@@ -123,7 +123,7 @@
         <h1>공지사항</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="http://106.241.252.54:8086/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="http://125.128.120.90:8080/index.html">Home</a></li>
                 <li class="breadcrumb-item">게시판 관리</li>
                 <li class="breadcrumb-item active">공지사항</li>
             </ol>
