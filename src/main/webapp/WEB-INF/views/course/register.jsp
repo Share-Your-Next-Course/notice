@@ -180,7 +180,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">코스 생성</h5>
+                        <h5 class="card-title">코스 생성 <button type="button" class="btn btn-secondary small markerDel" style="float: right">다시 그리기</button></h5>
+
                         <div id="map"></div>
                     </div>
                 </div>
@@ -232,11 +233,11 @@
                             </div>
                         </form>
                         <div class="row mb-3">
-                            <div class="col-sm-5">
-
+                            <div class="col-sm-7">
                                 <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
                                         data-bs-target="#scrollingModal">코스 등록
                                 </button>
+
                                 <button type="button" class="btn btn-secondary small listBtn">목록으로</button>
                             </div>
                         </div>
@@ -313,16 +314,20 @@
 
     let map;
 
+    let mylat = {};
+
+    let markers = [];
     //{[lat: ,lng: ],} 형식
-    let latlngArray = []
+    let latlngArray = [];
 
-
-    let latlngArrayString = []
+    //{[lat: ,lng: ],} 문자열
+    let latlngArrayString = [];
 
     //[[위도, 경도]] 형식
-    let arrayLatLng = []
+    let arrayLatLng = [];
 
-    let polyline = null
+    let polyline = null;
+
 
     //actionForm str
     let str ='';
@@ -333,9 +338,7 @@
     if (navigator.geolocation) { // GPS를 지원하면
         navigator.geolocation.getCurrentPosition(function (position) {
 
-            const mylat = { lat : position.coords.latitude, lng : position.coords.longitude}
-
-            console.log(mylat.lat, mylat.lng)
+            mylat = { lat : position.coords.latitude, lng : position.coords.longitude}
 
             mapImg.src += "&center="+mylat.lat+","+mylat.lng+"&path=color:0x0000FF80|weight:3";
 
@@ -392,9 +395,9 @@
                 scale: 6
             }
         });
-
-        //store the marker object drawn on map in global array
-
+        //마커 정보를 넣는다
+        markers.push(marker)
+        //위도, 경도를 넣는다
         latlngArray.push(latLng)
 
         console.log(latlngArray)
@@ -433,6 +436,26 @@
         self.location = "/course/list"
     },false)
 
+    document.querySelector(".markerDel").addEventListener("click", (e) =>{
+        console.log("hahahahah")
+        DeleteMarkers();
+    },false)
+
+    function DeleteMarkers() {
+        //Loop through all the markers and remove
+        for (var i = 0; i < latlngArray.length; i++) {
+            markers[i].setMap(null);
+        }
+        markers = [];
+        latlngArray = [];
+        latlngArrayString = [];
+        arrayLatLng = [];
+        polyline.setMap(null);
+        mapImg.src = "https://maps.googleapis.com/maps/api/staticmap?" +
+                    "&zoom=17&scale=1&size=600x300&maptype=roadmap" +
+                    "&key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0" +
+                    "&center="+mylat.lat+","+mylat.lng+"&path=color:0x0000FF80|weight:3";
+    };
 
 
 
