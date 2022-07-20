@@ -370,6 +370,14 @@
 
         });
 
+        //map drag event
+        map.addListener('drag', function (){
+            // console.log(map.getCenter().lng())
+            let srcStr= mapImg.src.split('=')
+            srcStr[6] = map.getCenter().lat()+","+ map.getCenter().lng()+"&path"
+            mapImg.src = srcStr.join('=')
+        });
+
         //map click event
         map.addListener('click', function (e) {
 
@@ -438,10 +446,10 @@
 
     document.querySelector(".markerDel").addEventListener("click", (e) =>{
         console.log("hahahahah")
-        DeleteMarkers();
+        removeMarkers();
     },false)
 
-    function DeleteMarkers() {
+    function removeMarkers() {
         //Loop through all the markers and remove
         for (var i = 0; i < latlngArray.length; i++) {
             markers[i].setMap(null);
