@@ -94,9 +94,9 @@
 
 
                                     <%--    계정 찾기    --%>
-                                    <div class="col-12">
-                                        <p class="small mb-0">계정이 없으신가요? <a href="pages-register.html">계정 만들기</a></p>
-                                    </div>
+<%--                                    <div class="col-12">--%>
+<%--                                        <p class="small mb-0">계정이 없으신가요? <a href="pages-register.html">계정 만들기</a></p>--%>
+<%--                                    </div>--%>
                                 </form>
                                 <%--   로그인 폼 끝    --%>
 
