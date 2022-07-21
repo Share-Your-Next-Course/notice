@@ -60,15 +60,16 @@
 
     <update id="update">
         update tbl_course
-        set username   = #{username},
-            name= #{name},
-            email      = #{email},
-            phone      = #{phone},
-            addr       = #{addr},
-            content    = #{content},
-            updateDate = #now()
+        set title   = #{title},
+            addr    = #{addr},
+            content  = #{content},
+            point    = #{point},
+            center   = #{center},
+            mainImage = #{mainImage},
+            updateDate = now()
         where cs_id = #{cs_id}
     </update>
+
 
     <select id="courseMonth" resultType="map">
         select MONTH(regDate) dateMonth, count(MONTH(regDate)) cTotal

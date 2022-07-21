@@ -121,7 +121,7 @@ public class CourseController {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @PostMapping("/course/{cs_id}")
+    @PostMapping("/modify/{cs_id}")
     public String modifyPost(@PathVariable("cs_id") Integer cs_id, CourseDTO courseDTO, ListDTO listDTO, RedirectAttributes rttr){
         log.info("------------------------");
         courseDTO.setCs_id(cs_id);

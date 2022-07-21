@@ -59,7 +59,15 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void update(CourseDTO courseDTO) {
-
+        courseMapper.update(CourseVO.builder()
+                        .addr(courseDTO.getAddr())
+                        .cs_id(courseDTO.getCs_id())
+                        .center(courseDTO.getCenter())
+                        .point(courseDTO.getPoint())
+                        .title(courseDTO.getTitle())
+                        .content(courseDTO.getContent())
+                        .mainImage(courseDTO.getMainImage())
+                .build());
     }
 
     @Override

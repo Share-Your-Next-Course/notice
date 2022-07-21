@@ -180,7 +180,6 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        ${dtoList}
                         <h5 class="card-title">코스 생성 <button type="button" class="btn btn-secondary small markerDel" style="float: right">다시 그리기</button></h5>
 
                         <div id="map"></div>
@@ -199,7 +198,7 @@
                         <h5 class="card-title">코스 등록</h5>
 
                         <!-- 코스 정보 기입란 시작 -->
-                        <form class="actionForm" action="/course/register" method="post">
+                        <form class="actionForm" action="/course/modify/${dtoList.cs_id}" method="post">
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">코스 제목</label>
                                 <div class="col-sm-10">
@@ -236,7 +235,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-7">
                                 <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
-                                        data-bs-target="#scrollingModal">코스 등록
+                                        data-bs-target="#scrollingModal">코스 수정
                                 </button>
 
                                 <button type="button" class="btn btn-secondary small listBtn">목록으로</button>
@@ -249,7 +248,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">코스 등록</h5>
+                                        <h5 class="modal-title">코스 수정</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                     </div>
@@ -257,7 +256,7 @@
 
                                         <div class="accordion" id="accordionExample">
                                             <div style="text-align: center">
-                                                <span><strong>코스 등록을 계속 진행하시겠습니다?</strong></span>
+                                                <span><strong>코스 수정을 계속 진행하시겠습니다?</strong></span>
                                             </div>
                                         </div><!-- End Default Accordion Example -->
 
@@ -312,9 +311,12 @@
 
     let map;
 
-    let centerlatLng = `${dtoList.center}`.split('=');
-    console.log(centerlatLng)
+    let str1 = `${dtoList.center}`.split('=');
+    let str2 = str1[6].split("&")
+    let str3 = str2[0].split(',')
+    let centerlatLng = { lat : Number(str3[0]), lng : Number(str3[1])};
 
+    console.log(centerlatLng)
     let mylat = {};
 
     let dblat = JSON.parse(`${dtoList.point}`);
@@ -344,7 +346,7 @@
 
             mapImg.src += "&center="+mylat.lat+","+mylat.lng+"&path=color:0x0000FF80|weight:3";
 
-            initMap(mylat)
+            initMap(centerlatLng)
 
         }, function (error) {
             console.error(error);
@@ -416,7 +418,7 @@
         //위도, 경도를 넣는다
         latlngArray.push(latLng)
 
-        console.log(latlngArray)
+        // console.log(latlngArray)
 
         latlngArrayString = JSON.stringify(latlngArray)
         arrayLatLng = latlngArray.map(function(obj){
@@ -425,7 +427,7 @@
             return rObj;
         });
 
-        console.log(arrayLatLng)
+        // console.log(arrayLatLng)
 
         mapImg.src += "|"+latLng.lat+","+latLng.lng;
     }
