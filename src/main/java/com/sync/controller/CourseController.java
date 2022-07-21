@@ -86,21 +86,6 @@ public class CourseController {
         return "/course/read";
 
     }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/coordinates")
-    public void readCoord(){
-
-    }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/recordMain")
-    public void startRecord(){
-
-    }
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/stopWatch")
-    public void getWatch(){
-
-    }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/register")
@@ -122,5 +107,31 @@ public class CourseController {
         courseService.register(courseDTO);
         rttr.addFlashAttribute("result", "register");
         return "redirect:/course/list" ;
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/modify/{cs_id}")
+    public String modify(@PathVariable("cs_id") Integer cs_id, ListDTO listDTO, Model model){
+        log.info("=======================");
+        log.info(cs_id);
+        log.info(listDTO);
+
+        model.addAttribute("dtoList", courseService.getOne(cs_id));
+        return "/course/modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/course/{cs_id}")
+    public String modifyPost(@PathVariable("cs_id") Integer cs_id, CourseDTO courseDTO, ListDTO listDTO, RedirectAttributes rttr){
+        log.info("------------------------");
+        courseDTO.setCs_id(cs_id);
+        log.info("modify" + cs_id);
+
+        courseService.update(courseDTO);
+        log.info("------------------------");
+
+        rttr.addFlashAttribute("result", "modified");
+        return "redirect:/course/read/" + cs_id + listDTO.getLink();
+
     }
 }

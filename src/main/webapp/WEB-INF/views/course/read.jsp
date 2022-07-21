@@ -182,7 +182,7 @@
                         <div class="row mb-3">
                             <div class="col-sm-5">
 
-                                <button type="button" class="btn btn-secondary small" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-secondary small modBtn" data-bs-toggle="modal"
                                         data-bs-target="#scrollingModal">코스 수정
                                 </button>
                                 <button type="button" class="btn btn-secondary small listBtn">목록으로</button>
@@ -240,6 +240,11 @@
 
     document.querySelector(".listBtn").addEventListener("click", (e)=>{
         self.location = "/course/list"
+    },false)
+
+    document.querySelector(".modBtn").addEventListener("click", (e)=>{
+        console.log(e.target)
+        self.location = `/course/modify/${dtoList.cs_id}`
     },false)
 
     // Load the Visualization API and the columnchart package.

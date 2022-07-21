@@ -180,6 +180,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        ${dtoList}
                         <h5 class="card-title">코스 생성 <button type="button" class="btn btn-secondary small markerDel" style="float: right">다시 그리기</button></h5>
 
                         <div id="map"></div>
@@ -202,14 +203,14 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">코스 제목</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="title1" class="form-control title" placeholder="20자 내외">
+                                    <input type="text" name="title1" class="form-control title" placeholder="20자 내외" value="<c:out value="${dtoList.title}"/>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">코스 소개</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control content" name="content1"
-                                              style="resize: none; height: 100px"></textarea>
+                                              style="resize: none; height: 100px"><c:out value="${dtoList.content}"/></textarea>
                                 </div>
                             </div>
 
@@ -217,17 +218,17 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">활동지역</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select addr" name="addr1" aria-label="Default select example">
-                                        <option value="서울">서울</option>
-                                        <option value="경기">경기</option>
-                                        <option value="강원">강원</option>
-                                        <option value="충남">충남</option>
-                                        <option value="충북">충북</option>
-                                        <option value="전남">전남</option>
-                                        <option value="전북">전북</option>
-                                        <option value="경남">경남</option>
-                                        <option value="경북">경북</option>
-                                        <option value="제주">제주</option>
+                                    <select class="form-select addr" name="addr1" aria-label="Default select example" value="<c:out value="${dtoList.addr}"/>">
+                                        <option value="서울" <c:if test="${dtoList.addr == '서울' }">selected</c:if> >서울</option>
+                                        <option value="경기" <c:if test="${dtoList.addr == '경기' }">selected</c:if> >경기</option>
+                                        <option value="강원" <c:if test="${dtoList.addr == '강원' }">selected</c:if> >강원</option>
+                                        <option value="충남" <c:if test="${dtoList.addr == '충남' }">selected</c:if> >충남</option>
+                                        <option value="충북" <c:if test="${dtoList.addr == '충북' }">selected</c:if> >충북</option>
+                                        <option value="전남" <c:if test="${dtoList.addr == '전남' }">selected</c:if> >전남</option>
+                                        <option value="전북" <c:if test="${dtoList.addr == '전북' }">selected</c:if> >전북</option>
+                                        <option value="경남" <c:if test="${dtoList.addr == '경남' }">selected</c:if> >경남</option>
+                                        <option value="경북" <c:if test="${dtoList.addr == '경북' }">selected</c:if> >경북</option>
+                                        <option value="제주" <c:if test="${dtoList.addr == '제주' }">selected</c:if> >제주</option>
                                     </select>
                                 </div>
                             </div>
@@ -285,10 +286,7 @@
                     <div class="card-body">
                         <h5 class="card-title">코스 이미지</h5>
                         <div>
-                            <img class="mapImg" width="600" src="https://maps.googleapis.com/maps/api/staticmap?
-                        &zoom=17&scale=1&size=600x300&maptype=roadmap
-                        &key=AIzaSyCWCmaYMswUTwF_9vbM9_cDYKbwAui0HI0
-                        ">
+                            <img class="mapImg" width="600" src=<c:out value="${dtoList.center}"/>>
                         </div>
                     </div>
                 </div>
@@ -314,12 +312,16 @@
 
     let map;
 
+    let centerlatLng = `${dtoList.center}`.split('=');
+    console.log(centerlatLng)
+
     let mylat = {};
+
+    let dblat = JSON.parse(`${dtoList.point}`);
 
     let markers = [];
     //{[lat: ,lng: ],} 형식
     let latlngArray = [];
-
     //{[lat: ,lng: ],} 문자열
     let latlngArrayString = [];
 
@@ -368,9 +370,13 @@
             clickableIcons: false, //정보창 비활성화
             mapId: '48cb216d9a8215f9' //map 스타일 적용을 위한 Key
 
+
         });
 
-
+        for (let i = 0; i < dblat.length; i++) {
+                addMarker(dblat[i])
+                drawPolyline()
+        }
 
         //map drag event
         map.addListener('drag', function (){
@@ -407,7 +413,6 @@
         });
         //마커 정보를 넣는다
         markers.push(marker)
-        console.log(markers)
         //위도, 경도를 넣는다
         latlngArray.push(latLng)
 
