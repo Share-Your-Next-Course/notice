@@ -116,26 +116,20 @@
 <main id="main" class="main">
     <section class="section">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-        <!-- 코스 맵 -->
-        <div class="course_map">
-            <div id="map"></div>
-        </div>
-            <h5 class="card-title">코스 이미지</h5>
-        <div>
-            <img class="mapImg" width="50%" src="${dtoList.center}">
-        </div>
-        </div>
-        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <!-- 고도 그래프 -->
+                    <div class="elevation_graph">
+                        <h2 class="card-title">코스 이미지</h2>
+                        <div class="course_map">
+                            <div id="map"></div>
+                        </div>
+                        <img class="mapImg" width="100%" src="${dtoList.center}">
+                    </div>
+                </div>
             </div>
         </div>
-
-    </section>
-
-    <section class="section">
-        <div class="row">
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -149,7 +143,14 @@
 
         </div>
 
-            <div class="col-lg-6">
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="row">
+
+
+            <div class="col-lg-12">
 
                 <div class="card">
                     <div class="card-body">
@@ -188,47 +189,13 @@
                                 <button type="button" class="btn btn-secondary small listBtn">목록으로</button>
                             </div>
                         </div>
-
-
-                        <%--                        &lt;%&ndash;코스 등록 모달 시작&ndash;%&gt;--%>
-                        <%--                        <div class="modal fade" id="scrollingModal" tabindex="-1">--%>
-                        <%--                            <div class="modal-dialog">--%>
-                        <%--                                <div class="modal-content">--%>
-                        <%--                                    <div class="modal-header">--%>
-                        <%--                                        <h5 class="modal-title">코스 등록</h5>--%>
-                        <%--                                        <button type="button" class="btn-close" data-bs-dismiss="modal"--%>
-                        <%--                                                aria-label="Close"></button>--%>
-                        <%--                                    </div>--%>
-                        <%--                                    <div class="modal-body">--%>
-
-                        <%--                                        <div class="accordion" id="accordionExample">--%>
-                        <%--                                            <div style="text-align: center">--%>
-                        <%--                                                <span><strong>코스 등록을 계속 진행하시겠습니다?</strong></span>--%>
-                        <%--                                            </div>--%>
-                        <%--                                        </div><!-- End Default Accordion Example -->--%>
-
-                        <%--                                    </div>--%>
-                        <%--                                    &lt;%&ndash;   모달 닫기 / 확인 버튼 시작 &ndash;%&gt;--%>
-                        <%--                                    <div class="modal-footer">--%>
-                        <%--                                        <button type="submit" class="btn btn-secondary formBtn">확인</button>--%>
-                        <%--                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기--%>
-                        <%--                                        </button>--%>
-                        <%--                                    </div>--%>
-                        <%--                                    &lt;%&ndash;   모달 닫기 / 확인 버튼 끝 &ndash;%&gt;--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                        </div>--%>
-                        <%--                        <!-- 코스등록 모달창 끝-->--%>
-                        <%--                        <div class="uploadResult">--%>
-                        <%--                        </div>--%>
-
-
                     </div>
                 </div>
 
             </div>
 
         </div>
+        
     </section>
 
 
@@ -243,8 +210,7 @@
     },false)
 
     document.querySelector(".modBtn").addEventListener("click", (e)=>{
-        console.log(e.target)
-        self.location = `/course/modify/${dtoList.cs_id}`
+        self.location = "/course/modify/${dtoList.cs_id}"
     },false)
 
     // Load the Visualization API and the columnchart package.
@@ -320,7 +286,7 @@
 
         // Draw the chart using the data within its DIV.
         chart.draw(data, {
-            height: 200,
+            height: 265,
             legend: "none",
             // @ts-ignore TODO(jpoehnelt) update to newest visualization library
             titleY: "Elevation (m)",

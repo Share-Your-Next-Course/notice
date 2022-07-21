@@ -93,12 +93,6 @@ public class CourseController {
 
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @GetMapping("/register1")
-    public void CourseRegisterGet1(){
-
-    }
-
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/register")
     public String CourseRegisterPost(CourseDTO courseDTO, RedirectAttributes rttr){
@@ -133,5 +127,26 @@ public class CourseController {
         rttr.addFlashAttribute("result", "modified");
         return "redirect:/course/read/" + cs_id + listDTO.getLink();
 
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/remove/{cs_id}")
+    public String removePost(@PathVariable("cs_id") Integer cs_id,RedirectAttributes rttr){
+        log.info("--------------");
+        log.info("--------------");
+        log.info("remove" + cs_id);
+
+        courseService.remove(cs_id);
+
+        log.info("--------------");
+        rttr.addFlashAttribute("result","removed");
+        return "redirect:/course/list";
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping({"/remove/{cs_id}"})
+    public String getNotSupported(){
+
+        return "redirect:/course/list";
     }
 }

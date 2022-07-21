@@ -72,7 +72,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void remove(Integer cs_id) {
-
+        courseMapper.delete(cs_id);
     }
 
     @Override

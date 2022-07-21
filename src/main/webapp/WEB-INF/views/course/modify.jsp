@@ -264,6 +264,7 @@
                                     <%--   모달 닫기 / 확인 버튼 시작 --%>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-secondary formBtn">확인</button>
+                                        <button type="submit" class="delBtn btn btn-secondary">삭제</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기
                                         </button>
                                     </div>
@@ -332,7 +333,8 @@
 
     let polyline = null;
 
-
+    //actionForm
+    const actionForm = document.querySelector(".actionForm")
     //actionForm str
     let str ='';
 
@@ -450,12 +452,9 @@
         });
     }
 
-    document.querySelector(".listBtn").addEventListener("click", (e)=>{
-        self.location = "/course/list"
-    },false)
+
 
     document.querySelector(".markerDel").addEventListener("click", (e) =>{
-        console.log("hahahahah")
         removeMarkers();
     },false)
 
@@ -476,6 +475,17 @@
     };
 
 
+    document.querySelector(".listBtn").addEventListener("click", (e)=>{
+        self.location = "/course/list"
+    },false)
+
+    document.querySelector(".delBtn").addEventListener("click", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+
+        actionForm.setAttribute("action", `/course/remove/${dtoList.cs_id}`)
+        actionForm.submit()
+    }, false)
 
     document.querySelector(".formBtn").addEventListener("click", (e) => {
         e.preventDefault()
@@ -486,8 +496,8 @@
         const addr = document.querySelector(".addr").value
         const m_id = <sec:authentication property="principal.adm_id"/>
 
-        console.log(title)
-        const actionForm = document.querySelector(".actionForm")
+
+
         str += `<input type="hidden" name="center" value="\${mapImg.src}">`
 
         console.log(latlngArrayString)
